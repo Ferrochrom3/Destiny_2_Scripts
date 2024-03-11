@@ -1,0 +1,217 @@
+import pyautogui
+import keyboard
+import sys
+import threading
+import time
+
+"""
+Location     : Crucible Rumble
+Subclass     : Stasis Warlock
+Abilities    : Coldsnap Grenade
+Fragments    : Whisper of Durance
+Aspects      : Bleak Watcher
+Weapons      : Kinetic - Witherhoard
+               Energy  - Any Primary
+               Power   - Any
+Exotic Armor : Osmiomancy Gloves
+Mods         : Helmet     - Any
+               Arms       - 2x Bolstering Detonation
+               Chest      - Any
+               Leg        - Any
+               Class Item - 2x Bomber
+Stats        : Max Discipline
+Reward       : Some Crucible reputations, some legendary gears
+"""
+
+print("Minimum of 1 assist is needed to gain reputation")
+print("Press F7 to Start")
+print("Press F8 to Stop")
+print("Press F9 to End\n")
+
+run = False
+startTime = time.time()
+
+
+def afk():
+    global run
+    run = True
+
+    while run:
+        if pyautogui.locateOnScreen("Broccoli Error.png", confidence=0.8):
+            broccoli_error_solution()
+
+        if pyautogui.locateOnScreen("Match Results.png", confidence=0.6):
+            match_completed()
+
+        if pyautogui.locateCenterOnScreen("Destiny 2 Desktop Icon.png", grayscale=True, confidence=0.8):
+            broccoli_error_solution()
+            print("Wait 60 Second For Destiny 2 to Launch")
+            time.sleep(60)
+
+        try:
+            x, y = pyautogui.locateCenterOnScreen("Warlock.png", confidence=0.6)
+            pyautogui.moveTo(x, y)
+            pyautogui.leftClick()
+            time.sleep(3.5)
+        except TypeError:
+            pass
+
+        try:
+            x, y = pyautogui.locateCenterOnScreen("Open Director.png", confidence=0.8)
+            pyautogui.moveTo(x, y)
+            pyautogui.leftClick()
+            time.sleep(1)
+        except TypeError:
+            pass
+
+        try:
+            x, y = pyautogui.locateCenterOnScreen("Crucible.png", confidence=0.8)
+            pyautogui.moveTo(x, y)
+            pyautogui.leftClick()
+            time.sleep(1)
+        except TypeError:
+            pass
+
+        try:
+            x, y = pyautogui.locateCenterOnScreen("Rumble.png", confidence=0.7)
+            pyautogui.moveTo(x, y)
+            pyautogui.leftClick()
+            time.sleep(1.2)
+        except TypeError:
+            pass
+
+        try:
+            x, y = pyautogui.locateCenterOnScreen("Launch.png", confidence=0.7)
+            pyautogui.moveTo(x, y)
+            pyautogui.leftClick()
+            time.sleep(1)
+        except TypeError:
+            pass
+
+        if pyautogui.locateOnScreen("Coldsnap Grenade.png", confidence=0.8):
+            keyboard.press('q')
+            time.sleep(2.3)
+            keyboard.release('q')
+            time.sleep(1)
+
+        if pyautogui.locateOnScreen("Rift.png", confidence=0.8):
+            keyboard.send('v')
+            time.sleep(2.5)
+
+        if pyautogui.locateOnScreen("Witherhoard Icon.png", grayscale=True, confidence=0.8):
+            pyautogui.leftClick(200, 200)
+            time.sleep(2.3)
+            keyboard.send('s')  # move back to prevent inactivity
+            time.sleep(0.1)
+            keyboard.send('c')  # melee
+            time.sleep(1.3)
+
+        keyboard.press_and_release('enter')
+        time.sleep(0.1)
+        keyboard.press_and_release('enter')
+        time.sleep(0.1)
+        keyboard.press_and_release('l')
+        time.sleep(0.1)
+        pyautogui.leftClick()
+
+
+def match_completed():
+    keyboard.send('m')
+    time.sleep(2)
+
+    try:
+        x, y = pyautogui.locateCenterOnScreen("Crucible.png", confidence=0.8)
+        pyautogui.moveTo(x, y)
+        pyautogui.leftClick()
+        time.sleep(1.5)
+    except TypeError:
+        pass
+
+    try:
+        x, y = pyautogui.locateCenterOnScreen("Rumble.png", confidence=0.7)
+        pyautogui.moveTo(x, y)
+        pyautogui.leftClick()
+        time.sleep(1.5)
+    except TypeError:
+        pass
+
+    try:
+        x, y = pyautogui.locateCenterOnScreen("Launch.png", confidence=0.7)
+        pyautogui.moveTo(x, y)
+        pyautogui.leftClick()
+        time.sleep(1.5)
+    except TypeError:
+        pass
+
+
+def broccoli_error_solution():
+    print("Broccoli Error")
+    time.sleep(0.1)
+    keyboard.send("alt+f4")  # close destiny 2
+    time.sleep(2)
+    keyboard.send("ctrl+shift+esc")  # open task manager
+    time.sleep(6)
+
+    if pyautogui.locateOnScreen("Destiny 2 In Task Manager.png", confidence=0.8):
+        end_destiny2()
+    else:
+        print("No Destiny 2 Found In Task Manager")
+        print("Finding Destiny 2")
+        try:
+            x, y = pyautogui.locateCenterOnScreen("Memory.png", confidence=0.8)
+            pyautogui.moveTo(x, y)
+            time.sleep(2)
+            for x in range(25):
+                pyautogui.scroll(-1200)
+                time.sleep(1)
+                if pyautogui.locateOnScreen("Destiny 2 In Task Manager.png", confidence=0.8):
+                    end_destiny2()
+                    time.sleep(0.5)
+        except TypeError:
+            pass
+
+    keyboard.send("alt+f4")  # close task manager
+    time.sleep(2)
+    keyboard.send("win+d")
+    print("Open Destiny 2 on Desktop")
+    time.sleep(2)
+    try:
+        x, y = pyautogui.locateCenterOnScreen("Destiny 2 Desktop Icon.png", grayscale=True, confidence=0.8)
+        pyautogui.click(x, y)
+        time.sleep(0.5)
+        pyautogui.click(x, y, clicks=3)
+    except TypeError:
+        pass
+
+
+def end_destiny2():
+    x, y = pyautogui.locateCenterOnScreen("Destiny 2 In Task Manager.png", confidence=0.8)
+    print("Found Destiny 2 In Task Manager")
+    pyautogui.moveTo(x, y, duration=0.1)
+    pyautogui.leftClick()
+
+    x, y = pyautogui.locateCenterOnScreen("End Task.png", confidence=0.8)
+    print("End Task")
+    pyautogui.moveTo(x, y, duration=0.1)
+    pyautogui.leftClick()
+
+
+def start_afk():
+    t = threading.Thread(target=afk)
+    print("\nExecution Started")
+    t.start()
+
+
+def stop_afk():
+    global run
+    run = False
+    print("Execution Stopped")
+
+
+while True:
+    keyboard.add_hotkey('f7', start_afk)
+    keyboard.add_hotkey('f8', stop_afk)
+    keyboard.wait('f9')
+    sys.exit("Elapsed Time: " + str(round(time.time() - startTime)) + " seconds | "
+             + str(round((time.time() - startTime) / 60, 2)) + " minutes | "
+             + str(round((time.time() - startTime) / 3600, 2)) + " hours")
