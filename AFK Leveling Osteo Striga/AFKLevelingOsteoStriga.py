@@ -25,12 +25,17 @@ Stats        : Any
 print("Press F7 to Start")
 print("Press F8 to Stop")
 print("Press F9 to Exit\n")
-run = True
+run = False
+execution_stopped = False
+startTime = time.time()
 
 
 def afk():
     global run
+    global execution_stopped
     run = True
+    execution_stopped = False
+
     while run:
         pyautogui.mouseDown(button='left')
         time.sleep(0.7)
@@ -48,8 +53,10 @@ def start_afk():
 
 def stop_afk():
     global run
+    global execution_stopped
     run = False
-    print("Execution Stopped")
+    execution_stopped = True
+    print("Execution will stop after the current iteration")
 
 
 while True:
