@@ -12,17 +12,17 @@ Subclass     : Void Warlock
 Abilities    : Healing Rift
 Fragments    : Echo of Persistence
 Aspects      : Feed the Void
-Weapons      : Kinetic - Sniper
-               Energy  - Under Your Skin (Explosive Payload)
+Weapons      : Kinetic - Grenade Launcher
+               Energy  - Sunshot
                Power   - Any
 Exotic Armor : Sanguine Alchemy
-Mods         : Helmet     - Sniper Finder
+Mods         : Helmet     - Special Ammo Finder
                Arms       - Any
                Chest      - Melee Resist
-               Leg        - Sniper Scavenger
+               Leg        - Kinetic Scavenger
                Class Item - Any
 Stats        : Any
-Reward       : small XP, small Neutral Element
+Reward       : small XP
 """
 
 print("Execution will not stop until for loop is finished looping")
@@ -30,7 +30,6 @@ print("Press F7 to Start")
 print("Press F8 to Stop")
 print("Press F9 to Exit\n")
 run = True
-sniperShotsCounter = 1
 
 
 def afk():
@@ -38,7 +37,7 @@ def afk():
     run = True
     while run:
         if pyautogui.locateCenterOnScreen("0 Ammo.png", confidence=0.9, grayscale=True, region=(609, 1218, 707, 1280)):
-            print("Out of Sniper Ammo")
+            print("Out of Ammo")
             keyboard.send('2')  # swap to energy
             time.sleep(1)
             print("Place a rift")
@@ -49,26 +48,23 @@ def afk():
             print("Look down slightly")
             win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, 0, 510, 0, 0)
 
-            for x in range(50):  # shoot 50 arrows to get some special ammo
+            for x in range(30):  # shoot 30 Sunshot shots to get some special ammo
                 pyautogui.leftClick()
-                time.sleep(0.9)
+                time.sleep(3)
 
             keyboard.send('1')  # swap back to kinetic
             time.sleep(4.5)
 
         else:
-            for x in range(3):
-                pyautogui.leftClick()
-                time.sleep(1)
-                print("Look down slightly to combat the sniper kick")
-                win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, 0, 85, 0, 0)
-                print("Move a step back to prevent inactivity")
-                keyboard.send('s')  # have time.sleep() on the next line to prevent infinite press
-                time.sleep(0.1)
+            pyautogui.leftClick()
+            time.sleep(1)
+            print("Move a step back to prevent inactivity")
+            keyboard.send('s')  # have time.sleep() on the next line to prevent infinite press
+            time.sleep(0.1)
 
             keyboard.send('r')
             print("Reload")
-            time.sleep(3.5)
+            time.sleep(5)
             pass
 
 
