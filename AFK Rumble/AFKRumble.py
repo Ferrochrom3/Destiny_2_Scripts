@@ -75,6 +75,7 @@ def afk():
         try:
             x, y = pyautogui.locateCenterOnScreen("Rumble.png", confidence=0.7)
             pyautogui.moveTo(x, y)
+            time.sleep(1)
             pyautogui.leftClick()
             time.sleep(1.2)
         except TypeError:
@@ -112,6 +113,8 @@ def afk():
         time.sleep(0.1)
         keyboard.press_and_release('l')
         time.sleep(0.1)
+        keyboard.press_and_release('1')
+        time.sleep(2)
         pyautogui.leftClick()
 
 

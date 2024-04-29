@@ -5,6 +5,7 @@ import keyboard
 import pyautogui
 import win32api
 import win32con
+from pynput.mouse import Button, Controller
 
 # ***Need all imports, opencv-python, and Pillow***
 
@@ -31,6 +32,8 @@ import win32con
 
 # win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, 100, 100, 0, 0)
 # move 100 pixels to the right and 100 pixels down relative to your current mouse position
+
+# Controller().click(Button.x1)              Click mouse button 4 (x2 is 5)
 
 #
 
