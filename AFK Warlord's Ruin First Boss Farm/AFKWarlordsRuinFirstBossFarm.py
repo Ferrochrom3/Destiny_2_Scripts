@@ -151,7 +151,7 @@ def display_status():
           f"\nSuccess Attempts - {total_success_attempts}"
           f"\nRate - {success_rate}%"
           f"\nAverage Time Per Attempt - {average_time_per_attempt}s"
-          f"\nAverage Time Per Success - {average_time_per_success}s | {round(average_time_per_success / 60, 2)}")
+          f"\nAverage Time Per Success - {average_time_per_success}s")
 
 
 def indebted_kindness():
