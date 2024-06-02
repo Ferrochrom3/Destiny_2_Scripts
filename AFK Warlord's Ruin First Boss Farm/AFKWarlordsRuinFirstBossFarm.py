@@ -149,7 +149,7 @@ def display_status():
           f"Total Attempts: {total_attempts}"
           f"\nFailed Attempts - {total_failed_attempts}"
           f"\nSuccess Attempts - {total_success_attempts}"
-          f"\nRate - {success_rate}%"
+          f"\nSuccess Rate - {success_rate}%"
           f"\nAverage Time Per Attempt - {average_time_per_attempt}s"
           f"\nAverage Time Per Success - {average_time_per_success}s")
 
