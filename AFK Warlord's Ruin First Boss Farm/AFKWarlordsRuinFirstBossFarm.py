@@ -1,11 +1,11 @@
 """
-Performance (out of 59.21 minutes):
- - Total Attempts: 65
- - Fail Attempts: 56
- - Success Attempts: 9
- - Success Rate: 13.85%
- - Average Time Per Attempt: 54s
- - Average Time Per Success: 6.5 minutes
+Performance (out of 79.46 minutes):
+ - Total Attempts: 83
+ - Fail Attempts: 70
+ - Success Attempts: 13
+ - Success Rate: 15.66%
+ - Average Time Per Attempt: 57s
+ - Average Time Per Success: 6.1 minutes
 """
 
 import sys
@@ -52,7 +52,6 @@ def my_function():
                 if pyautogui.locateOnScreen("Dungeon Mission Objective Icon.png", confidence=0.8):
                     break
             restart_dungeon()
-            fail_counter = 0
 
         if pyautogui.locateOnScreen("Smoke Bomb.png", confidence=0.9):
             print("======================New attempt======================")
@@ -112,7 +111,6 @@ def my_function():
                 else:
                     print("Boss kill is confirmed...Restarting dungeon")
                     total_success_attempts += 1
-                    fail_counter = 0
 
                     is_boss_killed = False
                     restart_dungeon()
@@ -141,17 +139,19 @@ def display_status():
     total_attempts = total_success_attempts + total_failed_attempts
     success_rate = round((total_success_attempts / total_attempts) * 100, 2)
     average_time_per_attempt = round((time.time() - start_time) / total_attempts)
+
     if total_success_attempts > 0:
         average_time_per_success = round((time.time() - start_time) / total_success_attempts)
     else:
         average_time_per_success = "Success attempts is currently 0"
 
     print(f"Status: "
-          f"\nSuccess - {total_success_attempts}"
-          f"\nFail - {total_failed_attempts}"
+          f"Total Attempts: {total_attempts}"
+          f"\nFailed Attempts - {total_failed_attempts}"
+          f"\nSuccess Attempts - {total_success_attempts}"
           f"\nRate - {success_rate}%"
-          f"\nAverage Time Per Attempt - {average_time_per_attempt}"
-          f"\nAverage Time Per Success - {average_time_per_success}")
+          f"\nAverage Time Per Attempt - {average_time_per_attempt}s"
+          f"\nAverage Time Per Success - {average_time_per_success}s | {round(average_time_per_success / 60, 2)}")
 
 
 def indebted_kindness():
@@ -243,10 +243,10 @@ def restart_dungeon():
     keyboard.press_and_release('m')
     time.sleep(1)
     pyautogui.moveTo(4000, 1000)
-    time.sleep(1)
+    time.sleep(0.5)
     pyautogui.moveTo(2000, 1000)
 
-    time.sleep(1)
+    time.sleep(0.5)
 
     try:
         x, y = pyautogui.locateCenterOnScreen("Dungeon Icon.png", confidence=0.8)
@@ -337,8 +337,7 @@ while True:
     keyboard.release("alt")
     keyboard.release("tab")
     keyboard.release('left')
-    print(f"Total Failed Attempts: ", total_failed_attempts)
-    print(f"Total Success Attempts: ", total_success_attempts)
+    display_status()
     sys.exit("Elapsed Time: " + str(round(time.time() - start_time)) + " seconds | "
              + str(round((time.time() - start_time) / 60, 2)) + " minutes | "
              + str(round((time.time() - start_time) / 3600, 2)) + " hours")
