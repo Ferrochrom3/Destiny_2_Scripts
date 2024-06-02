@@ -1,3 +1,13 @@
+"""
+Performance (out of ~42 minutes):
+ - Total Attempts: 49
+ - Success Attempts: 8
+ - Fail Attempts: 41
+ - Success Rate: 16.3%
+ - Average Time Per Attempt: 51.6s
+ - Average Time Per Success: ~5.3 minutes
+"""
+
 import sys
 import threading
 import time
@@ -38,6 +48,9 @@ def my_function():
     execution_stopped = False
 
     while run:
+        if total_success_attempts > 0 and total_success_attempts % 10 == 0:
+            collect_items_from_DIM()
+
         if fail_counter >= 10:
             print("Too many failed attempts, relaunching the dungeon...")
             while True:
@@ -51,11 +64,11 @@ def my_function():
             # waveframe()
 
             # Turn left and move to corner
-            win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, -1800, 0, 0, 0)
+            win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, -670, 0, 0, 0)
             time.sleep(0.5)
             keyboard.press('shift')
             keyboard.press('w')
-            time.sleep(6)
+            time.sleep(5)
             keyboard.release('shift')
             keyboard.release('w')
 
@@ -80,9 +93,11 @@ def my_function():
                     is_boss_killed = True
                     break
 
-                elif time.time() - emote_elapsed_time > 25:
+                elif time.time() - emote_elapsed_time > 15:
                     print("Case: Boss is still alive, emoting for too long...")
                     keyboard.press_and_release('3')
+                    time.sleep(1)
+                    win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, 0, 5000, 0, 0)
                     time.sleep(1)
                     pyautogui.leftClick()
                     total_failed_attempts += 1
@@ -105,6 +120,22 @@ def my_function():
 
                     is_boss_killed = False
                     restart_dungeon()
+
+
+def collect_items_from_DIM():
+    keyboard.press_and_release("alt+tab")
+    time.sleep(0.5)
+
+    try:
+        x, y = pyautogui.locateCenterOnScreen("DIM Collect Postmaster.png", confidence=0.7)
+        pyautogui.moveTo(x, y)
+        time.sleep(0.1)
+        pyautogui.leftClick()
+        time.sleep(1)
+        keyboard.press_and_release("alt+tab")
+    except TypeError:
+        keyboard.press_and_release("alt+tab")
+        print("DIM Collect Postmaster is not found")
 
 
 def waveframe():
@@ -174,32 +205,27 @@ def indebted_kindness():
     time.sleep(1)
 
     # Move to target position
-    keyboard.press("a")
-    time.sleep(0.6)
-    keyboard.release('a')
+    keyboard.press("d")
+    time.sleep(1)
+    keyboard.release('d')
     keyboard.press("w")
-    time.sleep(1.6)
+    time.sleep(1.3)
     keyboard.release('w')
 
     # Shoot yellow bar
     pyautogui.mouseDown(button='right')
     time.sleep(0.3)
-    win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, 590, 180, 0, 0)
-    time.sleep(5.55)
+    win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, -580, 390, 0, 0)
+    time.sleep(5.9)
     pyautogui.leftClick()
     pyautogui.mouseUp(button='right')
 
-    # Turn towards boss's leg
-    win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, 133, 0, 0, 0)
-
     # Finisher
+    keyboard.press('shift+w')
     keyboard.press('g')
-    keyboard.press('shift')
-    keyboard.press('w')
     time.sleep(1.7)
     keyboard.release('g')
-    keyboard.release('shift')
-    keyboard.release('w')
+    keyboard.release('shift+w')
     time.sleep(1.3)
 
 
@@ -207,10 +233,10 @@ def restart_dungeon():
     keyboard.press_and_release('m')
     time.sleep(1)
     pyautogui.moveTo(4000, 1000)
-    time.sleep(1)
+    time.sleep(0.5)
     pyautogui.moveTo(2000, 1000)
 
-    time.sleep(1)
+    time.sleep(0.5)
 
     try:
         x, y = pyautogui.locateCenterOnScreen("Dungeon Icon.png", confidence=0.8)
@@ -248,6 +274,7 @@ def restart_dungeon():
             print("Loaded into Dungeon")
             break
 
+    # Start resetting checkpoint
     keyboard.press_and_release('m')
     time.sleep(1)
     pyautogui.moveTo(4000, 1000)
@@ -290,11 +317,13 @@ def restart_dungeon():
         keyboard.press_and_release('esc')
         time.sleep(0.5)
         keyboard.press_and_release('esc')
+        time.sleep(1)
     except TypeError:
         print("Reset Icon Not Found")
 
     # Aim at boss and shoot to trigger encounter
-    time.sleep(0.7)
+    keyboard.press_and_release('2')
+    time.sleep(1.7)
     pyautogui.mouseDown(button='right')
     time.sleep(0.1)
     win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, -150, -190, 0, 0)
@@ -304,14 +333,14 @@ def restart_dungeon():
 
     # Use heavy to suicide
     keyboard.press_and_release('3')
-    time.sleep(0.3)
+    time.sleep(1)
     win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, 0, 5000, 0, 0)
     time.sleep(1)
     pyautogui.leftClick()
 
     print("Waiting for respawn after suicide")
     while True:
-        if pyautogui.locateOnScreen("In Dungeon Icon.png", confidence=0.8):
+        if pyautogui.locateOnScreen("Dungeon Mission Objective Icon.png", confidence=0.8):
             print("Respawned")
             break
 
@@ -340,8 +369,10 @@ while True:
     keyboard.release('s')
     keyboard.release('d')
     keyboard.release('ctrl')
-    print("Total Failed Attempts: " + str(total_failed_attempts))
-    print("Total Success Attempts: " + str(total_success_attempts))
+    keyboard.release("alt")
+    keyboard.release("tab")
+    print(f"Total Failed Attempts: ", total_failed_attempts)
+    print(f"Total Success Attempts: ", total_success_attempts)
     sys.exit("Elapsed Time: " + str(round(time.time() - startTime)) + " seconds | "
              + str(round((time.time() - startTime) / 60, 2)) + " minutes | "
              + str(round((time.time() - startTime) / 3600, 2)) + " hours")
