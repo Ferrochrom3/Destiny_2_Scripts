@@ -11,8 +11,12 @@ def return_to_mission():
     print("Returning to the mission")
     keyboard.press_and_release("m")
     time.sleep(1.5)
-    keyboard.press_and_release("d")
-    time.sleep(1.5)
+
+    # If opening map shows Savathun's Throne World already, no need to hit "d"
+    # This allows returning to mission from both Broccoli error and after collecting loot at HELM
+    if not pyautogui.locateOnScreen(f"{image_path}\Throne World.png", confidence=0.8):
+        keyboard.press_and_release("d")
+        time.sleep(1.5)
 
     x, y = pyautogui.locateCenterOnScreen(f"{image_path}\Throne World.png", confidence=0.8)
     pyautogui.moveTo(x, y)
@@ -93,6 +97,7 @@ def run_towards_suicide_zone():
     time.sleep(5)
     keyboard.release("shift+w")
 
+    # Swap to Indebted Kindness to suicide
     keyboard.press_and_release("2")
     turn_camera(0, 3000)
     time.sleep(1)
@@ -100,21 +105,11 @@ def run_towards_suicide_zone():
         pyautogui.leftClick()
         time.sleep(0.5)
 
-    # elapsed_time = time.time()
-    # while True:
-    #     if pyautogui.locateOnScreen(f"{image_path}/Objective Icon.png", confidence=0.8):
-    #         print("FOJ:ASLKFJSD")
-    #         break
-    #     elif time.time() - elapsed_time > 30:
-    #         print("Did not reach destination correctly...Restarting")
-
-    #         keyboard.press_and_release("m")
-    #         time.sleep(1.5)
-    #         turn_camera(0, 1000)
-    #         time.sleep(0.8)
-    #         turn_camera(0, -500)
-    #         select_campaign_mission()
-    #         break
+    # Wait until respawn
+    while True:
+        if pyautogui.locateOnScreen(f"{image_path}\Grapple Grenade.png", confidence=0.8):
+            time.sleep(0.5)
+            break
 
 
 def turn_camera(x: int, y: int):

@@ -9,7 +9,7 @@ from colorama import Fore, Style
 from Destiny_2_Scripts.The_Invesigation.AFK_World_Drop_Farm.shoot_enemies import shoot_enemy
 from Destiny_2_Scripts.The_Invesigation.AFK_World_Drop_Farm.helm_collect_loot import go_to_helm_and_collect_loot
 from Destiny_2_Scripts.The_Invesigation.AFK_World_Drop_Farm.back_to_mission import return_to_mission
-from Destiny_2_Scripts.Other_Utilities.Broccoli_Error_Fix.broccoli_error_fix import check_and_fix_broccoli_error
+from Destiny_2_Scripts.Other_Utilities.Broccoli_Error_Fix.broccoli_error_fix import is_error, fix_error
 
 
 """
@@ -46,13 +46,16 @@ start_time = time.time()
 
 def my_function():
     while True:
+        if is_error():
+            fix_error()
+            return_to_mission()
 
-        for _ in range(80):
-            shoot_enemy()
-            check_and_fix_broccoli_error()
+        else:
+            for _ in range(80):
+                shoot_enemy()
 
-        go_to_helm_and_collect_loot()
-        return_to_mission()
+            go_to_helm_and_collect_loot()
+            return_to_mission()
 
 
 def turn_camera(x: int, y: int):
