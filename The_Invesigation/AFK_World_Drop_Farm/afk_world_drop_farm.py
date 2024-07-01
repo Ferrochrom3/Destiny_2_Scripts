@@ -37,6 +37,7 @@ Additional Notes
  - Gjallarhorn must have ammo loaded initially.
  - Must be using Grapple Grenade.
  - HELM structure and respawn are based on Episode: Echoes where Fail Safe is in the center of the old spawn.
+ - Check broccoli_error_fix.py for its requirements
 """
 
 print("Press F7 to Start")
