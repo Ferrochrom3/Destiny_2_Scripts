@@ -7,7 +7,7 @@ Additional Note
  - Destiny 2 Desktop Icon.png is with the "4K SCI-Fi Black Hole" wallpaper
 """
 
-image_path = "Destiny 2 Scripts/Other Utilities/Broccoli Error Fix"
+image_path = "Destiny_2_Scripts\Other_Utilities\Broccoli_Error_Fix"
 
 
 def is_error():
