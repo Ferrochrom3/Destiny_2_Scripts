@@ -46,10 +46,10 @@ start_time = time.time()
 
 def my_function():
     while True:
-        check_and_fix_broccoli_error()
 
         for _ in range(80):
             shoot_enemy()
+            check_and_fix_broccoli_error()
 
         go_to_helm_and_collect_loot()
         return_to_mission()
