@@ -2,6 +2,10 @@ import pyautogui
 import keyboard
 import time
 
+"""
+Additional Note
+ - Destiny 2 Desktop Icon.png is with the "4K SCI-Fi Black Hole" wallpaper
+"""
 image_path = "Destiny 2 Scripts/Other Utilities/Broccoli Error Fix"
 
 
