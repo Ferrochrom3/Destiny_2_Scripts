@@ -47,7 +47,14 @@ start_time = time.time()
 
 def my_function():
     while True:
-        print(pyautogui.position())
+        print("Looking for Destiny 2 icon in Task Manager...")
+        image_path = "Destiny_2_Scripts\Other_Utilities\Broccoli_Error_Fix"
+        while not pyautogui.locateOnScreen(f"{image_path}\Destiny 2 In Task Manager.png", confidence=0.8):
+            x, y = pyautogui.locateCenterOnScreen(f"{image_path}\Memory.png", confidence=0.8)
+            pyautogui.moveTo(x, y)
+            time.sleep(2)
+            pyautogui.scroll(-1200)
+            time.sleep(1)
         break
 
 

@@ -4,7 +4,7 @@ import pyautogui
 import win32api
 import win32con
 
-image_path = "Destiny 2 Scripts/Investigation Mission/AFK World Drop Farm"
+image_path = "Destiny_2_Scripts/The_Invesigation/AFK_World_Drop_Farm"
 
 
 def return_to_mission():
@@ -14,11 +14,11 @@ def return_to_mission():
 
     # If opening map shows Savathun's Throne World already, no need to hit "d"
     # This allows returning to mission from both Broccoli error and after collecting loot at HELM
-    if not pyautogui.locateOnScreen(f"{image_path}\Throne World.png", confidence=0.8):
+    if not pyautogui.locateOnScreen(f"{image_path}/Throne World.png", confidence=0.8):
         keyboard.press_and_release("d")
         time.sleep(1.5)
 
-    x, y = pyautogui.locateCenterOnScreen(f"{image_path}\Throne World.png", confidence=0.8)
+    x, y = pyautogui.locateCenterOnScreen(f"{image_path}/Throne World.png", confidence=0.8)
     pyautogui.moveTo(x, y)
     time.sleep(0.1)
     pyautogui.leftClick()

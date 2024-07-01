@@ -5,7 +5,7 @@ import win32api
 import win32con
 import numpy
 
-image_path = "Destiny 2 Scripts/Investigation Mission/AFK World Drop Farm"
+image_path = "Destiny_2_Scripts/The_Invesigation/AFK_World_Drop_Farm"
 
 kinetic_slot_position = 700, 520
 energy_slot_position = 700, 690
@@ -32,13 +32,13 @@ def go_to_helm_and_collect_loot():
     keyboard.press_and_release("d")
     time.sleep(1.5)
 
-    x, y = pyautogui.locateCenterOnScreen(f"{image_path}\Helm Icon.png", confidence=0.9)
+    x, y = pyautogui.locateCenterOnScreen(f"{image_path}/Helm Icon.png", confidence=0.9)
     pyautogui.moveTo(x, y)
     time.sleep(0.1)
     pyautogui.leftClick()
     time.sleep(1.5)
 
-    x, y = pyautogui.locateCenterOnScreen(f"{image_path}\Landing Zone.png", confidence=0.9)
+    x, y = pyautogui.locateCenterOnScreen(f"{image_path}/Landing Zone.png", confidence=0.9)
     pyautogui.moveTo(x, y)
     time.sleep(0.1)
     pyautogui.leftClick()
@@ -51,7 +51,7 @@ def go_to_helm_and_collect_loot():
 
     # Wait until loaded into the HELM
     while True:
-        if pyautogui.locateOnScreen(f"{image_path}\Echos Icon.png", confidence=0.8):
+        if pyautogui.locateOnScreen(f"{image_path}/Echos Icon.png", confidence=0.8):
             time.sleep(3)
             break
 
@@ -68,8 +68,8 @@ def go_to_helm_and_collect_loot():
     time.sleep(1.5)
 
     # Start collecting engrams
-    while pyautogui.locateOnScreen(f"{image_path}\Legendary Engram.png", confidence=0.9):
-        x, y = pyautogui.locateCenterOnScreen(f"{image_path}\Legendary Engram.png", confidence=0.9)
+    while pyautogui.locateOnScreen(f"{image_path}/Legendary Engram.png", confidence=0.9):
+        x, y = pyautogui.locateCenterOnScreen(f"{image_path}/Legendary Engram.png", confidence=0.9)
         pyautogui.moveTo(x, y)
         time.sleep(0.1)
         pyautogui.leftClick()
@@ -133,7 +133,7 @@ def dismantle_power_slot():
     pyautogui.moveTo(subtract_tuples(power_slot_position, horizontal_offset))
 
     # Dismantle 9 times
-    for _ in range(9):
+    for _ in range(10):
         pyautogui.leftClick()
         time.sleep(1.5)
         # # Send the weapon to vault if found
@@ -211,7 +211,7 @@ def dismantle_items():
         keyboard.release("f")
         time.sleep(1.5)
 
-        # if not pyautogui.locateOnScreen(f"{image_path}\Armor Side Options.png", confidence=0.9):
+        # if not pyautogui.locateOnScreen(f"{image_path}/Armor Side Options.png", confidence=0.9):
         #     print("No more items to dismantle...Break...")
         #     break
 

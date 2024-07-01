@@ -4,7 +4,9 @@ import time
 
 """
 Additional Note
- - Destiny 2 Desktop Icon.png is with the "4K SCI-Fi Black Hole" wallpaper
+ - Destiny 2 Desktop Icon.png is with the "4K SCI-Fi Black Hole" wallpaper.
+ - Require Adminstrator access to simulate events on Task Manager.
+ - Currently works with The Final Shape intro screen.
 """
 
 image_path = "Destiny_2_Scripts\Other_Utilities\Broccoli_Error_Fix"
@@ -30,6 +32,9 @@ def fix_error():
     time.sleep(2)
     keyboard.press_and_release("ctrl+shift+esc")
     time.sleep(6)
+    pyautogui.moveTo(1192, 400)
+    time.sleep(0.2)
+    pyautogui.leftClick()
 
     # Look for Destiny 2 icon in task manager
     print("Looking for Destiny 2 icon in Task Manager...")
@@ -41,14 +46,24 @@ def fix_error():
         time.sleep(1)
 
     # After the loop, Desiny 2 icon will be found, so end the program
-    end_destiny2()
+    print("Found Destiny 2 In Task Manager")
+    x, y = pyautogui.locateCenterOnScreen(f"{image_path}\Destiny 2 In Task Manager.png", confidence=0.8)
+    pyautogui.moveTo(x, y)
+    time.sleep(0.2)
+    pyautogui.leftClick()
+
+    x, y = pyautogui.locateCenterOnScreen(f"{image_path}\End Task.png", confidence=0.8)
+    print("End Task")
+    pyautogui.moveTo(x, y)
+    time.sleep(0.2)
+    pyautogui.leftClick()
 
     # Close Task Manager and return to desktop
     keyboard.press_and_release("alt+f4")
     time.sleep(2)
     keyboard.press_and_release("win+d")
 
-    print("Open Destiny 2 on Desktop")
+    print("Opening Destiny 2 on Desktop...")
     time.sleep(2)
     try:
         x, y = pyautogui.locateCenterOnScreen(f"{image_path}\Destiny 2 Desktop Icon.png", grayscale=True, confidence=0.8)
@@ -58,27 +73,23 @@ def fix_error():
     except TypeError:
         pass
 
-    # Wait 60 seconds and hit space to go into character selection screen
-    time.sleep(60)
-    keyboard.press_and_release("space")
+    print("Waiting for The Final Shape Screen...")
+    while True:
+        if pyautogui.locateOnScreen(f"{image_path}\The Final Shape.png", confidence=0.8):
+            x, y = pyautogui.locateCenterOnScreen(f"{image_path}\The Final Shape.png", confidence=0.8)
+            pyautogui.moveTo(x, y)
+            time.sleep(0.2)
+            pyautogui.leftClick()
+            time.sleep(0.2)
+            keyboard.press_and_release("space")
+            break
 
-    print("Click on Hunter Human")
+    print("Waiting to click on Hunter Human...")
     while True:
         if pyautogui.locateOnScreen(f"{image_path}\Hunter Human.png", confidence=0.8):
             x, y = pyautogui.locateCenterOnScreen(f"{image_path}\Hunter Human.png", confidence=0.8)
             pyautogui.moveTo(x, y)
             time.sleep(0.1)
             pyautogui.leftClick()
-            time.sleep(4)
-
-
-def end_destiny2():
-    x, y = pyautogui.locateCenterOnScreen(f"{image_path}\Destiny 2 In Task Manager.png", confidence=0.8)
-    print("Found Destiny 2 In Task Manager")
-    pyautogui.moveTo(x, y, duration=0.1)
-    pyautogui.leftClick()
-
-    x, y = pyautogui.locateCenterOnScreen(f"{image_path}\End Task.png", confidence=0.8)
-    print("End Task")
-    pyautogui.moveTo(x, y, duration=0.1)
-    pyautogui.leftClick()
+            time.sleep(6)  # Wait 6 seconds until in game
+            break

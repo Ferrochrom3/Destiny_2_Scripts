@@ -4,7 +4,7 @@ import pyautogui
 import win32api
 import win32con
 
-image_path = "Destiny 2 Scripts\Investigation Mission\AFK World Drop Farm"
+image_path = "Destiny_2_Scripts/The_Invesigation/AFK_World_Drop_Farm"
 
 
 def shoot_enemy():
@@ -60,6 +60,6 @@ def shoot_enemy():
 
     # Wait until respawn
     while True:
-        if pyautogui.locateOnScreen(f"{image_path}\Grapple Grenade.png", confidence=0.8):
+        if pyautogui.locateOnScreen(f"{image_path}/Grapple Grenade.png", confidence=0.8):
             time.sleep(0.5)
             break
