@@ -57,8 +57,12 @@ def my_function():
             for _ in range(80):
                 shoot_enemy()
 
-            go_to_helm_and_collect_loot()
-            return_to_mission()
+                if is_error():
+                    break
+
+            if not is_error():
+                go_to_helm_and_collect_loot()
+                return_to_mission()
 
 
 def turn_camera(x: int, y: int):
