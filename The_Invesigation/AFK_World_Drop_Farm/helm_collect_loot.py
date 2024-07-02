@@ -1,9 +1,13 @@
+import sys
 import time
 import keyboard
 import pyautogui
 import win32api
 import win32con
 import numpy
+
+sys.path.insert(0, "D:\\Visual Studio Code Projects\\")
+from Destiny_2_Scripts.Other_Utilities.Broccoli_Error_Fix.broccoli_error_fix import is_error
 
 image_path = "Destiny_2_Scripts/The_Invesigation/AFK_World_Drop_Farm"
 
@@ -51,7 +55,7 @@ def go_to_helm_and_collect_loot():
 
     # Wait until loaded into the HELM
     while True:
-        if pyautogui.locateOnScreen(f"{image_path}/Echos Icon.png", confidence=0.8):
+        if pyautogui.locateOnScreen(f"{image_path}/Echos Icon.png", confidence=0.8) or is_error():
             time.sleep(3)
             break
 

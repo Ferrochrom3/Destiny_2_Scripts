@@ -1,8 +1,12 @@
+import sys
 import time
 import keyboard
 import pyautogui
 import win32api
 import win32con
+
+sys.path.insert(0, "D:\\Visual Studio Code Projects\\")
+from Destiny_2_Scripts.Other_Utilities.Broccoli_Error_Fix.broccoli_error_fix import is_error
 
 image_path = "Destiny_2_Scripts/The_Invesigation/AFK_World_Drop_Farm"
 
@@ -60,7 +64,7 @@ def select_campaign_mission():
     pyautogui.leftClick()
 
     while True:
-        if pyautogui.locateOnScreen(f"{image_path}\Grapple Grenade.png", confidence=0.9):
+        if pyautogui.locateOnScreen(f"{image_path}\Grapple Grenade.png", confidence=0.9) or is_error():
             break
 
 

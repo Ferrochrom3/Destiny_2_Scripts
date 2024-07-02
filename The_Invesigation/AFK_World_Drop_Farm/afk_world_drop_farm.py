@@ -54,6 +54,7 @@ def my_function():
             return_to_mission()
 
         else:
+            print("Shooting Enemies")
             for _ in range(80):
                 shoot_enemy()
 
