@@ -10,7 +10,7 @@ from shoot_enemies import shoot_enemy
 from helm_collect_loot import go_to_helm_and_collect_loot
 from back_to_mission import return_to_mission
 
-sys.path.insert(0, "D:\\Visual Studio Code Projects")
+sys.path.insert(0, "D:\\Visual Studio Code Projects\\")
 from Destiny_2_Scripts.Other_Utilities.Broccoli_Error_Fix.broccoli_error_fix import is_error, fix_error
 
 
@@ -37,7 +37,7 @@ Additional Notes
  - Gjallarhorn must have ammo loaded initially.
  - Must be using Grapple Grenade.
  - HELM structure and respawn are based on Episode: Echoes where Fail Safe is in the center of the old spawn.
- - Check broccoli_error_fix.py for its requirements
+ - Check broccoli_error_fix.py for its
 """
 
 print("Press F7 to Start")
