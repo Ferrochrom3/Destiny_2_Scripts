@@ -7,6 +7,7 @@ import win32api
 import win32con
 import relaunch
 import collect_loot
+import config
 from colorama import Fore, Style
 
 """
@@ -26,6 +27,10 @@ Mods         : Helmet     - Any
                Class Item - Any
 Stats        : T1 Mobility
 Reward       : Exotic Class Items, Pale Heart Engrams, Ghost Reputations, Gunsmith Engrams
+
+Additional Notes:
+ - Must plant the Luminescent Seed by the chest.
+ - Chest spawn is manipulated by standing at a specific spot before other chests have spawned. Must execute the script shortly after landing.
 """
 
 print("Press F7 to Start")
@@ -42,6 +47,8 @@ def my_function():
             relaunch.relaunch_into_the_pale_heart()
 
         elif pyautogui.locateOnScreen(f"{image_path}/Strand Barricade.png", confidence=0.9):
+            collect_loot.collect_loot_attempts += 1
+
             # Run to corner
             keyboard.press_and_release("1")
             turn_camera(-800, 0)
@@ -56,12 +63,11 @@ def my_function():
             pyautogui.mouseDown(button="right")
             elapsed_time = time.time()
             while True:
-                print(f"Time: {time.time() - elapsed_time}")
-                if pyautogui.locateOnScreen(f"{image_path}/Chest Icon.png", confidence=0.8, region=(677, 625, 230, 140)):
+                if pyautogui.locateOnScreen(f"{image_path}/Chest Icon.png", confidence=0.8, region=config.chest_detection_region):
                     print("Chest Found")
                     break
-                elif time.time() - elapsed_time >= 40:
-                    print("Over 40s...Chest Not Found...")
+                if time.time() - elapsed_time >= 50:
+                    print("Over 50s...Chest Not Found...")
                     break
             pyautogui.mouseUp(button="right")
 
