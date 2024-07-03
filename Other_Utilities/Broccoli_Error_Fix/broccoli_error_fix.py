@@ -12,7 +12,7 @@ Additional Note
 image_path = "Destiny_2_Scripts\Other_Utilities\Broccoli_Error_Fix"
 
 
-def is_error():
+def is_broccoli_error():
     """Check if there's a Broccoli error window.
 
     Returns:
@@ -21,11 +21,11 @@ def is_error():
     return bool(pyautogui.locateOnScreen(f"{image_path}\Broccoli Error.png", confidence=0.8))
 
 
-def fix_error():
+def fix_broccoli_error():
     """
     Shut down Destiny 2 in Task Manger, launch back to the game's character selection screen, and select Hunter Human to get back to the game after Broccoli error.
     """
-    print("Broccoli has occurred...")
+    print("Broccoli has occurred...Trying to fix it...")
 
     # Close Destiny 2 and open Task Manager
     keyboard.press_and_release("alt+f4")

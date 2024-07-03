@@ -6,7 +6,8 @@ import win32api
 import win32con
 
 sys.path.insert(0, "D:\\Visual Studio Code Projects\\")
-from Destiny_2_Scripts.Other_Utilities.Broccoli_Error_Fix.broccoli_error_fix import is_error
+from Destiny_2_Scripts.Other_Utilities.Broccoli_Error_Fix.broccoli_error_fix import is_broccoli_error
+from Destiny_2_Scripts.Other_Utilities.Internet_Error_Fix.internet_error_fix import is_internet_error
 
 image_path = "Destiny_2_Scripts/The_Invesigation/AFK_World_Drop_Farm"
 
@@ -62,8 +63,8 @@ def shoot_enemy():
         pyautogui.leftClick()
         time.sleep(0.5)
 
-    # Wait until respawn
+    # Wait until respawn and don't let errors hold the loop forever
     while True:
-        if pyautogui.locateOnScreen(f"{image_path}/Grapple Grenade.png", confidence=0.8) or is_error():
+        if pyautogui.locateOnScreen(f"{image_path}/Grapple Grenade.png", confidence=0.8) or is_broccoli_error() or is_internet_error():
             time.sleep(0.5)
             break

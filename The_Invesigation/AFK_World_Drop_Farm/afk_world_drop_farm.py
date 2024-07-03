@@ -11,7 +11,8 @@ from helm_collect_loot import go_to_helm_and_collect_loot
 from back_to_mission import return_to_mission
 
 sys.path.insert(0, "D:\\Visual Studio Code Projects\\")
-from Destiny_2_Scripts.Other_Utilities.Broccoli_Error_Fix.broccoli_error_fix import is_error, fix_error
+from Destiny_2_Scripts.Other_Utilities.Broccoli_Error_Fix.broccoli_error_fix import is_broccoli_error, fix_broccoli_error
+from Destiny_2_Scripts.Other_Utilities.Internet_Error_Fix.internet_error_fix import is_internet_error, fix_internet_error
 
 
 """
@@ -37,7 +38,7 @@ Additional Notes
  - Gjallarhorn must have ammo loaded initially.
  - Must be using Grapple Grenade.
  - HELM structure and respawn are based on Episode: Echoes where Fail Safe is in the center of the old spawn.
- - Check broccoli_error_fix.py for its
+ - Check broccoli_error_fix.py for its requirements
 """
 
 print("Press F7 to Start")
@@ -49,19 +50,26 @@ start_time = time.time()
 
 def my_function():
     while True:
-        if is_error():
-            fix_error()
+        # Check if there's broccoli error. If so, fix the error and return to the mission
+        if is_broccoli_error():
+            fix_broccoli_error()
             return_to_mission()
 
+        # Check if there's an internet error. If so, fix the error and return to the mission
+        elif is_internet_error():
+            fix_internet_error()
+            return_to_mission()
+
+        # If there are no errors, procced to shoot enemies
         else:
             print("Shooting Enemies")
-            for _ in range(80):
+            for _ in range(70):
                 shoot_enemy()
-
-                if is_error():
+                if is_broccoli_error() or is_internet_error():
                     break
 
-            if not is_error():
+            # After 70 iterations, go back to the HELM and collect and return back to the mission if there are no errors
+            if not is_broccoli_error() and is_internet_error():
                 go_to_helm_and_collect_loot()
                 return_to_mission()
 
