@@ -7,6 +7,7 @@ Additional Note
  - Destiny 2 Desktop Icon.png is with the "4K SCI-Fi Black Hole" wallpaper.
  - Require Adminstrator access to simulate events on Task Manager.
  - Currently works with The Final Shape intro screen.
+ - Hunter Human is using a specific emblem.
 """
 
 image_path = "Destiny_2_Scripts\Other_Utilities\Broccoli_Error_Fix"
