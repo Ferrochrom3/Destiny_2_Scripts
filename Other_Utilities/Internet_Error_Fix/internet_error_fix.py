@@ -8,7 +8,7 @@ Additional Note
  - Hunter Human is using a specific emblem.
 """
 
-image_path = "Destiny_2_Scripts/Other_Utilities/Internet Error Fix"
+image_path = "Destiny_2_Scripts/Other_Utilities/Internet_Error_Fix"
 
 
 def is_internet_error():

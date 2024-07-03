@@ -69,7 +69,7 @@ def my_function():
                     break
 
             # After 70 iterations, go back to the HELM and collect and return back to the mission if there are no errors
-            if not is_broccoli_error() and is_internet_error():
+            if not is_broccoli_error() and not is_internet_error():
                 go_to_helm_and_collect_loot()
                 return_to_mission()
 
