@@ -36,7 +36,7 @@ Reward       : World Drops, XP
 Additional Notes
  - Clear all items in inventory.
  - Gjallarhorn must have ammo loaded initially.
- - Must be using Grapple Grenade.
+ - Must be using Grapple Grenade and keep it charged at all times.
  - HELM structure and respawn are based on Episode: Echoes where Fail Safe is in the center of the old spawn.
  - Check broccoli_error_fix.py and internet_error_fix.py for more Additional Notes
 """
@@ -68,7 +68,7 @@ def my_function():
                 if is_broccoli_error() or is_internet_error():
                     break
 
-            # After 70 iterations, go back to the HELM and collect and return back to the mission if there are no errors
+            # After 70 iterations, go back to the HELM and collect and return back to the mission if there are no errors to not waste time making useless inputs
             if not is_broccoli_error() and not is_internet_error():
                 go_to_helm_and_collect_loot()
                 return_to_mission()

@@ -12,13 +12,17 @@ image_path = "Destiny_2_Scripts/Other_Utilities/Internet_Error_Fix"
 
 
 def is_internet_error():
-    """Check if an internet error code has occured.
+    """Check if an internet error code has occured or if the player is in the intro screen.
 
     Returns:
-        boolean: Whether or not the player is kicked to error code screen.
+        boolean: Whether or not an error code has occured.
     """
 
-    return bool(pyautogui.locateOnScreen(f"{image_path}/Error Code Icon.png", confidence=0.8))
+    # Error may occur during execution, which takes you to the intro screen when checking for error code screen hit, add intro screen check to get out of the loop if that happens.
+    if pyautogui.locateOnScreen(f"{image_path}/Error Code Icon.png", confidence=0.8) or pyautogui.locateOnScreen(f"{image_path}/The Final Shape.png", confidence=0.8):
+        return True
+
+    return False
 
 
 def fix_internet_error():
@@ -27,7 +31,8 @@ def fix_internet_error():
     """
 
     print("Internet error has occured...Trying to fix it...")
-    keyboard.press_and_release("space")
+    if pyautogui.locateOnScreen(f"{image_path}/Error Code Icon.png", confidence=0.8):
+        keyboard.press_and_release("space")
 
     print("Waiting for The Final Shape Screen...")
     while True:

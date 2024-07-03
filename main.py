@@ -35,6 +35,8 @@ win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, 100, 100, 0, 0)   Move 100 pixel
 Controller().click(Button.x1)                                     Click mouse button 4 (x2 is 5)
 
 pyautogui.FAILSAFE = False                                        Remove mouse movement restrictions
+
+region = (x, y, w, h)                                             (x-coord of the top-left corner, y-coordof the top-left corner, Width of the region, Height of the region)
 """
 
 
@@ -47,20 +49,13 @@ start_time = time.time()
 
 def my_function():
     while True:
-        print("Looking for Destiny 2 icon in Task Manager...")
-        image_path = "Destiny_2_Scripts\Other_Utilities\Broccoli_Error_Fix"
-        while not pyautogui.locateOnScreen(f"{image_path}\Destiny 2 In Task Manager.png", confidence=0.8):
-            x, y = pyautogui.locateCenterOnScreen(f"{image_path}\Memory.png", confidence=0.8)
-            pyautogui.moveTo(x, y)
-            time.sleep(2)
-            pyautogui.scroll(-1200)
-            time.sleep(1)
+        print(pyautogui.mouseInfo())
         break
 
 
-def turn_camera(x: int, y: int):
+def turn_camera(x: int, y: int, wait_time: float = 0.1):
     win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, x, y, 0, 0)
-    time.sleep(0.1)
+    time.sleep(wait_time)
 
 
 def start_afk():

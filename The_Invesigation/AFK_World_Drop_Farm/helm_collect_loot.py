@@ -64,7 +64,7 @@ def go_to_helm_and_collect_loot():
     turn_camera(-130, 0)
     time.sleep(0.1)
     keyboard.press("shift+w")
-    time.sleep(3.4)
+    time.sleep(3.3)
     keyboard.release("shift+w")
     time.sleep(1)
     keyboard.press("Alt")
