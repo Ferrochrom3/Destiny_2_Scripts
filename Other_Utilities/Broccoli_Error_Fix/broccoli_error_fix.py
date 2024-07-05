@@ -37,14 +37,31 @@ def fix_broccoli_error():
     time.sleep(0.2)
     pyautogui.leftClick()
 
-    # Look for Destiny 2 icon in task manager
+    # Look for Destiny 2 icon in task manager by scrolling through the task manager (scroll down first, then scroll up for 2x chech)
+    is_icon_found = False
     print("Looking for Destiny 2 icon in Task Manager...")
-    while not pyautogui.locateOnScreen(f"{image_path}\Destiny 2 In Task Manager.png", confidence=0.8):
+    for _ in range(30):
+        if pyautogui.locateOnScreen(f"{image_path}\Destiny 2 In Task Manager.png", confidence=0.8):
+            is_icon_found = True
+            break
+
         x, y = pyautogui.locateCenterOnScreen(f"{image_path}\Memory.png", confidence=0.8)
         pyautogui.moveTo(x, y)
         time.sleep(2)
         pyautogui.scroll(-1200)
         time.sleep(1)
+
+    # If scroll down did not find Destiny 2, then scroll up
+    if not is_icon_found:
+        for _ in range(30):
+            if pyautogui.locateOnScreen(f"{image_path}\Destiny 2 In Task Manager.png", confidence=0.8):
+                break
+
+            x, y = pyautogui.locateCenterOnScreen(f"{image_path}\Memory.png", confidence=0.8)
+            pyautogui.moveTo(x, y)
+            time.sleep(2)
+            pyautogui.scroll(1200)
+            time.sleep(1)
 
     # After the loop, Desiny 2 icon will be found, so end the program
     print("Found Destiny 2 In Task Manager")
