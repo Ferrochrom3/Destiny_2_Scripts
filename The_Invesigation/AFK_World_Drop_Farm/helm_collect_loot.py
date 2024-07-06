@@ -137,22 +137,10 @@ def dismantle_power_slot():
     time.sleep(0.1)
     pyautogui.moveTo(subtract_tuples(power_slot_position, horizontal_offset))
 
-    # Dismantle 9 times
+    # Send all heavy weapons to vault
     for _ in range(10):
         pyautogui.leftClick()
         time.sleep(1.5)
-        # # Send the weapon to vault if found
-        # if pyautogui.locateOnScreen(f"{image_path}\Crux Termination IV.png", confidence=0.7):
-        #     pyautogui.leftClick()
-        #     time.sleep(1)
-        #     continue
-
-        # keyboard.press_and_release("f")
-        # time.sleep(0.1)
-        # keyboard.press("f")
-        # time.sleep(1.3)
-        # keyboard.release("f")
-        # time.sleep(1.3)
 
     time.sleep(0.5)
 
@@ -215,10 +203,6 @@ def dismantle_items():
         time.sleep(1.3)
         keyboard.release("f")
         time.sleep(1.5)
-
-        # if not pyautogui.locateOnScreen(f"{image_path}/Armor Side Options.png", confidence=0.9):
-        #     print("No more items to dismantle...Break...")
-        #     break
 
 
 def subtract_tuples(t1, t2):
