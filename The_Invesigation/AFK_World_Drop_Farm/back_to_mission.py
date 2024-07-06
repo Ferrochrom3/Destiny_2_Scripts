@@ -30,10 +30,10 @@ def return_to_mission():
     time.sleep(1.5)
 
     # Select normal campaign difficulty
-    turn_camera(500, 0)
-    turn_camera(0, 500)
+    win32api_move_mouse(500, 0)
+    win32api_move_mouse(0, 500)
     time.sleep(0.5)
-    turn_camera(0, -500)
+    win32api_move_mouse(0, -500)
     select_campaign_mission()
 
     # Run towards enemy spawning area and suicide to get ready
@@ -72,40 +72,40 @@ def select_campaign_mission():
 
 def run_towards_suicide_zone():
     # Run towards the gate
-    turn_camera(100, 0)
+    win32api_move_mouse(100, 0)
     keyboard.press("shift+w")
     time.sleep(7)
     keyboard.release("shift+w")
 
     # Run pass the gate
-    turn_camera(-480, 0)
+    win32api_move_mouse(-480, 0)
     keyboard.press("shift+w")
     time.sleep(7.5)
     keyboard.release("shift+w")
 
     # Run down the slope
-    turn_camera(640, 0)
+    win32api_move_mouse(640, 0)
     keyboard.press("shift+w")
     time.sleep(15)
     keyboard.release("shift+w")
 
     # Run down the ramp
-    turn_camera(-850, 0)
+    win32api_move_mouse(-850, 0)
     keyboard.press("shift+w")
     time.sleep(5)
     keyboard.release("shift+w")
 
     # Run towards suicide zone
-    turn_camera(400, 0)
+    win32api_move_mouse(400, 0)
     keyboard.press("shift+w")
     time.sleep(3)
-    turn_camera(400, 0)
+    win32api_move_mouse(400, 0)
     time.sleep(5)
     keyboard.release("shift+w")
 
     # Swap to Indebted Kindness to suicide
     keyboard.press_and_release("2")
-    turn_camera(0, 3000)
+    win32api_move_mouse(0, 3000)
     time.sleep(1)
     for _ in range(4):
         pyautogui.leftClick()
@@ -118,6 +118,6 @@ def run_towards_suicide_zone():
             break
 
 
-def turn_camera(x: int, y: int):
+def win32api_move_mouse(x: int, y: int):
     win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, x, y, 0, 0)
     time.sleep(0.1)

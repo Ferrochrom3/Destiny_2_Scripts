@@ -3,6 +3,10 @@ import keyboard
 import pyautogui
 import resolution_config
 
+screen_width, screen_height = pyautogui.size()
+current_monitor_resolution = f"{screen_width}x{screen_height}"
+config = resolution_config.values_by_resolution[current_monitor_resolution]
+
 image_path = "Destiny_2_Scripts/AFK_Exotic_Class_Item_Farm/Version_3"
 
 collect_loot_attempts = 0
@@ -14,7 +18,7 @@ def collect_loot():
 
     time.sleep(0.5)
 
-    if pyautogui.locateOnScreen(f"{image_path}/Alt Button.png", confidence=0.8, region=resolution_config.chest_collection_region):
+    if pyautogui.locateOnScreen(f"{image_path}/Alt Button.png", confidence=0.8, region=config["chest_collection_region"]):
         number_of_chests_obtained += 1
         keyboard.press("alt")
         time.sleep(1.5)

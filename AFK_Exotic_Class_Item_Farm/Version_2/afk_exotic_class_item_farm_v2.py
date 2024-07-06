@@ -38,8 +38,13 @@ Reward       : Exotic Class Items, Pale Heart Engrams, Ghost Reputations, Gunsmi
 print("Press F7 to Start")
 print("Press F8 to End\n")
 
+screen_width, screen_height = pyautogui.size()
+current_monitor_resolution = f"{screen_width}x{screen_height}"
+config = resolution_config.values_by_resolution[current_monitor_resolution]
+
 start_time = time.time()
-image_path = "Destiny_2_Scripts/AFK_Exotic_Class_Item_Farm/Version_2"
+image_path = f"Destiny_2_Scripts/AFK_Exotic_Class_Item_Farm/Version_2/Image_{current_monitor_resolution}"
+
 
 collect_loot_attempts = 0
 number_of_chests_obtained = 0
@@ -72,93 +77,93 @@ def my_function():
             keyboard.press_and_release("1")
 
             # First chest
-            turn_camera(-800, 0)
+            win32api_move_mouse(-800, 0)
             run_forward(4)
             single_key_press("a", 0.3)  # 0.3s for T1 mob | 0.27 for T9 mob
             run_forward(4.5)
-            turn_camera(-2000, 0)
+            win32api_move_mouse(-2000, 0)
             run_forward(0.7)
             collect_loot()
 
             # Second chest
-            turn_camera(2850, 0)
+            win32api_move_mouse(2850, 0)
             run_forward(5.5)
-            turn_camera(-2500, 0)
+            win32api_move_mouse(-2500, 0)
             run_forward(2.8)
             collect_loot()
 
             # Third chest
-            turn_camera(-2730, 0)
+            win32api_move_mouse(-2730, 0)
             # use_ergo_sum()  # Change to 5s rather than 4.3s on the next line if use Ergo Sum
             run_forward(5)
-            turn_camera(200, 0)
+            win32api_move_mouse(200, 0)
             run_forward(6.3)
             keyboard.press_and_release("1")
-            turn_camera(-1330, 0)
+            win32api_move_mouse(-1330, 0)
             run_forward(4.7)
-            turn_camera(-1700, 0)
+            win32api_move_mouse(-1700, 0)
             collect_loot()
 
             # Fourth Chest
-            turn_camera(-2500, 0)
+            win32api_move_mouse(-2500, 0)
             run_forward(2.5)
-            turn_camera(-2000, 0)
+            win32api_move_mouse(-2000, 0)
             run_forward(1)
-            turn_camera(-1500, 0)
+            win32api_move_mouse(-1500, 0)
             # use_ergo_sum() # Change to 2.6s on the next line if use Ergo Sum
             run_forward(3.1)
-            turn_camera(-2000, 0)
+            win32api_move_mouse(-2000, 0)
             run_forward(3.5)
             collect_loot()
 
             # Fifth chest
             keyboard.press_and_release("1")
-            turn_camera(3800, 0)
+            win32api_move_mouse(3800, 0)
             run_forward(3)
-            turn_camera(-2100, 0)
+            win32api_move_mouse(-2100, 0)
             run_forward(1.3)
-            turn_camera(2100, 0)
+            win32api_move_mouse(2100, 0)
             run_forward(1)
             collect_loot()
 
             # Sixth chest
-            turn_camera(-2500, 0)
+            win32api_move_mouse(-2500, 0)
             run_forward(3.5)
-            turn_camera(-1300, 0)
+            win32api_move_mouse(-1300, 0)
             run_forward(2)
             use_ergo_sum()
             run_forward(3)
-            turn_camera(1500, 0)
+            win32api_move_mouse(1500, 0)
             run_forward(0.3)
             collect_loot()
 
             # Seventh chest
-            turn_camera(1000, 0)
+            win32api_move_mouse(1000, 0)
             use_ergo_sum()
             run_forward(3.9)
             keyboard.press_and_release("1")
-            turn_camera(-1000, 0)
+            win32api_move_mouse(-1000, 0)
             collect_loot()
 
             # Eighth chest
-            turn_camera(-2500, 0)
+            win32api_move_mouse(-2500, 0)
             run_forward(2.3)
-            turn_camera(1500, 0)
+            win32api_move_mouse(1500, 0)
             run_forward(3.3)
             collect_loot()
 
             # Ninth chest
-            turn_camera(-950, 0)
+            win32api_move_mouse(-950, 0)
             run_forward(4.7)
-            turn_camera(2000, 0)
+            win32api_move_mouse(2000, 0)
             run_forward(1.65)
-            turn_camera(-100, 300)
+            win32api_move_mouse(-100, 300)
             collect_loot()
 
             relaunch_the_landing()
 
 
-def turn_camera(x, y, wait_time=0.1):
+def win32api_move_mouse(x: int, y: int, wait_time: float = 0.1):
     win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, x, y, 0, 0)
     time.sleep(wait_time)
 
@@ -219,15 +224,15 @@ def launch_into_the_pale_heart():
             time.sleep(0.2)
 
             # Move to The Landing
-            win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, resolution_config.launch_into_the_pale_heart_move_left[0], resolution_config.launch_into_the_pale_heart_move_left[1], 0, 0)
+            win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, config["launch_into_the_pale_heart_move_left"][0], config["launch_into_the_pale_heart_move_left"][1], 0, 0)
             time.sleep(2.2)
-            win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, resolution_config.launch_into_the_pale_heart_move_right[0], resolution_config.launch_into_the_pale_heart_move_right[1], 0, 0)
+            win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, config["launch_into_the_pale_heart_move_right"][0], config["launch_into_the_pale_heart_move_right"][1], 0, 0)
             time.sleep(0.2)
             pyautogui.leftClick()
             time.sleep(1)
 
             # Click on Launch
-            pyautogui.moveTo(resolution_config.launch_button_coord[0], resolution_config.launch_button_coord[1])
+            pyautogui.moveTo(config["launch_button_coord"][0], config["launch_button_coord"][1])
             time.sleep(0.1)
             pyautogui.leftClick()
             time.sleep(1)
@@ -246,9 +251,9 @@ def relaunch_the_landing():
             time.sleep(0.2)
             break
 
-    win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, resolution_config.relaunch_the_landing_move_left[0], resolution_config.relaunch_the_landing_move_left[1], 0, 0)
+    win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, config["relaunch_the_landing_move_left"][0], config["relaunch_the_landing_move_left"][1], 0, 0)
     time.sleep(2.2)
-    win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, resolution_config.relaunch_the_landing_move_right[0], resolution_config.relaunch_the_landing_move_right[1], 0, 0)
+    win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, config["relaunch_the_landing_move_right"][0], config["relaunch_the_landing_move_right"][1], 0, 0)
     time.sleep(0.2)
     pyautogui.leftClick()
     time.sleep(0.1)
@@ -265,7 +270,7 @@ def collect_loot():
     collect_loot_attempts += 1
     time.sleep(0.5)
 
-    if pyautogui.locateOnScreen(f"{image_path}/Alt Button.png", confidence=0.8, region=resolution_config.collect_loot_region):
+    if pyautogui.locateOnScreen(f"{image_path}/Alt Button.png", confidence=0.8, region=config["collect_loot_region"]):
         number_of_chests_obtained += 1
         keyboard.press("alt")
         time.sleep(1.5)

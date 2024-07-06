@@ -61,7 +61,7 @@ def go_to_helm_and_collect_loot():
             break
 
     # Run towards Post Box
-    turn_camera(-130, 0)
+    win32api_move_mouse(-130, 0)
     time.sleep(0.1)
     keyboard.press("shift+w")
     time.sleep(3.3)
@@ -88,7 +88,7 @@ def go_to_helm_and_collect_loot():
     time.sleep(1.5)
 
     # Run towards vault
-    turn_camera(-2400, 0)
+    win32api_move_mouse(-2400, 0)
     keyboard.press("shift+w")
     time.sleep(1.55)
     keyboard.release("shift+w")
@@ -219,6 +219,6 @@ def add_tuples(t1, t2):
     return tuple(array1 + array2)
 
 
-def turn_camera(x: int, y: int):
+def win32api_move_mouse(x: int, y: int):
     win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, x, y, 0, 0)
     time.sleep(0.2)

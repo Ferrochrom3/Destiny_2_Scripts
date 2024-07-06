@@ -26,7 +26,7 @@ Stats        : T1 Mobility
 Reward       : Exotic Class Items, Pale Heart Engrams, Ghost Reputations, Gunsmith Engrams
 
 Additional Notes:
- - Work in progress for 1440p
+ - Only supports 1920x1080.
 """
 
 print("Press F7 to Start")

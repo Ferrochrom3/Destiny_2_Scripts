@@ -12,12 +12,12 @@ from colorama import Fore, Style
 
 """
 Location     : The Pale Heart
-Subclass     : Strand Titan
-Abilities    : Towering Barricade
+Subclass     : *Check "Additional Notes"
+Abilities    : *Check "Additional Notes"
 Fragments    : Any
 Aspects      : Any
 Weapons      : Kinetic - Any Non-Lightweight weapon
-               Energy  - Still Hunter
+               Energy  - Still Hunt
                Power   - Any
 Exotic Armor : Any
 Mods         : Helmet     - Any
@@ -25,10 +25,12 @@ Mods         : Helmet     - Any
                Chest      - Any
                Leg        - Any
                Class Item - Any
-Stats        : T1 Mobility
+Stats        : Any
 Reward       : Exotic Class Items, Pale Heart Engrams, Ghost Reputations, Gunsmith Engrams
 
 Additional Notes:
+ - 1920x1080 uses Grapple Grenade as an in location check (make sure to change the name of the iamge used in my_function).
+ - 2560x1440 uses Strand Towering Barricade as an in location check (make sure to change the name of the iamge used in my_function).
  - Must plant the Luminescent Seed by the chest.
  - Chest spawn is manipulated by standing at a specific spot before other chests have spawned. Must execute the script shortly after landing.
 """
@@ -36,8 +38,12 @@ Additional Notes:
 print("Press F7 to Start")
 print("Press F8 to Exit\n")
 
+screen_width, screen_height = pyautogui.size()
+current_monitor_resolution = f"{screen_width}x{screen_height}"
+config = resolution_config.values_by_resolution[current_monitor_resolution]
+
 start_time = time.time()
-image_path = "Destiny_2_Scripts/AFK_Exotic_Class_Item_Farm/Version_3"
+image_path = f"Destiny_2_Scripts/AFK_Exotic_Class_Item_Farm/Version_3/Image_{current_monitor_resolution}"
 
 
 def my_function():
@@ -51,11 +57,11 @@ def my_function():
 
             # Run to corner
             keyboard.press_and_release("1")
-            turn_camera(-800, 0)
+            win32api_move_mouse(-800, 0)
             run_forward(3.5)
-            turn_camera(200, 0)
+            win32api_move_mouse(200, 0)
             run_forward(3.5)
-            turn_camera(2600, 0)
+            win32api_move_mouse(2600, 0)
 
             # Swap to Still Hunter and check for chest spawn
             keyboard.press_and_release("2")
@@ -63,7 +69,7 @@ def my_function():
             pyautogui.mouseDown(button="right")
             elapsed_time = time.time()
             while True:
-                if pyautogui.locateOnScreen(f"{image_path}/Chest Icon.png", confidence=0.8, region=resolution_config.chest_detection_region):
+                if pyautogui.locateOnScreen(f"{image_path}/Chest Icon.png", confidence=0.8, region=config["chest_detection_region"]):
                     print("Chest Found")
                     break
                 if time.time() - elapsed_time >= 50:
@@ -73,17 +79,17 @@ def my_function():
 
             # Run towards chest
             run_forward(2)
-            turn_camera(700, 0)
+            win32api_move_mouse(700, 0)
             run_forward(3)
-            turn_camera(-1200, 0)
+            win32api_move_mouse(-1200, 0)
             run_forward(5)
-            turn_camera(-1770, 220)
+            win32api_move_mouse(-1770, 220)
 
             collect_loot.collect_loot()
             relaunch.relaunch_the_landing()
 
 
-def turn_camera(x: int, y: int, wait_time: float = 0.1):
+def win32api_move_mouse(x: int, y: int, wait_time: float = 0.1):
     win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, x, y, 0, 0)
     time.sleep(wait_time)
 

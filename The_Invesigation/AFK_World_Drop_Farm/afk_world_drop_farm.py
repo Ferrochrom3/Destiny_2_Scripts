@@ -74,7 +74,7 @@ def my_function():
                 return_to_mission()
 
 
-def turn_camera(x: int, y: int):
+def win32api_move_mouse(x: int, y: int):
     win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, x, y, 0, 0)
     time.sleep(0.1)
 

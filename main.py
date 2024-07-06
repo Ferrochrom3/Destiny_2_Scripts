@@ -53,7 +53,7 @@ def my_function():
         break
 
 
-def turn_camera(x: int, y: int, wait_time: float = 0.1):
+def win32api_move_mouse(x: int, y: int, wait_time: float = 0.1):
     win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, x, y, 0, 0)
     time.sleep(wait_time)
 
