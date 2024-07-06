@@ -12,7 +12,7 @@ from colorama import Fore, Style
 
 """
 Location     : The Pale Heart
-Subclass     : *Check "Additional Notes"
+Subclass     : Depends on "Abilities"
 Abilities    : *Check "Additional Notes"
 Fragments    : Any
 Aspects      : Any
@@ -29,8 +29,8 @@ Stats        : Any
 Reward       : Exotic Class Items, Pale Heart Engrams, Ghost Reputations, Gunsmith Engrams
 
 Additional Notes:
- - 1920x1080 uses Grapple Grenade as an in location check (make sure to change the name of the iamge used in my_function).
- - 2560x1440 uses Strand Towering Barricade as an in location check (make sure to change the name of the iamge used in my_function).
+ - 1920x1080 uses Grapple Grenade as InLoc (in location) check.
+ - 2560x1440 uses Strand Towering Barricade as InLoc (in location) check.
  - Must plant the Luminescent Seed by the chest.
  - Chest spawn is manipulated by standing at a specific spot before other chests have spawned. Must execute the script shortly after landing.
 """
@@ -48,11 +48,11 @@ image_path = f"Destiny_2_Scripts/AFK_Exotic_Class_Item_Farm/Version_3/Image_{cur
 
 def my_function():
     while True:
-        if pyautogui.locateOnScreen(f"{image_path}/Strand Barricade.png", confidence=0.9) and relaunch.number_of_relaunching >= relaunch.max_number_of_relaunching:
+        if pyautogui.locateOnScreen(f"{image_path}/InLoc Ability.png", confidence=0.9) and relaunch.number_of_relaunching >= relaunch.max_number_of_relaunching:
             relaunch.number_of_relaunching = 0
             relaunch.relaunch_into_the_pale_heart()
 
-        elif pyautogui.locateOnScreen(f"{image_path}/Strand Barricade.png", confidence=0.9):
+        elif pyautogui.locateOnScreen(f"{image_path}/InLoc Ability.png", confidence=0.9):
             collect_loot.collect_loot_attempts += 1
 
             # Run to corner

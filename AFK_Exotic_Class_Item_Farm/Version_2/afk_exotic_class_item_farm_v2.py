@@ -45,7 +45,6 @@ config = resolution_config.values_by_resolution[current_monitor_resolution]
 start_time = time.time()
 image_path = f"Destiny_2_Scripts/AFK_Exotic_Class_Item_Farm/Version_2/Image_{current_monitor_resolution}"
 
-
 collect_loot_attempts = 0
 number_of_chests_obtained = 0
 number_of_relaunching = 0

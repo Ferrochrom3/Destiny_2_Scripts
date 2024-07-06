@@ -9,7 +9,7 @@ screen_width, screen_height = pyautogui.size()
 current_monitor_resolution = f"{screen_width}x{screen_height}"
 config = resolution_config.values_by_resolution[current_monitor_resolution]
 
-image_path = "Destiny_2_Scripts/AFK_Exotic_Class_Item_Farm/Version_3"
+image_path = f"Destiny_2_Scripts/AFK_Exotic_Class_Item_Farm/Version_3/Image_{current_monitor_resolution}"
 
 number_of_relaunching = 0
 max_number_of_relaunching = 35
