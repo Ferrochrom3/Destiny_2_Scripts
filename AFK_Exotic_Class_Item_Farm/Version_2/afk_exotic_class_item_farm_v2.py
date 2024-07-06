@@ -13,6 +13,7 @@ import keyboard
 import pyautogui
 import win32api
 import win32con
+import config
 from colorama import Fore, Style
 
 """
@@ -47,7 +48,7 @@ max_number_of_relaunching = 15
 
 
 def my_function():
-    global number_of_relaunching  # pylint: disable=w0603
+    global number_of_relaunching
 
     while True:
         # Redo relaunching due to mouse cursor did not move to landing zone correctly
@@ -58,7 +59,11 @@ def my_function():
             relaunch_the_landing()
 
         # Reentering the map when relaunching is over max_number_of_relaunching
-        elif pyautogui.locateOnScreen(f"{image_path}/Strand Barricade.png", confidence=0.9) and number_of_relaunching >= max_number_of_relaunching:
+        elif number_of_relaunching >= max_number_of_relaunching:
+            while True:
+                if pyautogui.locateOnScreen(f"{image_path}/Strand Barricade.png", confidence=0.9):
+                    break
+
             number_of_relaunching = 0
             reset()
 
@@ -214,11 +219,9 @@ def launch_into_the_pale_heart():
             time.sleep(0.2)
 
             # Move to The Landing
-            win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, -1200, 0, 0, 0)
+            win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, config.launch_into_the_pale_heart_move_left[0], config.launch_into_the_pale_heart_move_left[1], 0, 0)
             time.sleep(2.2)
-            win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, 675, 0, 0, 0)
-            time.sleep(0.1)
-            win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, 0, 35, 0, 0)
+            win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, config.launch_into_the_pale_heart_move_right[0], config.launch_into_the_pale_heart_move_right[1], 0, 0)
             time.sleep(0.2)
             pyautogui.leftClick()
             time.sleep(1)
@@ -232,7 +235,7 @@ def launch_into_the_pale_heart():
 
 
 def relaunch_the_landing():
-    global number_of_relaunching  # pylint: disable=w0603
+    global number_of_relaunching
 
     print("Relaunching...")
     number_of_relaunching += 1
@@ -243,11 +246,9 @@ def relaunch_the_landing():
             time.sleep(0.2)
             break
 
-    win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, -1200, 0, 0, 0)
+    win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, config.relaunch_the_landing_move_left[0], config.relaunch_the_landing_move_left[1], 0, 0)
     time.sleep(2.2)
-    win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, 680, 0, 0, 0)
-    time.sleep(0.1)
-    win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, 10, -30, 0, 0)
+    win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, config.relaunch_the_landing_move_right[0], config.relaunch_the_landing_move_right[1], 0, 0)
     time.sleep(0.2)
     pyautogui.leftClick()
     time.sleep(0.1)
@@ -258,13 +259,13 @@ def relaunch_the_landing():
 
 
 def collect_loot():
-    global collect_loot_attempts  # pylint: disable=w0603
-    global number_of_chests_obtained  # pylint: disable=w0603
+    global collect_loot_attempts
+    global number_of_chests_obtained
 
     collect_loot_attempts += 1
     time.sleep(0.5)
 
-    if pyautogui.locateOnScreen(f"{image_path}/Alt Button.png", confidence=0.8, region=(1112, 896, 400, 160)):
+    if pyautogui.locateOnScreen(f"{image_path}/Alt Button.png", confidence=0.8, region=config.collect_loot_region):
         number_of_chests_obtained += 1
         keyboard.press("alt")
         time.sleep(1.5)
