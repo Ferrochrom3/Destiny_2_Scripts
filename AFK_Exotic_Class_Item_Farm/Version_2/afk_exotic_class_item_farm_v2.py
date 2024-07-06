@@ -13,7 +13,7 @@ import keyboard
 import pyautogui
 import win32api
 import win32con
-import config
+import resolution_config
 from colorama import Fore, Style
 
 """
@@ -219,15 +219,15 @@ def launch_into_the_pale_heart():
             time.sleep(0.2)
 
             # Move to The Landing
-            win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, config.launch_into_the_pale_heart_move_left[0], config.launch_into_the_pale_heart_move_left[1], 0, 0)
+            win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, resolution_config.launch_into_the_pale_heart_move_left[0], resolution_config.launch_into_the_pale_heart_move_left[1], 0, 0)
             time.sleep(2.2)
-            win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, config.launch_into_the_pale_heart_move_right[0], config.launch_into_the_pale_heart_move_right[1], 0, 0)
+            win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, resolution_config.launch_into_the_pale_heart_move_right[0], resolution_config.launch_into_the_pale_heart_move_right[1], 0, 0)
             time.sleep(0.2)
             pyautogui.leftClick()
             time.sleep(1)
 
             # Click on Launch
-            pyautogui.moveTo(2160, 1196)
+            pyautogui.moveTo(resolution_config.launch_button_coord[0], resolution_config.launch_button_coord[1])
             time.sleep(0.1)
             pyautogui.leftClick()
             time.sleep(1)
@@ -246,9 +246,9 @@ def relaunch_the_landing():
             time.sleep(0.2)
             break
 
-    win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, config.relaunch_the_landing_move_left[0], config.relaunch_the_landing_move_left[1], 0, 0)
+    win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, resolution_config.relaunch_the_landing_move_left[0], resolution_config.relaunch_the_landing_move_left[1], 0, 0)
     time.sleep(2.2)
-    win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, config.relaunch_the_landing_move_right[0], config.relaunch_the_landing_move_right[1], 0, 0)
+    win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, resolution_config.relaunch_the_landing_move_right[0], resolution_config.relaunch_the_landing_move_right[1], 0, 0)
     time.sleep(0.2)
     pyautogui.leftClick()
     time.sleep(0.1)
@@ -265,7 +265,7 @@ def collect_loot():
     collect_loot_attempts += 1
     time.sleep(0.5)
 
-    if pyautogui.locateOnScreen(f"{image_path}/Alt Button.png", confidence=0.8, region=config.collect_loot_region):
+    if pyautogui.locateOnScreen(f"{image_path}/Alt Button.png", confidence=0.8, region=resolution_config.collect_loot_region):
         number_of_chests_obtained += 1
         keyboard.press("alt")
         time.sleep(1.5)

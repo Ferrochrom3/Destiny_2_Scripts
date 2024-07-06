@@ -1,7 +1,7 @@
 import time
 import keyboard
 import pyautogui
-import config
+import resolution_config
 
 image_path = "Destiny_2_Scripts/AFK_Exotic_Class_Item_Farm/Version_3"
 
@@ -14,7 +14,7 @@ def collect_loot():
 
     time.sleep(0.5)
 
-    if pyautogui.locateOnScreen(f"{image_path}/Alt Button.png", confidence=0.8, region=config.chest_collection_region):
+    if pyautogui.locateOnScreen(f"{image_path}/Alt Button.png", confidence=0.8, region=resolution_config.chest_collection_region):
         number_of_chests_obtained += 1
         keyboard.press("alt")
         time.sleep(1.5)

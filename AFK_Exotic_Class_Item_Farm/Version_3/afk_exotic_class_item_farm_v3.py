@@ -7,7 +7,7 @@ import win32api
 import win32con
 import relaunch
 import collect_loot
-import config
+import resolution_config
 from colorama import Fore, Style
 
 """
@@ -63,7 +63,7 @@ def my_function():
             pyautogui.mouseDown(button="right")
             elapsed_time = time.time()
             while True:
-                if pyautogui.locateOnScreen(f"{image_path}/Chest Icon.png", confidence=0.8, region=config.chest_detection_region):
+                if pyautogui.locateOnScreen(f"{image_path}/Chest Icon.png", confidence=0.8, region=resolution_config.chest_detection_region):
                     print("Chest Found")
                     break
                 if time.time() - elapsed_time >= 50:
