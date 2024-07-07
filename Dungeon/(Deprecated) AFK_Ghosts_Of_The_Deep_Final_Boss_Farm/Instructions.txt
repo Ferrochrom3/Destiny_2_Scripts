@@ -1,0 +1,93 @@
+# Disclaimer
+This is for educational purposes only. Use it at your own risk.
+
+# Limitations
+1. Both Player A and Player B has subclass restrictions, see **Requirements** for details.
+2. Player B script is only applicable to Warlock.
+3. Player A is only useable under 2560x1440 screen resolution. Player B is only useable under 1980x1080 screen resolution.
+4. The farm will not automatically restart after an internet issue or an error code has occurred.
+
+# Requirements and Setups
+### Player A
+1. Bind "Auto Melee" to '0'
+	* Default is 'C'
+2. Replace "Fireteam Invite.png"
+	* This can be found on your Fireteam Invites page
+		* ![invites](https://github.com/Ferrochrom3/AFK-Ghosts-of-the-Deep-Final-Boss-Farm/assets/132790622/1d670857-3b2c-448b-92e2-c775960e5f56)
+	* Take a small snippet like the following and name it "Fireteam Invite". Then replace the "Fireteam Invite" file inthe folder with your own "Fireteam Invite" file
+		* ![Player Invite](https://github.com/Ferrochrom3/AFK-Ghosts-of-the-Deep-Final-Boss-Farm/assets/132790622/96ad2abe-36f8-4a34-8c53-7436655bf270)
+3. Loadout
+	* **Only adjust the one you're using for AFK**
+	* Warlock
+		* Subclass:  Strand
+		* Abilities: Empowering Rift, Threading Grenade
+		* Weapons:   Witherhoard, a Waveframe Grenade Launcher, Epochal Integration
+		* Mods:      Kinetic Loader, A Loader corresponding to your Grenade Launcher
+		* Stats:     Tier 4 Mobility
+	* Hunter
+		* Subclass:  Void
+		* Abilities: Vortex Grenade, Smoke Bomb
+		* Weapons:   Witherhoard, a Waveframe Grenade Launcher, Epochal Integration
+		* Mods:      Kinetic Loader, A Loader corresponding to your Grenade Launcher
+		* Stats:     Tier 4 Mobility
+	* Titan
+		* Subclass:  Stasis
+		* Abilities: Towering Barricade
+		* Weapons:   Witherhoard, a Waveframe Grenade Launcher, Epochal Integration
+		* Mods:      Kinetic Loader, A Loader corresponding to your Grenade Launcher
+		* Stats:     Tier 4 Mobility
+4. Load up DIM in a web browser and keep it one Alt-Tab away from Destiny. This will automatically collect armors left in the Postmaster every so often.
+	* You don't need this. But the macro will swap to and back from a tab after the last while loop.
+	* If it's not collecting armors for you, check the "Collect Armors" file in the folder.
+
+===========================================================================
+
+### Player B
+1. Bind "Interact" to 'Alt'
+	* Default is 'E'
+2. Replace "Titan.png" and "Warlock.png"
+	* These are the name cards on your character's selection menu
+		* ![name cards](https://github.com/Ferrochrom3/AFK-Ghosts-of-the-Deep-Final-Boss-Farm/assets/132790622/2c5268e5-7005-40dd-89fe-3e90d80b891a)
+	* Take a small snippet like the following and name it "Titan" and "Warlock". Then replace the "Titan" and "Warlock" file in the folder with your own "Titan" and "Warlock" files
+		* ![Titan](https://github.com/Ferrochrom3/AFK-Ghosts-of-the-Deep-Final-Boss-Farm/assets/132790622/ca995078-e7a5-4bd8-a91b-c91e28a78968)
+		* ![Warlock](https://github.com/Ferrochrom3/AFK-Ghosts-of-the-Deep-Final-Boss-Farm/assets/132790622/8542f4e1-c424-480f-9848-5894e05b438c)
+	* **Make sure they are saved as .PNG files**
+3. Loadout
+	* **Need to adjust both classes**
+	* Titan
+		* Subclass:  Strand
+		* Abilities: Rally Barricade
+	* Warlock
+		* Subclass:  Solar
+		* Abilities: Empowering Rift		
+		* Weapons:   A Lightweight Kinetic Weapon
+		* Stats:     Tier 2 Mobility
+
+# Execution
+1. **Make sure you have followed the "Requirements and Setup" section**
+2. Clear all fireteam invites before starting
+3. Player B needs to start the script from orbit. Player A can start it anywhere.
+	* After starting the macros, both will ask you whether or not it's a Master dungeon run
+		* For Player B, please also input the player ID (correctly) you'd like to join
+5. Start the macros with designated keys and let them do the work.
+
+# Additonal Adjustments
+If your game is in a different language, the following images needs to be adjusted.
+
+**In Player A Folder**
+1. Fireteam Invites Icon
+	* This is on the Fireteam Invites page
+3. Reject Fireteam Invite
+	* This is the "Reject Fireteam Invite" option after opening up an invite
+
+===========================================================================
+
+**In Player B Folder**
+1. Joining Fireteam
+	* This is a message on your screen while joining a fireteam
+3. Launch
+	* This is the launch button for every activity
+5. Open Director
+	* This is on your orbit screen
+7. Player Joined
+	* This is a message you recieve after a player as joined your fireteam
