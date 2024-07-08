@@ -9,7 +9,13 @@ from colorama import Fore, Style
 from pynput.mouse import Button, Controller
 
 """
-***Need all imports, opencv-python, and Pillow***
+Require:
+ - opencv-python
+ - Pillow
+ - PyScreeze version=0.1.27
+ - PyAutoGUI version=0.9.50
+    - PyAutoGui newer versions doesn't allow image checks by using if pyautogui.locateOnScreen() when image is not present on screen, it will throw an exception.
+
 
 print(pyautogui.position())                                       Print current mouse cursor location
 time.sleep(x)                                                     Delay x seconds
@@ -30,13 +36,11 @@ keyboard.press('a')                                               Hold down 'a'
 keyboard.release('a')                                             Release 'a'
 keyboard.press_and_release('a')           
 
-win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, 100, 100, 0, 0)   Move 100 pixels to the right and 100 pixels down relative to your current mouse position
-
 Controller().click(Button.x1)                                     Click mouse button 4 (x2 is 5)
 
 pyautogui.FAILSAFE = False                                        Remove mouse movement restrictions
 
-region = (x, y, w, h)                                             (x-coord of the top-left corner, y-coordof the top-left corner, Width of the region, Height of the region)
+region = (x, y, w, h)                                             (x-coord of the top-left corner, y-coord of the top-left corner, Width of the region, Height of the region)
 """
 
 
@@ -54,6 +58,15 @@ def my_function():
 
 
 def win32api_move_mouse(x: int, y: int, wait_time: float = 0.1):
+    """
+    Use win32api library to move mouse position to by an (x, y) off set. +x moves to the right and +y moves down. \n
+    Ex. (100, 100) moves the mouse 100 pixels to the right and 100 pixels down relative to current mouse position.
+
+    Args:
+        x (int): Move mouse by some x offset (+x moves to the right, -x moves to the left).
+        y (int): Move mouse by some y offset (+y moves down, -y moves up).
+        wait_time (float, optional): Wait some time (in seconds) after mouse movement to allow the mouse to properly move to position before further inputs. Defaults to 0.1.
+    """
     win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, x, y, 0, 0)
     time.sleep(wait_time)
 

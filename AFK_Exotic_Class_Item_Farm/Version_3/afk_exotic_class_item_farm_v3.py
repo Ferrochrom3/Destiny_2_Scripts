@@ -29,10 +29,9 @@ Stats        : Any
 Reward       : Exotic Class Items, Pale Heart Engrams, Ghost Reputations, Gunsmith Engrams
 
 Additional Notes:
- - 1920x1080 uses Grapple Grenade as InLoc (in location) check.
- - 2560x1440 uses Strand Towering Barricade as InLoc (in location) check.
  - Must plant the Luminescent Seed by the chest.
  - Chest spawn is manipulated by standing at a specific spot before other chests have spawned. Must execute the script shortly after landing.
+ - Must equip Wombo Detector Ghost mod.
 """
 
 print("Press F7 to Start")
@@ -48,11 +47,22 @@ image_path = f"Destiny_2_Scripts/AFK_Exotic_Class_Item_Farm/Version_3/Image_{cur
 
 def my_function():
     while True:
-        if pyautogui.locateOnScreen(f"{image_path}/InLoc Ability.png", confidence=0.9) and relaunch.number_of_relaunching >= relaunch.max_number_of_relaunching:
+        # Relaunch the landing if mouse cursor did not move to landing zone correctly
+        if pyautogui.locateOnScreen(f"{image_path}/Pathfinder Icon.png", confidence=0.8):
+            print("Cursor did not move to landing zone correctly...Retrying...")
+            keyboard.press_and_release("m")
+            time.sleep(1)
+            relaunch.relaunch_the_landing()
+
+        # Relaunch into the Pale Heart before Overthrow level reaches 2
+        elif pyautogui.locateOnScreen(f"{image_path}/Overthrow The Landing Icon.png", confidence=0.9) and relaunch.number_of_relaunching >= relaunch.max_number_of_relaunching:
+            time.sleep(0.5)
             relaunch.number_of_relaunching = 0
             relaunch.relaunch_into_the_pale_heart()
 
-        elif pyautogui.locateOnScreen(f"{image_path}/InLoc Ability.png", confidence=0.9):
+        # Try to collect chest and relaunch The Landing after collecting loot
+        elif pyautogui.locateOnScreen(f"{image_path}/Overthrow The Landing Icon.png", confidence=0.9):
+            time.sleep(0.5)
             collect_loot.collect_loot_attempts += 1
 
             # Run to corner
@@ -72,8 +82,8 @@ def my_function():
                 if pyautogui.locateOnScreen(f"{image_path}/Chest Icon.png", confidence=0.8, region=config["chest_detection_region"]):
                     print("Chest Found")
                     break
-                if time.time() - elapsed_time >= 50:
-                    print("Over 50s...Chest Not Found...")
+                if time.time() - elapsed_time >= 40:
+                    print("Over 40s...Chest Not Found...")
                     break
             pyautogui.mouseUp(button="right")
 

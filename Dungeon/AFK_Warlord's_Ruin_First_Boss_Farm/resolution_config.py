@@ -1,6 +1,6 @@
 values_by_resolution = {
     "2560x1440": {
-        "boss_health_bar_region": (842, 1173, 500, 160),
+        "boss_health_bar_region": (842, 1073, 500, 140),
         "player_health_bar_region": (958, 93, 300, 80),
         "relaunch_into_master_move_right": (1200, 0),
         "relaunch_into_master_move_left": (-400, 0),

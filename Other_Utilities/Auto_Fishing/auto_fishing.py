@@ -7,8 +7,6 @@ import pyautogui
 print("Press F7 to Start")
 print("Press F8 to Exit\n")
 
-start_time = time.time()
-
 
 def my_function():
     total_time = 0
@@ -47,10 +45,4 @@ def start_afk():
 while True:
     keyboard.add_hotkey("f7", start_afk)
     keyboard.wait("f8")
-
-    # fmt: off
-    sys.exit(
-    f"Elapsed Time: {round(time.time() - start_time)} seconds"
-    f"\n{round((time.time() - start_time) / 60, 2)} minutes"
-    f"\n{round((time.time() - start_time) / 3600, 2)} hours")
-    # fmt: on
+    sys.exit()

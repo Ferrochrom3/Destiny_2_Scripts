@@ -5,6 +5,7 @@ import keyboard
 import pyautogui
 import win32api
 import win32con
+from colorama import Fore, Style
 
 print("Press F7 to Start")
 print("Press F8 to Exit\n")
@@ -52,7 +53,8 @@ while True:
 
     # fmt: off
     sys.exit(
-    f"Elapsed Time: {round(time.time() - start_time)} seconds"
-    f"\n{round((time.time() - start_time) / 60, 2)} minutes"
-    f"\n{round((time.time() - start_time) / 3600, 2)} hours")
+    Fore.RED +
+    f"Elapsed Time: {round(time.time() - start_time)} seconds | "
+    f"{round((time.time() - start_time) / 60, 2)} minutes | "
+    f"{round((time.time() - start_time) / 3600, 2)} hours" + Style.RESET_ALL)
     # fmt: on
