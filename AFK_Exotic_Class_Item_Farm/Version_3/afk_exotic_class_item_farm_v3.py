@@ -77,25 +77,26 @@ def my_function():
             keyboard.press_and_release("2")
             time.sleep(1)
             pyautogui.mouseDown(button="right")
+
             elapsed_time = time.time()
             while True:
                 if pyautogui.locateOnScreen(f"{image_path}/Chest Icon.png", confidence=0.8, region=config["chest_detection_region"]):
-                    print("Chest Found")
+                    print("Chest found, running towards chest")
+                    pyautogui.mouseUp(button="right")
+                    run_forward(2)
+                    win32api_move_mouse(700, 0)
+                    run_forward(3)
+                    win32api_move_mouse(-1200, 0)
+                    run_forward(5)
+                    win32api_move_mouse(-1770, 220)
+                    collect_loot.collect_loot()
                     break
+
                 if time.time() - elapsed_time >= 40:
                     print("Over 40s...Chest Not Found...")
+                    pyautogui.mouseUp(button="right")
                     break
-            pyautogui.mouseUp(button="right")
 
-            # Run towards chest
-            run_forward(2)
-            win32api_move_mouse(700, 0)
-            run_forward(3)
-            win32api_move_mouse(-1200, 0)
-            run_forward(5)
-            win32api_move_mouse(-1770, 220)
-
-            collect_loot.collect_loot()
             relaunch.relaunch_the_landing()
 
 
