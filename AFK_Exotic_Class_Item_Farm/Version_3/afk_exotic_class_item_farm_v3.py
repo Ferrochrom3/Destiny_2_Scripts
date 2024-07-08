@@ -9,6 +9,7 @@ import relaunch
 import collect_loot
 import resolution_config
 from colorama import Fore, Style
+from efficiency_evaluation import display_status
 
 """
 Location     : The Pale Heart
@@ -112,22 +113,6 @@ def run_forward(running_duration: float, wait_time: float = 0.1):
     time.sleep(wait_time)
 
 
-def display_status():
-    rate_of_success = round((collect_loot.number_of_chests_obtained / collect_loot.collect_loot_attempts) * 100, 2)
-
-    if collect_loot.number_of_chests_obtained > 0:
-        average_time_per_success = round(time.time() - start_time) / collect_loot.number_of_chests_obtained
-    else:
-        average_time_per_success = "NAN"
-
-    # fmt: off
-    print(f"Number of Attempts: {collect_loot.collect_loot_attempts}"
-          f"\nNumber of Chests Obtained: {collect_loot.number_of_chests_obtained}"
-          f"\nRate of Success: {rate_of_success}%"
-          f"\nAverage Time Per Success: {average_time_per_success}s")
-    # fmt: on
-
-
 def start_afk():
     t = threading.Thread(target=my_function)
     print("\nExecution Started")
@@ -139,7 +124,7 @@ while True:
     keyboard.wait("f8")
     keyboard.release("shift+w")
     pyautogui.mouseUp(button="right")
-    display_status()
+    display_status(start_time)
 
     # fmt: off
     sys.exit(
