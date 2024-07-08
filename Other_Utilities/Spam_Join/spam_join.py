@@ -6,6 +6,11 @@ import threading
 print("Press F7 to Start")
 print("Press F8 to Exit\n")
 
+screen_width, screen_height = pyautogui.size()
+current_monitor_resolution = f"{screen_width}x{screen_height}"
+
+image_path = f"Destiny_2_Scripts/Other_Utilities/Spam_Join/Image_{current_monitor_resolution}"
+
 
 def my_function():
     while True:
@@ -43,16 +48,16 @@ def copy_and_paste():
     keyboard.press_and_release("enter")
 
     while True:
-        if pyautogui.locateOnScreen("Error Code Exclamation Mark.png", confidence=0.8, grayscale=True):
+        if pyautogui.locateOnScreen(f"{image_path}/Error Code Exclamation Mark.png", confidence=0.8, grayscale=True):
             keyboard.press_and_release("enter")
             time.sleep(1)
             break
 
-        if pyautogui.locateOnScreen("Joining Fireteam.png", confidence=0.8, grayscale=True):
+        if pyautogui.locateOnScreen(f"{image_path}/Joining Fireteam.png", confidence=0.8, grayscale=True):
             print("Joining...")
 
             while True:
-                if not pyautogui.locateOnScreen("Joining Fireteam.png", confidence=0.8, grayscale=True):
+                if not pyautogui.locateOnScreen(f"{image_path}/Joining Fireteam.png", confidence=0.8, grayscale=True):
                     break
 
 
