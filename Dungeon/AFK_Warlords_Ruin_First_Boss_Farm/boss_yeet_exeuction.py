@@ -91,9 +91,9 @@ def emote_at_corner():
 def check_cases():
     """
     Check for the following 3 cases after moved to corner and started emoting:
-        1. Player is killed
-        2. Emoting time is too long, meaning the boss is still alive
-        3. Boss is killed
+    1. Player is killed.
+    2. Emoting time is too long, meaning the boss is still alive after finisher.
+    3. Boss is killed.
     """
     emote_elapsed_time = time.time()
     print("Checking cases")

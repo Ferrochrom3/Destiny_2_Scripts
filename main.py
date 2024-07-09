@@ -43,7 +43,7 @@ pyautogui.FAILSAFE = False                                        Remove mouse m
 region = (x, y, w, h)                                             (x-coord of the top-left corner, y-coord of the top-left corner, Width of the region, Height of the region)
 
 destiny_2_scripts_path = os.path.abspath("Destiny_2_Scripts")                                                               Get the absolute path of "Destiny_2_Scripts"
-folder_path = os.path.dirname(destiny_2_scripts_path)                                                                       Get the folder that contains "Destiny_2_Scripts"
+folder_path = os.path.dirname(destiny_2_scripts_path)                                                                       Get the path of the folder that contains "Destiny_2_Scripts"
 sys.path.insert(0, folder_path)                                                                                             Insert the folder that contains "Destiny_2_Scripts" to system path so any scripts in "Destiny_2_Scripts" can be imported
 from Destiny_2_Scripts.Other_Utilities.Internet_Error_Fix.internet_error_fix import is_internet_error, fix_internet_error   Dynamically inserts the path needed to get to "Destiny_2_Scripts" so any scripts in Destiny_2_Scripts can be imported like this
 from *some path to a folder* import resolution_config                                                                       Cannot just do "import resolution_config" when resolution_config.py is imported in another script
