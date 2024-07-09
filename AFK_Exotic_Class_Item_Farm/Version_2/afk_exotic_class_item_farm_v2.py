@@ -6,6 +6,7 @@ Rate of Success: 17.53%
 Average Time Per Success: 85.52s
 """
 
+import os
 import sys
 import threading
 import time
@@ -13,8 +14,12 @@ import keyboard
 import pyautogui
 import win32api
 import win32con
-import resolution_config
 from colorama import Fore, Style
+
+destiny_2_scripts_path = os.path.abspath("Destiny_2_Scripts")
+folder_path = os.path.dirname(destiny_2_scripts_path)
+sys.path.insert(0, folder_path)
+from Destiny_2_Scripts.AFK_Exotic_Class_Item_Farm.Version_2 import resolution_config
 
 """
 Location     : The Pale Heart
