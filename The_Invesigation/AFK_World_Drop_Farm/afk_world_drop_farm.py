@@ -57,7 +57,7 @@ def my_function():
 
         # Check if there's an internet error. If so, fix the error and return to the mission
         elif is_internet_error():
-            fix_internet_error()
+            fix_internet_error("first")
             return_to_mission()
 
         # If there are no errors, procced to shoot enemies

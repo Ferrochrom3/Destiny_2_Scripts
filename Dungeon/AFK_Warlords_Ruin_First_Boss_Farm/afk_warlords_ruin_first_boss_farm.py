@@ -17,7 +17,7 @@ import efficiency_evaluation
 from colorama import Fore, Style
 from boss_yeet_exeuction import indebted_kindness, emote_at_corner, check_cases
 from dungeon_restart_and_reset import relaunch_into_master, reset_checkpoint
-from efficiency_evaluation import display_status
+
 
 """
 Location     : Warlord's Ruin - First Encounter
@@ -90,7 +90,7 @@ while True:
     keyboard.release("alt")
     keyboard.release("tab")
     keyboard.release("left")
-    display_status(start_time)
+    efficiency_evaluation.display_status(start_time)
 
     # fmt: off
     sys.exit(

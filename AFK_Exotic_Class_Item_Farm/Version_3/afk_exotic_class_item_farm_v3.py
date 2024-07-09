@@ -1,4 +1,5 @@
 import sys
+import os
 import threading
 import time
 import keyboard
@@ -7,9 +8,14 @@ import win32api
 import win32con
 import relaunch
 import collect_loot
-import resolution_config
 from colorama import Fore, Style
 from efficiency_evaluation import display_status
+
+destiny_2_scripts_path = os.path.abspath("Destiny_2_Scripts")
+folder_path = os.path.dirname(destiny_2_scripts_path)
+sys.path.insert(0, folder_path)
+from Destiny_2_Scripts.AFK_Exotic_Class_Item_Farm.Version_3 import resolution_config
+from Destiny_2_Scripts.Other_Utilities.Internet_Error_Fix.internet_error_fix import is_internet_error, fix_internet_error
 
 """
 Location     : The Pale Heart - The Landing
@@ -48,8 +54,12 @@ image_path = f"Destiny_2_Scripts/AFK_Exotic_Class_Item_Farm/Version_3/Image_{cur
 
 def my_function():
     while True:
+        if is_internet_error():
+            fix_internet_error("first")
+            relaunch.relaunch_into_the_pale_heart(True)
+
         # Relaunch into the Pale Heart before Overthrow level reaches 2
-        if pyautogui.locateOnScreen(f"{image_path}/Overthrow The Landing Icon.png", confidence=0.9) and relaunch.number_of_relaunching >= relaunch.max_number_of_relaunching:
+        elif pyautogui.locateOnScreen(f"{image_path}/Overthrow The Landing Icon.png", confidence=0.9) and relaunch.number_of_relaunching >= relaunch.max_number_of_relaunching:
             time.sleep(0.5)
             relaunch.number_of_relaunching = 0
             relaunch.relaunch_into_the_pale_heart()

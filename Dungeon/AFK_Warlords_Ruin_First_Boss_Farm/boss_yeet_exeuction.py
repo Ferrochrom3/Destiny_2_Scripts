@@ -1,12 +1,18 @@
+import os
+import sys
 import time
 import keyboard
 import pyautogui
 import win32api
 import win32con
-import resolution_config
 import efficiency_evaluation
 from pynput.mouse import Button, Controller
 from dungeon_restart_and_reset import relaunch_into_master, reset_checkpoint
+
+destiny_2_scripts_path = os.path.abspath("Destiny_2_Scripts")
+folder_path = os.path.dirname(destiny_2_scripts_path)
+sys.path.insert(0, folder_path)
+from Destiny_2_Scripts.Dungeon.AFK_Warlords_Ruin_First_Boss_Farm import resolution_config
 
 screen_width, screen_height = pyautogui.size()
 current_monitor_resolution = f"{screen_width}x{screen_height}"

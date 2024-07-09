@@ -1,7 +1,13 @@
+import os
+import sys
 import time
 import pyautogui
 import keyboard
-import resolution_config
+
+destiny_2_scripts_path = os.path.abspath("Destiny_2_Scripts")
+folder_path = os.path.dirname(destiny_2_scripts_path)
+sys.path.insert(0, folder_path)
+from Destiny_2_Scripts.Other_Utilities.Internet_Error_Fix import resolution_config
 
 """
 Additional Note
@@ -16,7 +22,7 @@ image_path = f"Destiny_2_Scripts/Other_Utilities/Internet_Error_Fix/Image_{curre
 
 
 def is_internet_error():
-    """Check if an internet error code has occured or if the player is in the intro screen.
+    """Check if an internet error code has occured or if the player is in the intro screen (Currently uses The Final Shape intro screen).
 
     Returns:
         boolean: Whether or not an error code has occured.
@@ -29,12 +35,12 @@ def is_internet_error():
     return False
 
 
-def fix_internet_error(character_order: str):
+def fix_internet_error(character_to_select: str):
     """
     Exit the error code screen (which takes you to the main intro screen) and continue to character selection screen and click Hunter Human.
 
     Args:
-        character_order (str): From top to bottom, the character to select (first, second, or third)
+        character_to_select (str): From top to bottom, which character to select (first, second, or third).
     """
     print("Internet error has occured...Trying to fix it...")
     if pyautogui.locateOnScreen(f"{image_path}/Error Code Icon.png", confidence=0.8):
@@ -55,7 +61,7 @@ def fix_internet_error(character_order: str):
     while True:
         if pyautogui.locateOnScreen(f"{image_path}\Patch Notes Icon.png", confidence=0.8, region=config["patch_notes_icon_region"]):
             time.sleep(0.3)
-            pyautogui.moveTo(config[f"{character_order}_character_coord"][0], config[f"{character_order}_character_coord"][1])
+            pyautogui.moveTo(config[f"{character_to_select}_character_coord"][0], config[f"{character_to_select}_character_coord"][1])
             time.sleep(0.1)
             pyautogui.leftClick()
             time.sleep(6)  # Wait 6 seconds until in game

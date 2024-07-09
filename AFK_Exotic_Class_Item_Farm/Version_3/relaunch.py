@@ -49,14 +49,23 @@ def relaunch_the_landing():
         time.sleep(1)
 
 
-def relaunch_into_the_pale_heart():
-    keyboard.press_and_release("tab")
-    time.sleep(1.5)
-    keyboard.press_and_release("o")
-    time.sleep(0.3)
-    keyboard.press("o")
-    time.sleep(3)
-    keyboard.release("0")
+def relaunch_into_the_pale_heart(is_after_error_code: bool = False):
+    """
+    Relaunch into The Landing in The Pale Heart.
+
+    Args:
+        is_after_error_code (bool, optional): _description_. Whether or not this relaunch is executed after an error code has occured. Defaults to False.
+    """
+
+    # If relaunch is after an error code has occured, tab+o will not be necessary.
+    if not is_after_error_code:
+        keyboard.press_and_release("tab")
+        time.sleep(1.5)
+        keyboard.press_and_release("o")
+        time.sleep(0.3)
+        keyboard.press("o")
+        time.sleep(3)
+        keyboard.release("0")
 
     print("Waiting to Open Director")
     while True:
