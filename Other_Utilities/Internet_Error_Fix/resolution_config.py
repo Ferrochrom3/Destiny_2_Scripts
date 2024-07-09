@@ -10,6 +10,6 @@ values_by_resolution = {
         "first_character_coord": (1300, 450),
         "second_character_coord": (1300, 560),
         "third_character_coord": (1300, 670),
-        "patch_notes_icon_region": (-1, -1, 240, 120)
+        "patch_notes_icon_region": (1584, 100, 240, 120)
     },
 }

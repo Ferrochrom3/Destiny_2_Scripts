@@ -60,6 +60,3 @@ def fix_internet_error(character_order: str):
             pyautogui.leftClick()
             time.sleep(6)  # Wait 6 seconds until in game
             break
-
-
-fix_internet_error("first")
