@@ -22,15 +22,16 @@ Mods         : Helmet     - Any
                Class Item - 2x Bomber
 Stats        : Max Discipline
 Reward       : Some Crucible reputations, some legendary gears
+
+Additional Notes:
+- Minimum of 1 assist is needed to gain reputation.
 """
 
-print("Minimum of 1 assist is needed to gain reputation")
 print("Press F7 to Start")
-print("Press F8 to Stop")
-print("Press F9 to End\n")
+print("Press F8 to Exit\n")
 
 start_time = time.time()
-image_path = "Destiny 2 Scripts/AFK Rumble"
+image_path = "Destiny_2_Scripts/AFK_Rumble"
 
 
 def afk():

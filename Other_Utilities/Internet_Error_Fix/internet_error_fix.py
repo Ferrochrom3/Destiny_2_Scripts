@@ -5,7 +5,7 @@ import keyboard
 """
 Additional Note
  - Currently works with The Final Shape intro screen.
- - Hunter Human is using a specific emblem.
+ - This script chooses Hunter Human character and is using a specific emblem.
 """
 
 image_path = "Destiny_2_Scripts/Other_Utilities/Internet_Error_Fix"

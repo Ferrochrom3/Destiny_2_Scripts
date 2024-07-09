@@ -1,6 +1,3 @@
-# Disclaimer
-This is for educational purposes only. Use it at your own risk.
-
 # Limitations
 1. Both Player A and Player B has subclass restrictions, see **Requirements** for details.
 2. Player B script is only applicable to Warlock.

@@ -12,9 +12,9 @@ from colorama import Fore, Style
 from efficiency_evaluation import display_status
 
 """
-Location     : The Pale Heart
-Subclass     : Depends on "Abilities"
-Abilities    : *Check "Additional Notes"
+Location     : The Pale Heart - The Landing
+Subclass     : Any
+Abilities    : Any
 Fragments    : Any
 Aspects      : Any
 Weapons      : Kinetic - Any Non-Lightweight weapon
@@ -48,15 +48,8 @@ image_path = f"Destiny_2_Scripts/AFK_Exotic_Class_Item_Farm/Version_3/Image_{cur
 
 def my_function():
     while True:
-        # Relaunch the landing if mouse cursor did not move to landing zone correctly
-        if pyautogui.locateOnScreen(f"{image_path}/Pathfinder Icon.png", confidence=0.8):
-            print("Cursor did not move to landing zone correctly...Retrying...")
-            keyboard.press_and_release("m")
-            time.sleep(1)
-            relaunch.relaunch_the_landing()
-
         # Relaunch into the Pale Heart before Overthrow level reaches 2
-        elif pyautogui.locateOnScreen(f"{image_path}/Overthrow The Landing Icon.png", confidence=0.9) and relaunch.number_of_relaunching >= relaunch.max_number_of_relaunching:
+        if pyautogui.locateOnScreen(f"{image_path}/Overthrow The Landing Icon.png", confidence=0.9) and relaunch.number_of_relaunching >= relaunch.max_number_of_relaunching:
             time.sleep(0.5)
             relaunch.number_of_relaunching = 0
             relaunch.relaunch_into_the_pale_heart()
@@ -123,6 +116,7 @@ while True:
     keyboard.add_hotkey("f7", start_afk)
     keyboard.wait("f8")
     keyboard.release("shift+w")
+    pyautogui.mouseUp(button="left")
     pyautogui.mouseUp(button="right")
     display_status(start_time)
 

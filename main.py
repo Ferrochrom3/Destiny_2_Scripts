@@ -59,13 +59,13 @@ def my_function():
 
 def win32api_move_mouse(x: int, y: int, wait_time: float = 0.1):
     """
-    Use win32api library to move mouse position to by an (x, y) off set. +x moves to the right and +y moves down. \n
+    Use win32api library to move mouse position to by an (x, y) off set. +x moves to the right and +y moves down.\n
     Ex. (100, 100) moves the mouse 100 pixels to the right and 100 pixels down relative to current mouse position.
 
     Args:
         x (int): Move mouse by some x offset (+x moves to the right, -x moves to the left).
         y (int): Move mouse by some y offset (+y moves down, -y moves up).
-        wait_time (float, optional): Wait some time (in seconds) after mouse movement to allow the mouse to properly move to position before further inputs. Defaults to 0.1.
+        wait_time (float, optional): Wait some time (in seconds) after mouse movement to allow the mouse to properly move to position before further inputs or to move some offset and wait some time at the new position. Defaults to 0.1.
     """
     win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, x, y, 0, 0)
     time.sleep(wait_time)

@@ -18,7 +18,7 @@ max_number_of_relaunching = 35
 def relaunch_the_landing():
     global number_of_relaunching
 
-    print("Relaunching...")
+    print("Relaunching")
     number_of_relaunching += 1
     keyboard.press_and_release("m")
 
@@ -27,16 +27,26 @@ def relaunch_the_landing():
             time.sleep(0.2)
             break
 
-    win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, config["relaunch_the_landing_move_left"][0], config["relaunch_the_landing_move_left"][1], 0, 0)
-    time.sleep(2.2)
-    win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, config["relaunch_the_landing_move_right"][0], config["relaunch_the_landing_move_right"][1], 0, 0)
-    time.sleep(0.2)
-    pyautogui.leftClick()
-    time.sleep(0.1)
-    pyautogui.mouseDown(button="left")
-    time.sleep(1.3)
-    pyautogui.mouseUp(button="left")
-    time.sleep(1)
+    win32api_move_mouse(config["relaunch_the_landing_move_left"][0], config["relaunch_the_landing_move_left"][1], 2.2)
+    win32api_move_mouse(config["relaunch_the_landing_move_right"][0], config["relaunch_the_landing_move_right"][1], 0.2)
+    time.sleep(0.3)
+
+    # If the mouse cursor did not move to the landing zone correctly, close the map and try again
+    if not pyautogui.locateOnScreen(f"{image_path}/The Landing Landing Zone.png", confidence=0.8):
+        print("Mouse cursor did not move to landing zone correctly while relaunching The Landing...Retrying...")
+        number_of_relaunching -= 1
+        keyboard.press_and_release("m")
+        time.sleep(1)
+        relaunch_the_landing()
+
+    # Otherwise proceed to click the landing zone
+    else:
+        pyautogui.leftClick()
+        time.sleep(0.1)
+        pyautogui.mouseDown(button="left")
+        time.sleep(1.3)
+        pyautogui.mouseUp(button="left")
+        time.sleep(1)
 
 
 def relaunch_into_the_pale_heart():
@@ -51,6 +61,7 @@ def relaunch_into_the_pale_heart():
     print("Waiting to Open Director")
     while True:
         if pyautogui.locateOnScreen(f"{image_path}/Open Director.png", confidence=0.8):
+            win32api_move_mouse(0, 100)  # Move mouse cursor slightly down so it's not on The Pale Heart so the destination icon doesn't change
             keyboard.press_and_release("m")
             time.sleep(1)
             break
@@ -64,22 +75,33 @@ def relaunch_into_the_pale_heart():
             pyautogui.leftClick()
             break
 
-    print("Waiting For Destination Map to Open")
+    print("Waiting For The Pale Heart Map to Open")
     while True:
         if pyautogui.locateOnScreen(f"{image_path}/Campaign Mission Icon.png", confidence=0.8):
             time.sleep(0.2)
 
             # Move to The Landing
-            win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, config["launch_into_the_pale_heart_move_left"][0], config["launch_into_the_pale_heart_move_left"][1], 0, 0)
-            time.sleep(2.2)
-            win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, config["launch_into_the_pale_heart_move_right"][0], config["launch_into_the_pale_heart_move_right"][1], 0, 0)
-            time.sleep(0.2)
-            pyautogui.leftClick()
-            time.sleep(1)
+            win32api_move_mouse(config["launch_into_the_pale_heart_move_left"][0], config["launch_into_the_pale_heart_move_left"][1], 2.2)
+            win32api_move_mouse(config["launch_into_the_pale_heart_move_right"][0], config["launch_into_the_pale_heart_move_right"][1], 0.2)
+            time.sleep(0.3)
 
-            # Click on Launch
-            pyautogui.moveTo(config["launch_button_coord"][0], config["launch_button_coord"][1])
-            time.sleep(0.1)
-            pyautogui.leftClick()
-            time.sleep(1)
+            # If the mouse cursor did not move to the landing zone correctly, close the map and try again
+            if not pyautogui.locateOnScreen(f"{image_path}/The Landing Landing Zone.png", confidence=0.8):
+                print("Mouse cursor did not move to landing zone correctly while relaunching The Pale Heart...Retrying...")
+                relaunch_into_the_pale_heart()
+
+            # Otherwise click on landing zone and launch into The Pale Heart
+            else:
+                pyautogui.leftClick()
+                time.sleep(1)
+                pyautogui.moveTo(config["launch_button_coord"][0], config["launch_button_coord"][1])
+                time.sleep(0.1)
+                pyautogui.leftClick()
+                time.sleep(1)
+
             break
+
+
+def win32api_move_mouse(x: int, y: int, wait_time: float = 0.1):
+    win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, x, y, 0, 0)
+    time.sleep(wait_time)

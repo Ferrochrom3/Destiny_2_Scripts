@@ -74,9 +74,9 @@ def my_function():
                 return_to_mission()
 
 
-def win32api_move_mouse(x: int, y: int):
+def win32api_move_mouse(x: int, y: int, wait_time: float = 0.1):
     win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, x, y, 0, 0)
-    time.sleep(0.1)
+    time.sleep(wait_time)
 
 
 def start_afk():
