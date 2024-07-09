@@ -14,9 +14,13 @@ image_path = f"Destiny_2_Scripts/AFK_Exotic_Class_Item_Farm/Version_3/Image_{cur
 number_of_relaunching = 0
 max_number_of_relaunching = 35
 
+number_of_missed_the_landing_relaunch = 0
+number_of_missed_the_pale_heart_relaunch = 0
+
 
 def relaunch_the_landing():
     global number_of_relaunching
+    global number_of_missed_the_landing_relaunch
 
     print("Relaunching")
     number_of_relaunching += 1
@@ -34,6 +38,7 @@ def relaunch_the_landing():
     # If the mouse cursor did not move to the landing zone correctly, close the map and try again
     if not pyautogui.locateOnScreen(f"{image_path}/The Landing Landing Zone.png", confidence=0.8):
         print("Mouse cursor did not move to landing zone correctly while relaunching The Landing...Retrying...")
+        number_of_missed_the_landing_relaunch += 1
         number_of_relaunching -= 1
         keyboard.press_and_release("m")
         time.sleep(1)
@@ -50,6 +55,7 @@ def relaunch_the_landing():
 
 
 def relaunch_into_the_pale_heart(is_after_error_code: bool = False):
+    global number_of_missed_the_pale_heart_relaunch
     """
     Relaunch into The Landing in The Pale Heart.
 
@@ -97,6 +103,7 @@ def relaunch_into_the_pale_heart(is_after_error_code: bool = False):
             # If the mouse cursor did not move to the landing zone correctly, close the map and try again
             if not pyautogui.locateOnScreen(f"{image_path}/The Landing Landing Zone.png", confidence=0.8):
                 print("Mouse cursor did not move to landing zone correctly while relaunching The Pale Heart...Retrying...")
+                number_of_missed_the_pale_heart_relaunch += 1
                 relaunch_into_the_pale_heart()
 
             # Otherwise click on landing zone and launch into The Pale Heart

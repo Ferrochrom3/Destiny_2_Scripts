@@ -1,3 +1,12 @@
+"""
+Performance (out of 11.18 hours):
+Number of Attempts: 665
+Number of Chests Obtained: 632
+Rate of Success: 95.04%
+Average Time Per Success: 63.68s
+Total Loot: 14
+"""
+
 import sys
 import os
 import threading
