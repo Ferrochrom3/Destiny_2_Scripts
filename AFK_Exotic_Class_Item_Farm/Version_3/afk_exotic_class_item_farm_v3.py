@@ -134,7 +134,7 @@ def run_forward(running_duration: float, wait_time: float = 0.1):
 
 def start_afk():
     t = threading.Thread(target=my_function)
-    print("\nExecution Started")
+    print("Execution Started")
     t.start()
 
 

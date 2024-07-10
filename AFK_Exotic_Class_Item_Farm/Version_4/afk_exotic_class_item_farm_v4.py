@@ -55,7 +55,7 @@ Mods         : Helmet     - Any
                Chest      - Any
                Leg        - Any
                Class Item - Any
-Stats        : T10 Mobility (Hunter), T1 Mobility (Warlock/Titan)
+Stats        : Tier 10 Mobility (Hunter), Tier 1 Mobility (Warlock/Titan)
 Reward       : Exotic Class Items, Pale Heart Engrams, Ghost Reputations, Gunsmith Engrams
 
 Process:
@@ -119,7 +119,7 @@ def my_function():
             while True:
                 if is_chest_3_spawned():
                     break
-                if time.time() - elapsed_time >= 1:
+                if time.time() - elapsed_time >= 30:
                     break
             pyautogui.mouseUp(button="right")
 

@@ -30,7 +30,7 @@ Mods         : Helmet     - Any
                Chest      - Any
                Leg        - Any
                Class Item - Any
-Stats        : T8 Mobility
+Stats        : Tier 8 Mobility
 Reward       : World Drops, XP
 
 Process:

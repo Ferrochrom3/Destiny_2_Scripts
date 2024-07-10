@@ -36,7 +36,7 @@ Mods         : Helmet     - Any
                Chest      - Any
                Leg        - Any
                Class Item - Any
-Stats        : T1 Mobility
+Stats        : Tier 1 Mobility
 Reward       : Exotic Class Items, Pale Heart Engrams, Ghost Reputations, Gunsmith Engrams
 
 Process:
@@ -301,7 +301,7 @@ def display_status():
 
 def start_afk():
     t = threading.Thread(target=my_function)
-    print("\nExecution Started")
+    print("Execution Started")
     t.start()
 
 
