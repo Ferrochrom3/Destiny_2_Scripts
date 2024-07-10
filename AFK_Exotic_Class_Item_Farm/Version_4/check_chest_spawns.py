@@ -15,7 +15,7 @@ chest_spawn_tracker = {}
 
 def is_chest_3_spawned():
     """
-    Check if Chest_3 has spawned.
+    Check if Chest_3 has spawned. Used when scoped in with Still Hunt.
 
     Returns:
         bool: Whether or not Chest_3 has spawened.
@@ -30,7 +30,7 @@ def is_chest_3_spawned():
 
 def check_additional_chest_spawns():
     """
-    Does all Chest checks, from 4-8, in a single function.
+    Does Chest_4 to Chest_8 checks, all in a single function.
     """
     # Chest chests that does not require any camera turns
     check_chest_4_spawn()
@@ -101,6 +101,21 @@ def check_chest_8_spawn():
         chest_spawn_tracker["Chest_8"] = True
     else:
         chest_spawn_tracker["Chest_8"] = False
+
+
+def is_chest_9_spawned():
+    """
+    Check if Chest_9 has spawned after collecting Chest_8.
+
+    Returns:
+        bool: Whether or not Chest_9 has spawened.
+    """
+    if pyautogui.locateOnScreen(f"{image_path}/Chest_9.png", confidence=0.8, region=config["chest_9_region"]):
+        chest_spawn_tracker["Chest_9"] = True
+    else:
+        chest_spawn_tracker["Chest_9"] = False
+
+    return chest_spawn_tracker["Chest_9"]
 
 
 def get_sorted_chest_spawn_tracker():

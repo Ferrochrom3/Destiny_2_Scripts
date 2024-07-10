@@ -31,12 +31,13 @@ from Destiny_2_Scripts.AFK_Exotic_Class_Item_Farm.Version_4 import efficiency_ev
 from Destiny_2_Scripts.AFK_Exotic_Class_Item_Farm.Version_4 import resolution_config
 from Destiny_2_Scripts.AFK_Exotic_Class_Item_Farm.Version_4.check_chest_spawns import (
     is_chest_3_spawned,
+    is_chest_9_spawned,
     check_chest_4_spawn,
     check_additional_chest_spawns,
     get_sorted_chest_spawn_tracker,
     clear_chest_spawn_tracker,
 )
-from Destiny_2_Scripts.AFK_Exotic_Class_Item_Farm.Version_4.run_to_chest import run_to_chest_3, run_from_3_to_4, run_from_3_to_5, run_from_3_to_6, run_from_3_to_7, run_from_3_to_8
+from Destiny_2_Scripts.AFK_Exotic_Class_Item_Farm.Version_4.run_to_chest import run_to_chest_3, run_from_3_to_4, run_from_3_to_5, run_from_3_to_6, run_from_3_to_7, run_from_3_to_8, run_from_8_to_9
 from Destiny_2_Scripts.AFK_Exotic_Class_Item_Farm.Version_4.relaunch import relaunch_the_landing, relaunch_into_the_pale_heart
 
 """
@@ -118,7 +119,7 @@ def my_function():
             while True:
                 if is_chest_3_spawned():
                     break
-                if time.time() - elapsed_time >= 30:
+                if time.time() - elapsed_time >= 1:
                     break
             pyautogui.mouseUp(button="right")
 
@@ -147,6 +148,9 @@ def my_function():
             elif chest_spawns["Chest_8"]:
                 run_from_3_to_8()
                 collect_loot.collect_loot()
+                if is_chest_9_spawned():
+                    run_from_8_to_9()
+                    collect_loot.collect_loot()
 
             clear_chest_spawn_tracker()
 

@@ -73,6 +73,13 @@ def run_from_3_to_8():
     run_forward(5.5)
 
 
+def run_from_8_to_9():
+    win32api_move_mouse(-1000, 0)
+    run_forward(4.7)
+    win32api_move_mouse(2000, 0)
+    run_forward(1.75)
+
+
 def run_forward(running_duration: float, wait_time: float = 0.1):
     keyboard.press("shift+w")
     time.sleep(running_duration)
