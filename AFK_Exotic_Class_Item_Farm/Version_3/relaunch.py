@@ -1,9 +1,15 @@
+import os
+import sys
 import time
 import keyboard
 import pyautogui
 import win32api
 import win32con
-import resolution_config
+
+destiny_2_scripts_path = os.path.abspath("Destiny_2_Scripts")
+folder_path = os.path.dirname(destiny_2_scripts_path)
+sys.path.insert(0, folder_path)
+from Destiny_2_Scripts.AFK_Exotic_Class_Item_Farm.Version_3 import resolution_config
 
 screen_width, screen_height = pyautogui.size()
 current_monitor_resolution = f"{screen_width}x{screen_height}"

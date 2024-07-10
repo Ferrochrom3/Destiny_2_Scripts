@@ -1,5 +1,11 @@
+import sys
+import os
 import time
-import relaunch
+
+destiny_2_scripts_path = os.path.abspath("Destiny_2_Scripts")
+folder_path = os.path.dirname(destiny_2_scripts_path)
+sys.path.insert(0, folder_path)
+from Destiny_2_Scripts.AFK_Exotic_Class_Item_Farm.Version_4 import relaunch
 
 number_of_runs = 0
 number_of_chests_obtained = 0

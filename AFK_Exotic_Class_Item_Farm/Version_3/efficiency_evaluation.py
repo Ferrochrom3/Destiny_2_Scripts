@@ -1,6 +1,12 @@
+import os
+import sys
 import time
-import collect_loot
-import relaunch
+
+destiny_2_scripts_path = os.path.abspath("Destiny_2_Scripts")
+folder_path = os.path.dirname(destiny_2_scripts_path)
+sys.path.insert(0, folder_path)
+from Destiny_2_Scripts.AFK_Exotic_Class_Item_Farm.Version_3 import collect_loot
+from Destiny_2_Scripts.AFK_Exotic_Class_Item_Farm.Version_3 import relaunch
 
 
 def display_status(start_time: float):

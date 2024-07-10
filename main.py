@@ -1,3 +1,4 @@
+import os
 import sys
 import threading
 import time
@@ -7,6 +8,10 @@ import win32api
 import win32con
 from colorama import Fore, Style
 from pynput.mouse import Button, Controller
+
+destiny_2_scripts_path = os.path.abspath("Destiny_2_Scripts")
+folder_path = os.path.dirname(destiny_2_scripts_path)
+sys.path.insert(0, folder_path)
 
 """
 Require:
