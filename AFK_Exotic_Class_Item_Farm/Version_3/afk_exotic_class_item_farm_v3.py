@@ -44,6 +44,13 @@ Mods         : Helmet     - Any
 Stats        : Any
 Reward       : Exotic Class Items, Pale Heart Engrams, Ghost Reputations, Gunsmith Engrams
 
+Process:
+ - Start at The Landing landing zone.
+ - Runs down to the left and check when Chest_3 spawns using Still Hunt.
+ - When Chest_3 spawns, run towards it and collec the chest.
+ - Relaunch The Landing once done.
+ - Relaunch The Pale Heart after "max_number_of_relaunching" times to reset the progress of Overthrow so it doesn't reach level 2.
+
 Additional Notes:
  - Must plant the Luminescent Seed by the chest.
  - Chest spawn is manipulated by standing at a specific spot before other chests have spawned. Must execute the script shortly after landing.

@@ -33,6 +33,14 @@ Mods         : Helmet     - Any
 Stats        : T8 Mobility
 Reward       : World Drops, XP
 
+Process:
+ - Start in The Investigation mission at the groups of enemies after the gate has opened.
+ - Get rallyed and shoot 4 Gjallarhorn shots at enemies the suicide.
+ - After 70 iterations, go back to the HELM and collect Legendary Engrams in the Post Master.
+ - After collected all engrams, delete every slot other than the Heavy slot.
+ - Walk to the Vault and put everything in the Heavy slot to the Vault.
+ - Then, relaunch to The Investigation mission and walk through the gate to the groups of enemies.
+
 Additional Notes
  - Clear all items in inventory.
  - Gjallarhorn must have ammo loaded initially.

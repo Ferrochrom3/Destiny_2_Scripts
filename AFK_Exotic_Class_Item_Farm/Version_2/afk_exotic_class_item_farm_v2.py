@@ -38,6 +38,12 @@ Mods         : Helmet     - Any
                Class Item - Any
 Stats        : T1 Mobility
 Reward       : Exotic Class Items, Pale Heart Engrams, Ghost Reputations, Gunsmith Engrams
+
+Process:
+ - Start at The Landing landing zone.
+ - Runs through the map from Chest_1 to Chest_9 and tries to collect each chest.
+ - After Chest_9, relaunch The Landing.
+ - After relaunching The Landing "max_number_of_relaunching" times, relaunch The Pale Heart to reset the progress of Overthrow so it doesn't reach level 2.
 """
 
 print("Press F7 to Start")
