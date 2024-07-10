@@ -4,10 +4,12 @@ Number of Runs: 473
 Number of Chests Obtained: 760
 Number of Missed Chests: 22
 Average Chests Per Run: 1.61
-Average Time Taken For One Chest: 46.18s
+Average Time Taken For One Chest: 46.18 seconds
 Number of Missed The Landing Relaunch: 0
 Number of Missed The Pale Heart Relaunch: 1
+
 Total Exotic Class Item Obtained: 16
+Average Time Per Exotic Class Item: 36.56 minutes
 """
 
 import sys
