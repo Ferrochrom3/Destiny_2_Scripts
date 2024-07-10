@@ -1,10 +1,13 @@
 """
-Performance (out of 11.18 hours):
-Number of Attempts: 665
-Number of Chests Obtained: 632
-Rate of Success: 95.04%
-Average Time Per Success: 63.68s
-Total Loot: 14
+Performance (out of 9.75 hours):
+Number of Runs: 473
+Number of Chests Obtained: 760
+Number of Missed Chests: 22
+Average Chests Per Run: 1.61
+Average Time Taken For One Chest: 46.18s
+Number of Missed The Landing Relaunch: 0
+Number of Missed The Pale Heart Relaunch: 1
+Total Exotic Class Item Obtained: 16
 """
 
 import sys
@@ -24,7 +27,13 @@ from Destiny_2_Scripts.Other_Utilities.Internet_Error_Fix.internet_error_fix imp
 from Destiny_2_Scripts.AFK_Exotic_Class_Item_Farm.Version_4 import collect_loot
 from Destiny_2_Scripts.AFK_Exotic_Class_Item_Farm.Version_4 import efficiency_evaluation
 from Destiny_2_Scripts.AFK_Exotic_Class_Item_Farm.Version_4 import resolution_config
-from Destiny_2_Scripts.AFK_Exotic_Class_Item_Farm.Version_4.check_chest_spawns import is_chest_3_spawned, check_chest_4_spawn, check_additional_chest_spawns, get_sorted_chest_spawn_tracker, clear_chest_spawn_tracker
+from Destiny_2_Scripts.AFK_Exotic_Class_Item_Farm.Version_4.check_chest_spawns import (
+    is_chest_3_spawned,
+    check_chest_4_spawn,
+    check_additional_chest_spawns,
+    get_sorted_chest_spawn_tracker,
+    clear_chest_spawn_tracker,
+)
 from Destiny_2_Scripts.AFK_Exotic_Class_Item_Farm.Version_4.run_to_chest import run_to_chest_3, run_from_3_to_4, run_from_3_to_5, run_from_3_to_6, run_from_3_to_7, run_from_3_to_8
 from Destiny_2_Scripts.AFK_Exotic_Class_Item_Farm.Version_4.relaunch import relaunch_the_landing, relaunch_into_the_pale_heart
 
@@ -78,7 +87,11 @@ def my_function():
             relaunch_into_the_pale_heart(True)
 
         # Relaunch into the Pale Heart before Overthrow level reaches 2
-        elif pyautogui.locateOnScreen(f"{image_path}/Overthrow The Landing Icon.png", confidence=0.9) and efficiency_evaluation.number_of_chests_obtained > 0 and efficiency_evaluation.number_of_chests_obtained % 35 == 0:
+        elif (
+            pyautogui.locateOnScreen(f"{image_path}/Overthrow The Landing Icon.png", confidence=0.9)
+            and efficiency_evaluation.number_of_chests_obtained > 0
+            and efficiency_evaluation.number_of_chests_obtained % 35 == 0
+        ):
             time.sleep(0.5)
             relaunch_into_the_pale_heart()
 
