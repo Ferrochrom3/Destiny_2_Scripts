@@ -42,8 +42,8 @@ from Destiny_2_Scripts.AFK_Exotic_Class_Item_Farm.Version_4.relaunch import rela
 
 """
 Location     : The Pale Heart - The Landing
-Subclass     : Any Hunter Subclass
-Abilities    : Any
+Subclass     : Any
+Abilities    : Triple Jump (Hunter), Burst Glide (Warlock), Catapult Lift (Titan)
 Fragments    : Any
 Aspects      : Any
 Weapons      : Kinetic - Any Non-Lightweight weapon
@@ -55,7 +55,7 @@ Mods         : Helmet     - Any
                Chest      - Any
                Leg        - Any
                Class Item - Any
-Stats        : T10 Mobility
+Stats        : T10 Mobility (Hunter), T1 Mobility (Warlock/Titan)
 Reward       : Exotic Class Items, Pale Heart Engrams, Ghost Reputations, Gunsmith Engrams
 
 Process:
@@ -63,7 +63,8 @@ Process:
  - Runs down to the left and check when Chest_3 spawns using Still Hunt.
  - When Chest_3 spawns, run towards it and collec the chest.
  - Scope in with Still Hunt again to see if Chest_5-8 have spawned. If so, move to the closest chest (4 being closest, 8 being farthest)
- - At most 2 chest will be collected. Once done, relaunch The Landing.
+    - If Chest_8 and Chest_9 both spawned, Chest_9 will be collected after running to Chest_8
+ - At most 2 chests will be collected. Once done, relaunch The Landing.
  - Relaunch The Pale Heart after collecting 35 chests to reset the progress of Overthrow so it doesn't reach level 2.
 
 Additional Notes:
@@ -82,6 +83,9 @@ config = resolution_config.values_by_resolution[current_monitor_resolution]
 start_time = time.time()
 image_path = f"Destiny_2_Scripts/AFK_Exotic_Class_Item_Farm/Version_4/Image_{current_monitor_resolution}"
 
+character_class = "Hunter"
+print(f"Running Class: {character_class}")
+
 
 def my_function():
     while True:
@@ -90,11 +94,7 @@ def my_function():
             relaunch_into_the_pale_heart(True)
 
         # Relaunch into the Pale Heart before Overthrow level reaches 2
-        elif (
-            pyautogui.locateOnScreen(f"{image_path}/Overthrow The Landing Icon.png", confidence=0.9)
-            and efficiency_evaluation.number_of_chests_obtained > 0
-            and efficiency_evaluation.number_of_chests_obtained % 35 == 0
-        ):
+        elif pyautogui.locateOnScreen(f"{image_path}/Overthrow The Landing Icon.png", confidence=0.9) and efficiency_evaluation.number_of_chests_obtained > 0 and efficiency_evaluation.number_of_chests_obtained % 35 == 0:
             time.sleep(0.5)
             relaunch_into_the_pale_heart()
 
@@ -134,23 +134,24 @@ def my_function():
             print(chest_spawns)
 
             if chest_spawns["Chest_4"]:
-                run_from_3_to_4()
-                collect_loot.collect_loot()
+                run_from_3_to_4(character_class)
+                collect_loot.collect_loot("4")
             elif chest_spawns["Chest_5"]:
-                run_from_3_to_5()
-                collect_loot.collect_loot()
+                run_from_3_to_5(character_class)
+                collect_loot.collect_loot("5")
             elif chest_spawns["Chest_6"]:
-                run_from_3_to_6()
-                collect_loot.collect_loot()
+                run_from_3_to_6(character_class)
+                collect_loot.collect_loot("6")
             elif chest_spawns["Chest_7"]:
                 run_from_3_to_7()
-                collect_loot.collect_loot()
+                collect_loot.collect_loot("7")
             elif chest_spawns["Chest_8"]:
                 run_from_3_to_8()
-                collect_loot.collect_loot()
-                if is_chest_9_spawned():
+                is_chest_9 = is_chest_9_spawned()
+                collect_loot.collect_loot("8")
+                if is_chest_9:
                     run_from_8_to_9()
-                    collect_loot.collect_loot()
+                    collect_loot.collect_loot("9")
 
             clear_chest_spawn_tracker()
 
@@ -171,7 +172,7 @@ def run_forward(running_duration: float, wait_time: float = 0.1):
 
 def start_afk():
     t = threading.Thread(target=my_function)
-    print("\nExecution Started")
+    print("Execution Started")
     t.start()
 
 

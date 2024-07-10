@@ -17,11 +17,12 @@ config = resolution_config.values_by_resolution[current_monitor_resolution]
 image_path = f"Destiny_2_Scripts/AFK_Exotic_Class_Item_Farm/Version_4/Image_{current_monitor_resolution}"
 
 
-def collect_loot(is_chest_3: bool = False):
+def collect_loot(chest_number: str, is_chest_3: bool = False):
     """
     Collect chest loot by checking if "Alt" button is on the screen, then hold it down for 1.5 seconds to open the chest.
 
     Args:
+        chest_number (str): Which chest is being opened.
         is_chest_3 (bool, optional): If it's used for Chest_3, the chest may not always spawn in so no need to increment "number_of_missed_chest". Defaults to False.
     """
 
@@ -33,4 +34,5 @@ def collect_loot(is_chest_3: bool = False):
         time.sleep(1.5)
         keyboard.release("alt")
     elif not is_chest_3:
-        efficiency_evaluation.number_of_missed_chest += 1
+        efficiency_evaluation.missed_chests.append(f"Chest_{chest_number}")
+        efficiency_evaluation.number_of_chests_missed += 1

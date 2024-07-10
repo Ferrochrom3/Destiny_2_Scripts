@@ -10,6 +10,7 @@ from Destiny_2_Scripts.AFK_Exotic_Class_Item_Farm.Version_4 import relaunch
 number_of_runs = 0
 number_of_chests_obtained = 0
 number_of_chests_missed = 0
+missed_chests = []
 
 
 def display_status(start_time: float):
@@ -43,3 +44,5 @@ def display_status(start_time: float):
           f"\nNumber of Missed The Landing Relaunch: {relaunch.number_of_missed_the_landing_relaunch}"
           f"\nNumber of Missed The Pale Heart Relaunch: {relaunch.number_of_missed_the_pale_heart_relaunch}")
     # fmt: on
+
+    print("Missed Chests: ", missed_chests)

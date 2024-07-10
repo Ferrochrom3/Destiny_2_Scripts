@@ -85,7 +85,7 @@ def win32api_move_mouse(x: int, y: int, wait_time: float = 0.1):
 
 def start_afk():
     t = threading.Thread(target=my_function)
-    print("\nExecution Started")
+    print("Execution Started")
     t.start()
 
 
