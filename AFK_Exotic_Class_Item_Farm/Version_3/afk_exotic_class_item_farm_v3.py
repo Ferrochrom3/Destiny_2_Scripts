@@ -15,16 +15,16 @@ import keyboard
 import pyautogui
 import win32api
 import win32con
-import relaunch
-import collect_loot
 from colorama import Fore, Style
 from efficiency_evaluation import display_status
 
 destiny_2_scripts_path = os.path.abspath("Destiny_2_Scripts")
 folder_path = os.path.dirname(destiny_2_scripts_path)
 sys.path.insert(0, folder_path)
-from Destiny_2_Scripts.AFK_Exotic_Class_Item_Farm.Version_3 import resolution_config
 from Destiny_2_Scripts.Other_Utilities.Internet_Error_Fix.internet_error_fix import is_internet_error, fix_internet_error
+from Destiny_2_Scripts.AFK_Exotic_Class_Item_Farm.Version_3 import relaunch
+from Destiny_2_Scripts.AFK_Exotic_Class_Item_Farm.Version_3 import collect_loot
+from Destiny_2_Scripts.AFK_Exotic_Class_Item_Farm.Version_3 import resolution_config
 
 """
 Location     : The Pale Heart - The Landing
