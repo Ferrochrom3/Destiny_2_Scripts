@@ -110,7 +110,7 @@ def my_function():
             # Run to Chest_3, collect if chest spawned
             run_to_chest_3()
             check_chest_4_spawn()
-            collect_loot.collect_loot()
+            collect_loot.collect_loot(True)
 
             # Check additional chest spawns to collect a second chest before relaunching
             check_additional_chest_spawns()
