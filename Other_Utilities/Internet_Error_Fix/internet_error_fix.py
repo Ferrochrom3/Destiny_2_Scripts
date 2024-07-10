@@ -29,7 +29,11 @@ def is_internet_error():
     """
 
     # Error may occur during execution, which takes you to the intro screen when checking for error code screen hit, add intro screen check to get out of the loop if that happens.
-    if pyautogui.locateOnScreen(f"{image_path}/Error Code Icon.png", confidence=0.8) or pyautogui.locateOnScreen(f"{image_path}/The Final Shape.png", confidence=0.8):
+    if (
+        pyautogui.locateOnScreen(f"{image_path}/Error Code Icon.png", confidence=0.8)
+        or pyautogui.locateOnScreen(f"{image_path}/Attention Icon.png", confidence=0.8)
+        or pyautogui.locateOnScreen(f"{image_path}/The Final Shape.png", confidence=0.8)
+    ):
         return True
 
     return False
@@ -43,7 +47,7 @@ def fix_internet_error(character_to_select: str):
         character_to_select (str): From top to bottom, which character to select (first, second, or third).
     """
     print("Internet error has occured...Trying to fix it...")
-    if pyautogui.locateOnScreen(f"{image_path}/Error Code Icon.png", confidence=0.8):
+    if pyautogui.locateOnScreen(f"{image_path}/Error Code Icon.png", confidence=0.8) or pyautogui.locateOnScreen(f"{image_path}/Attention Icon.png", confidence=0.8):
         keyboard.press_and_release("space")
 
     print("Waiting for The Final Shape Screen...")
