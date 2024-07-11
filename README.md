@@ -12,4 +12,15 @@ All scripts support 2560x1440 resolution. Scripts that only use keyboard inputs 
  - AFK Exotic Class Item Farm (V2, V3, V4)
  - AFK Warlords Ruin First Boss Farm
  - Internet Error Fix
- - Spam Join (doesn't use a resolution_config file)
+ - Spam Join
+
+
+ ## Steps to Package Executables
+  1. Locate .py script file in Script Location
+  2. Under Onefile, set "One File"
+  3. Under Console Window, set "Console Based"
+  4. Under Additional Files, add in Destiny_2_Scripts folder.
+  5. Under Settings, change "Output Directory"
+  6. After EXE is finished packaging, copy and past "Destiny_2_Scripts" to a new location
+  7. Remove any folders that are not used in the script and all image folders, leaving only the EXE and Python Source Files that are used in imports.
+  8. The remaining are all that's necessary to use the EXE.

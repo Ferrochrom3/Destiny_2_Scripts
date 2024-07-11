@@ -53,12 +53,27 @@ sys.path.insert(0, folder_path)                                                 
 from Destiny_2_Scripts.Other_Utilities.Internet_Error_Fix.internet_error_fix import is_internet_error, fix_internet_error   Dynamically inserts the path needed to get to "Destiny_2_Scripts" so any scripts in Destiny_2_Scripts can be imported like this
 from *some path to a folder* import resolution_config                                                                       Cannot just do "import resolution_config" when resolution_config.py is imported in another script
                                                                                                                             where that other script also uses a resolution_config.py file that is different
+
+if getattr(sys, "frozen", False):                                                                                           Determine if the script is running as a bundled executable
+    base_path = sys._MEIPASS + "/Destiny_2_Scripts/AFK_Exotic_Class_Item_Farm/Version_4/"                                   The path from "Destiny_2_Scripts" to the files that this code is used in
+else:                                                                                                                       
+    base_path = os.path.dirname(__file__)
+
+image_path = os.path.join(base_path, f"Image_{current_monitor_resolution}")                                                 Join the base path and the image path
+
 """
 
 
-print("Testing")
-print("Press F7 to Start")
-print("Press F8 to Exit\n")
+screen_width, screen_height = pyautogui.size()
+current_monitor_resolution = f"{screen_width}x{screen_height}"
+
+if getattr(sys, "frozen", False):
+    base_path = sys._MEIPASS + "/Destiny_2_Scripts/AFK_Exotic_Class_Item_Farm/Version_4/"
+else:
+    base_path = os.path.dirname(__file__)
+
+image_path = os.path.join(base_path, f"Image_{current_monitor_resolution}")
+
 
 start_time = time.time()
 
@@ -88,6 +103,10 @@ def start_afk():
     print("Execution Started")
     t.start()
 
+
+print("Testing")
+print("Press F7 to Start")
+print("Press F8 to Exit\n")
 
 while True:
     keyboard.add_hotkey("f7", start_afk)

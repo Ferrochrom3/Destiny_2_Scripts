@@ -40,6 +40,7 @@ from Destiny_2_Scripts.AFK_Exotic_Class_Item_Farm.Version_4.check_chest_spawns i
 from Destiny_2_Scripts.AFK_Exotic_Class_Item_Farm.Version_4.run_to_chest import run_to_chest_3, run_from_3_to_4, run_from_3_to_5, run_from_3_to_6, run_from_3_to_7, run_from_3_to_8, run_from_8_to_9
 from Destiny_2_Scripts.AFK_Exotic_Class_Item_Farm.Version_4.relaunch import relaunch_the_landing, relaunch_into_the_pale_heart
 
+
 """
 Location     : The Pale Heart - The Landing
 Subclass     : Any
@@ -73,37 +74,36 @@ Additional Notes:
  - Must equip Wombo Detector Ghost mod.
 """
 
-print("Press F7 to Start")
-print("Press F8 to Exit\n")
-
 screen_width, screen_height = pyautogui.size()
 current_monitor_resolution = f"{screen_width}x{screen_height}"
 config = resolution_config.values_by_resolution[current_monitor_resolution]
 
-start_time = time.time()
-image_path = f"Destiny_2_Scripts/AFK_Exotic_Class_Item_Farm/Version_4/Image_{current_monitor_resolution}"
+if getattr(sys, "frozen", False):
+    base_path = sys._MEIPASS + "/Destiny_2_Scripts/AFK_Exotic_Class_Item_Farm/Version_4/"
+else:
+    base_path = os.path.dirname(__file__)
 
-character_class = "Hunter"
+image_path = os.path.join(base_path, f"Image_{current_monitor_resolution}")
+
+
+start_time = time.time()
+character_class = "Warlock"
 print(f"Running Class: {character_class}")
 
 
 def my_function():
     while True:
         if is_internet_error():
-            fix_internet_error("first")
+            fix_internet_error("third")
             relaunch_into_the_pale_heart(True)
 
         # Relaunch into the Pale Heart before Overthrow level reaches 2
-        elif (
-            pyautogui.locateOnScreen(f"{image_path}/Overthrow The Landing Icon.png", confidence=0.9)
-            and efficiency_evaluation.number_of_chests_obtained > 0
-            and efficiency_evaluation.number_of_chests_obtained % 35 == 0
-        ):
+        elif pyautogui.locateOnScreen(os.path.join(image_path, "Overthrow The Landing Icon.png"), confidence=0.9) and efficiency_evaluation.number_of_chests_obtained > 0 and efficiency_evaluation.number_of_chests_obtained % 35 == 0:
             time.sleep(0.5)
             relaunch_into_the_pale_heart()
 
         # Try to collect chest and relaunch The Landing after collecting loot
-        elif pyautogui.locateOnScreen(f"{image_path}/Overthrow The Landing Icon.png", confidence=0.9):
+        elif pyautogui.locateOnScreen(os.path.join(image_path, "Overthrow The Landing Icon.png"), confidence=0.9):
             efficiency_evaluation.number_of_runs += 1
             time.sleep(0.5)
 
@@ -179,6 +179,9 @@ def start_afk():
     print("Execution Started")
     t.start()
 
+
+print("Press F7 to Start")
+print("Press F8 to Exit\n")
 
 while True:
     keyboard.add_hotkey("f7", start_afk)

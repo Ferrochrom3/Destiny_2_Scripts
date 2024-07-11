@@ -33,6 +33,7 @@ print("Press F7 to Start")
 print("Press F8 to End\n")
 
 start_time = time.time()
+image_path = "Destiny_2_Scripts/AFK_Exotic_Class_Item_Farm/(Deprecated) Version_1"
 
 number_of_attempts = 0
 number_of_chests_opened = 0
@@ -43,12 +44,12 @@ def my_function():
     global number_of_attempts  # pylint: disable=w0603
 
     while True:
-        if pyautogui.locateOnScreen("Pathfinder Icon.png", confidence=0.8):
+        if pyautogui.locateOnScreen(f"{image_path}/Pathfinder Icon.png", confidence=0.8):
             keyboard.press_and_release("m")
             time.sleep(1)
             relaunch_the_landing()
 
-        if pyautogui.locateOnScreen("Strand Barricade.png", confidence=0.9):
+        if pyautogui.locateOnScreen(f"{image_path}/Strand Barricade.png", confidence=0.9):
             number_of_attempts += 1
 
             # Swap to energy Sniper and scope in
@@ -59,7 +60,7 @@ def my_function():
             elapsed_waiting_time = time.time()
 
             while True:
-                if pyautogui.locateOnScreen("Chest Icon.png", confidence=0.8, region=(0, 559, 210, 180)):
+                if pyautogui.locateOnScreen(f"{image_path}/Chest Icon.png", confidence=0.8, region=(0, 559, 210, 180)):
                     print("Chest Icon Found")
 
                     # Unscope
@@ -87,7 +88,7 @@ def relaunch_the_landing():
     keyboard.press_and_release("m")
 
     while True:
-        if pyautogui.locateOnScreen("Legendary Campaign Icon.png", confidence=0.8):
+        if pyautogui.locateOnScreen(f"{image_path}/Legendary Campaign Icon.png", confidence=0.8):
             time.sleep(0.2)
             break
 
@@ -136,7 +137,7 @@ def run_towards_chest():
     keyboard.release("a")
     time.sleep(0.2)
 
-    if pyautogui.locateOnScreen("Alt Button.png", confidence=0.8, region=(834, 705, 200, 80)):
+    if pyautogui.locateOnScreen(f"{image_path}/Alt Button.png", confidence=0.8, region=(834, 705, 200, 80)):
         print("Alt Button Found")
         number_of_chests_opened += 1
         keyboard.press("alt")

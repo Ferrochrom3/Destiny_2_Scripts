@@ -1,3 +1,5 @@
+import os
+import sys
 import time
 import keyboard
 import pyautogui
@@ -9,7 +11,13 @@ screen_width, screen_height = pyautogui.size()
 current_monitor_resolution = f"{screen_width}x{screen_height}"
 config = resolution_config.values_by_resolution[current_monitor_resolution]
 
-image_path = f"Destiny_2_Scripts/AFK_Exotic_Class_Item_Farm/Version_4/Image_{current_monitor_resolution}"
+if getattr(sys, "frozen", False):
+    base_path = sys._MEIPASS + "/Destiny_2_Scripts/AFK_Exotic_Class_Item_Farm/Version_4/"
+else:
+    base_path = os.path.dirname(__file__)
+
+image_path = os.path.join(base_path, f"Image_{current_monitor_resolution}")
+
 
 number_of_missed_the_landing_relaunch = 0
 number_of_missed_the_pale_heart_relaunch = 0
@@ -22,7 +30,7 @@ def relaunch_the_landing():
     keyboard.press_and_release("m")
 
     while True:
-        if pyautogui.locateOnScreen(f"{image_path}/Campaign Mission Icon.png", confidence=0.8):
+        if pyautogui.locateOnScreen(os.path.join(image_path, "Campaign Mission Icon.png"), confidence=0.8):
             time.sleep(0.2)
             break
 
@@ -31,7 +39,7 @@ def relaunch_the_landing():
     time.sleep(0.3)
 
     # If the mouse cursor did not move to the landing zone correctly, close the map and try again
-    if not pyautogui.locateOnScreen(f"{image_path}/The Landing Landing Zone.png", confidence=0.8):
+    if not pyautogui.locateOnScreen(os.path.join(image_path, "The Landing Landing Zone.png"), confidence=0.8):
         print("Mouse cursor did not move to landing zone correctly while relaunching The Landing...Retrying...")
         number_of_missed_the_landing_relaunch += 1
         keyboard.press_and_release("m")
@@ -69,7 +77,7 @@ def relaunch_into_the_pale_heart(is_after_error_code: bool = False):
 
     print("Waiting to Open Director")
     while True:
-        if pyautogui.locateOnScreen(f"{image_path}/Open Director.png", confidence=0.8):
+        if pyautogui.locateOnScreen(os.path.join(image_path, "Open Director.png"), confidence=0.8):
             win32api_move_mouse(0, 100)  # Move mouse cursor slightly down so it's not on The Pale Heart so the destination icon doesn't change
             keyboard.press_and_release("m")
             time.sleep(1)
@@ -77,7 +85,7 @@ def relaunch_into_the_pale_heart(is_after_error_code: bool = False):
 
     print("Waiting to Open The Pale Heart Destination")
     while True:
-        if pyautogui.locateOnScreen(f"{image_path}/The Pale Heart.png", confidence=0.8):
+        if pyautogui.locateOnScreen(os.path.join(image_path, "The Pale Heart.png"), confidence=0.8):
             x, y = pyautogui.locateCenterOnScreen(f"{image_path}/The Pale Heart.png", confidence=0.8)
             pyautogui.moveTo(x, y)
             time.sleep(0.1)
@@ -86,7 +94,7 @@ def relaunch_into_the_pale_heart(is_after_error_code: bool = False):
 
     print("Waiting For The Pale Heart Map to Open")
     while True:
-        if pyautogui.locateOnScreen(f"{image_path}/Campaign Mission Icon.png", confidence=0.8):
+        if pyautogui.locateOnScreen(os.path.join(image_path, "Campaign Mission Icon.png"), confidence=0.8):
             time.sleep(0.2)
 
             # Move to The Landing
@@ -95,7 +103,7 @@ def relaunch_into_the_pale_heart(is_after_error_code: bool = False):
             time.sleep(0.3)
 
             # If the mouse cursor did not move to the landing zone correctly, close the map and try again
-            if not pyautogui.locateOnScreen(f"{image_path}/The Landing Landing Zone.png", confidence=0.8):
+            if not pyautogui.locateOnScreen(os.path.join(image_path, "The Landing Landing Zone.png"), confidence=0.8):
                 print("Mouse cursor did not move to landing zone correctly while relaunching The Pale Heart...Retrying...")
                 number_of_missed_the_pale_heart_relaunch += 1
                 relaunch_into_the_pale_heart()

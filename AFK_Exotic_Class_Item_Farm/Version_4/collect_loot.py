@@ -14,7 +14,12 @@ screen_width, screen_height = pyautogui.size()
 current_monitor_resolution = f"{screen_width}x{screen_height}"
 config = resolution_config.values_by_resolution[current_monitor_resolution]
 
-image_path = f"Destiny_2_Scripts/AFK_Exotic_Class_Item_Farm/Version_4/Image_{current_monitor_resolution}"
+if getattr(sys, "frozen", False):
+    base_path = sys._MEIPASS + "/Destiny_2_Scripts/AFK_Exotic_Class_Item_Farm/Version_4/"
+else:
+    base_path = os.path.dirname(__file__)
+
+image_path = os.path.join(base_path, f"Image_{current_monitor_resolution}")
 
 
 def collect_loot(chest_number: str, is_chest_3: bool = False):
@@ -28,7 +33,7 @@ def collect_loot(chest_number: str, is_chest_3: bool = False):
 
     time.sleep(0.5)
 
-    if pyautogui.locateOnScreen(f"{image_path}/Alt Button.png", confidence=0.8, region=config["chest_collection_region"]):
+    if pyautogui.locateOnScreen(os.path.join(image_path, "Alt Button.png"), confidence=0.8, region=config["chest_collection_region"]):
         efficiency_evaluation.number_of_chests_obtained += 1
         keyboard.press("alt")
         time.sleep(1.5)
