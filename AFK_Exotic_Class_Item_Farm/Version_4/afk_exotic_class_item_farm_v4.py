@@ -94,7 +94,11 @@ def my_function():
             relaunch_into_the_pale_heart(True)
 
         # Relaunch into the Pale Heart before Overthrow level reaches 2
-        elif pyautogui.locateOnScreen(f"{image_path}/Overthrow The Landing Icon.png", confidence=0.9) and efficiency_evaluation.number_of_chests_obtained > 0 and efficiency_evaluation.number_of_chests_obtained % 35 == 0:
+        elif (
+            pyautogui.locateOnScreen(f"{image_path}/Overthrow The Landing Icon.png", confidence=0.9)
+            and efficiency_evaluation.number_of_chests_obtained > 0
+            and efficiency_evaluation.number_of_chests_obtained % 35 == 0
+        ):
             time.sleep(0.5)
             relaunch_into_the_pale_heart()
 
@@ -126,7 +130,7 @@ def my_function():
             # Run to Chest_3, collect if chest spawned
             run_to_chest_3()
             check_chest_4_spawn()
-            collect_loot.collect_loot(True)
+            collect_loot.collect_loot("3", True)
 
             # Check additional chest spawns to collect a second chest before relaunching
             check_additional_chest_spawns()
