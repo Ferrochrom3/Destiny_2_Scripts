@@ -8,6 +8,7 @@ Performance (out of 79.46 minutes):
  - Average Time Per Success: 6.1 minutes
 """
 
+import os
 import sys
 import threading
 import time
@@ -16,7 +17,12 @@ import pyautogui
 import efficiency_evaluation
 from colorama import Fore, Style
 from boss_yeet_exeuction import indebted_kindness, emote_at_corner, check_cases
-from dungeon_restart_and_reset import relaunch_into_master, reset_checkpoint
+from dungeon_restart_and_reset import relaunch_into_master, reset_checkpoint, reenter_dungeon_after_internet_error
+
+destiny_2_scripts_path = os.path.abspath("Destiny_2_Scripts")
+folder_path = os.path.dirname(destiny_2_scripts_path)
+sys.path.insert(0, folder_path)
+from Destiny_2_Scripts.Other_Utilities.Internet_Error_Fix.internet_error_fix import is_internet_error, fix_internet_error
 
 
 """
@@ -58,6 +64,11 @@ image_path = f"Destiny_2_Scripts/Dungeon/AFK_Warlords_Ruin_First_Boss_Farm/Image
 
 def my_function():
     while True:
+        if is_internet_error():
+            fix_internet_error("first")
+            reenter_dungeon_after_internet_error()
+            reset_checkpoint()
+
         if pyautogui.locateOnScreen(f"{image_path}/Smoke Bomb.png", confidence=0.9):
             if efficiency_evaluation.total_failed_attempts > 0 and efficiency_evaluation.total_failed_attempts % 10 == 0:
                 print("Too many failed attempts, relaunching the dungeon...")

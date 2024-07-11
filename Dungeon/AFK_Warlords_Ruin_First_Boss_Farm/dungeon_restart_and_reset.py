@@ -136,6 +136,53 @@ def reset_checkpoint():
             break
 
 
+def reenter_dungeon_after_internet_error():
+    keyboard.press_and_release("m")
+    time.sleep(1)
+
+    try:
+        x, y = pyautogui.locateCenterOnScreen(f"{image_path}/EDZ.png", confidence=0.8)
+        pyautogui.moveTo(x, y)
+        time.sleep(0.1)
+        pyautogui.leftClick()
+    except TypeError:
+        print("EDZ Not Found")
+
+    win32api_move_mouse(0, -500)
+    time.sleep(1)
+    win32api_move_mouse(config["relaunch_after_error_code_move_right"][0], config["relaunch_after_error_code_move_right"][1])
+    time.sleep(1)
+    win32api_move_mouse(config["relaunch_after_error_code_move_left"][0], config["relaunch_after_error_code_move_left"][1])
+
+    try:
+        x, y = pyautogui.locateCenterOnScreen(f"{image_path}/Dungeon Icon.png", confidence=0.8)
+        pyautogui.moveTo(x, y)
+        time.sleep(0.1)
+        pyautogui.leftClick()
+    except TypeError:
+        print("Dungeon Icon Not Found")
+
+    time.sleep(1)
+
+    # Click on Change Activity Difficulty
+    pyautogui.moveTo(config["change_difficulty_coord"][0], config["change_difficulty_coord"][1])
+    time.sleep(0.1)
+    pyautogui.leftClick()
+    time.sleep(1)
+
+    # Click on Master
+    pyautogui.moveTo(config["select_mode_master_coord"][0], config["select_mode_master_coord"][1])
+    time.sleep(0.1)
+    pyautogui.leftClick()
+    time.sleep(1)
+
+    # Click on Launch
+    pyautogui.moveTo(config["launch_button_coord"][0], config["launch_button_coord"][1])
+    time.sleep(0.1)
+    pyautogui.leftClick()
+    time.sleep(1)
+
+
 def win32api_move_mouse(x: int, y: int, wait_time: float = 0.1):
     win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, x, y, 0, 0)
     time.sleep(wait_time)
