@@ -45,8 +45,11 @@ def fix_internet_error(character_to_select: str):
     Exit the error code screen (which takes you to the main intro screen) and continue to character selection screen and click Hunter Human.
 
     Args:
-        character_to_select (str): From top to bottom, which character to select (first, second, or third).
+        character_to_select (str): From top to bottom, which character to select (First, Second, or Third). The characters will be converted to lower cases automatically.
     """
+
+    character_to_select = character_to_select.lower()
+
     print("Internet error has occured...Trying to fix it...")
     if pyautogui.locateOnScreen(os.path.join(image_path, "Error Code Icon.png"), confidence=0.8) or pyautogui.locateOnScreen(f"{image_path}/Attention Icon.png", confidence=0.8):
         keyboard.press_and_release("space")

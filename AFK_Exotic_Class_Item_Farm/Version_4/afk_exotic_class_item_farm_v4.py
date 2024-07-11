@@ -87,14 +87,48 @@ image_path = os.path.join(base_path, f"Image_{current_monitor_resolution}")
 
 
 start_time = time.time()
-character_class = "Warlock"
-print(f"Running Class: {character_class}")
+character_class: str = ""
+character_position: str = ""
+
+
+def prompt_instruction():
+    global character_class
+    global character_position
+
+    character_class = input(f"Which character are you running? (Warlock, Hunter, Titan){Fore.GREEN}").strip().capitalize()
+    character_position = input(f"{Style.RESET_ALL}From top to bottom, which position is your {character_class} in the character selection menu? (First, Second, Third){Fore.GREEN}").strip().capitalize()
+
+    print(f"{Style.RESET_ALL}Running Class: {character_class}")
+    print(f"Character Position: {character_position}")
+
+
+def verify_user_input(character_class, character_position):
+    valid_classes = {"Warlock", "Hunter", "Titan"}
+    valid_positions = {"First", "Second", "Third"}
+
+    class_valid = character_class in valid_classes
+    position_valid = character_position in valid_positions
+
+    if not class_valid:
+        print(f'{Fore.RED}Your character class "{character_class}" is invalid. Please check spelling.{Style.RESET_ALL}')
+
+    if not position_valid:
+        print(f'{Fore.RED}Your character position "{character_position}" is invalid. Please check spelling.{Style.RESET_ALL}')
+
+    print()
+    return class_valid and position_valid
+
+
+prompt_instruction()
+
+while not verify_user_input(character_class, character_position):
+    prompt_instruction()
 
 
 def my_function():
     while True:
         if is_internet_error():
-            fix_internet_error("third")
+            fix_internet_error(character_position)
             relaunch_into_the_pale_heart(True)
 
         # Relaunch into the Pale Heart before Overthrow level reaches 2
