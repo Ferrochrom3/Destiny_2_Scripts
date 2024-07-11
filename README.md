@@ -9,7 +9,7 @@ All scripts support 2560x1440 resolution. Scripts that only use keyboard inputs 
 
 
 ## Scripts that supports 1920x1080 resolution in addtion to 2560x1440 support:
- - AFK Exotic Class Item Farm (V2, V3)
+ - AFK Exotic Class Item Farm (V2, V3, V4)
  - Internet Error Fix
  - Spam Join (doesn't use a resolution_config file)
 

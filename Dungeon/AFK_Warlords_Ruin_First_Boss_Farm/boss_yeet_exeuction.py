@@ -18,7 +18,7 @@ screen_width, screen_height = pyautogui.size()
 current_monitor_resolution = f"{screen_width}x{screen_height}"
 config = resolution_config.values_by_resolution[current_monitor_resolution]
 
-image_path = f"Destiny_2_Scripts/Dungeon/AFK_Warlord's_Ruin_First_Boss_Farm/Image_{current_monitor_resolution}"
+image_path = f"Destiny_2_Scripts/Dungeon/AFK_Warlords_Ruin_First_Boss_Farm/Image_{current_monitor_resolution}"
 
 
 def indebted_kindness():
@@ -114,10 +114,10 @@ def check_cases():
             break
 
         # fmt: off
-        if not pyautogui.locateOnScreen(f"{image_path}/Boss Health Bar.png", confidence=0.7, region=config["boss_health_bar_region"]) \
-            and pyautogui.locateOnScreen(f"{image_path}/Player Health Bar.png", confidence=0.7, region=config["player_health_bar_region"]):
+        if not pyautogui.locateOnScreen(f"{image_path}/Boss Health Bar.png", confidence=0.8, region=config["boss_health_bar_region"]) \
+            and pyautogui.locateOnScreen(f"{image_path}/Player Health Bar.png", confidence=0.8, region=config["player_health_bar_region"]):
         # fmt: on
-            time.sleep(1)  # Add some delay so relaunch is not too early
+            time.sleep(1.5)  # Add some delay so relaunch is not too early
             print("Case: Boss is killed")
             efficiency_evaluation.total_success_attempts += 1
             relaunch_into_master()

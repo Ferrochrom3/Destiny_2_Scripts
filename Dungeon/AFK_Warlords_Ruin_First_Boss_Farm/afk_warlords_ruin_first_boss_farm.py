@@ -55,13 +55,13 @@ screen_width, screen_height = pyautogui.size()
 current_monitor_resolution = f"{screen_width}x{screen_height}"
 
 start_time = time.time()
-image_path = f"Destiny_2_Scripts/Dungeon/AFK_Warlord's_Ruin_First_Boss_Farm/Image_{current_monitor_resolution}"
+image_path = f"Destiny_2_Scripts/Dungeon/AFK_Warlords_Ruin_First_Boss_Farm/Image_{current_monitor_resolution}"
 
 
 def my_function():
     while True:
         if pyautogui.locateOnScreen(f"{image_path}/Smoke Bomb.png", confidence=0.9):
-            if efficiency_evaluation.total_failed_attempts > 0 and efficiency_evaluation.total_failed_attempts % 10 == 10:
+            if efficiency_evaluation.total_failed_attempts > 0 and efficiency_evaluation.total_failed_attempts % 10 == 0:
                 print("Too many failed attempts, relaunching the dungeon...")
                 relaunch_into_master()
                 reset_checkpoint()
@@ -90,6 +90,7 @@ while True:
     keyboard.release("alt")
     keyboard.release("tab")
     keyboard.release("left")
+    pyautogui.mouseUp(button="right")
     efficiency_evaluation.display_status(start_time)
 
     # fmt: off
