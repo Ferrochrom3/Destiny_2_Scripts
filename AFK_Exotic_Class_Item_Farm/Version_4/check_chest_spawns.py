@@ -38,10 +38,8 @@ def is_chest_3_spawned():
 
 def check_additional_chest_spawns():
     """
-    Does Chest_4 to Chest_8 checks, all in a single function.
+    Does Chest_5 to Chest_9 checks, all in a single function.
     """
-    # Chest chests that does not require any camera turns
-    check_chest_4_spawn()
 
     # Check chests that require scope in after a small camera turn
     win32api_move_mouse(600, -100)
@@ -50,6 +48,7 @@ def check_additional_chest_spawns():
     check_chest_6_spawn()
     check_chest_7_spawn()
     check_chest_8_spawn()
+    check_chest_9_spawn()
     pyautogui.mouseUp(button="right")
     time.sleep(0.6)
 
@@ -111,9 +110,9 @@ def check_chest_8_spawn():
         chest_spawn_tracker["Chest_8"] = False
 
 
-def is_chest_9_spawned():
+def check_chest_9_spawn():
     """
-    Check if Chest_9 has spawned after collecting Chest_8.
+    Check if Chest_9 has spawned. If so, update the chest key in "chest_spawn_tracker" dictionary to True, otherwise update the key to False
 
     Returns:
         bool: Whether or not Chest_9 has spawened.

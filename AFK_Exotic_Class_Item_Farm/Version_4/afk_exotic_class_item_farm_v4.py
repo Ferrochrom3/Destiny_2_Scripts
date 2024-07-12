@@ -31,7 +31,6 @@ from Destiny_2_Scripts.AFK_Exotic_Class_Item_Farm.Version_4 import efficiency_ev
 from Destiny_2_Scripts.AFK_Exotic_Class_Item_Farm.Version_4 import resolution_config
 from Destiny_2_Scripts.AFK_Exotic_Class_Item_Farm.Version_4.check_chest_spawns import (
     is_chest_3_spawned,
-    is_chest_9_spawned,
     check_chest_4_spawn,
     check_additional_chest_spawns,
     get_sorted_chest_spawn_tracker,
@@ -100,7 +99,9 @@ def prompt_instruction():
     global character_position
 
     character_class = input(f"Which character are you running? (Warlock, Hunter, Titan){Fore.GREEN}").strip().capitalize()
-    character_position = input(f"{Style.RESET_ALL}From top to bottom, which position is your {character_class} in the character selection screen? (First, Second, Third){Fore.GREEN}").strip().capitalize()
+    character_position = (
+        input(f"{Style.RESET_ALL}From top to bottom, which position is your {character_class} in the character selection screen? (First, Second, Third){Fore.GREEN}").strip().capitalize()
+    )
 
     print(f"{Style.RESET_ALL}Running Class: {character_class}")
     print(f"Character Position: {character_position}")
@@ -149,12 +150,16 @@ def my_function():
             relaunch_into_the_pale_heart(True)
 
         # Relaunch into the Pale Heart before Overthrow level reaches 2
-        elif pyautogui.locateOnScreen(os.path.join(image_path, "Overthrow The Landing Icon.png"), confidence=0.9) and efficiency_evaluation.number_of_chests_obtained > 0 and efficiency_evaluation.number_of_chests_obtained % 35 == 0:
+        elif (
+            pyautogui.locateOnScreen(os.path.join(image_path, "Overthrow The Landing Icon.png"), confidence=0.8)
+            and efficiency_evaluation.number_of_chests_obtained > 0
+            and efficiency_evaluation.number_of_chests_obtained % 35 == 0
+        ):
             time.sleep(0.5)
             relaunch_into_the_pale_heart()
 
         # Try to collect chest and relaunch The Landing after collecting loot
-        elif pyautogui.locateOnScreen(os.path.join(image_path, "Overthrow The Landing Icon.png"), confidence=0.9):
+        elif pyautogui.locateOnScreen(os.path.join(image_path, "Overthrow The Landing Icon.png"), confidence=0.8):
             keyboard.press_and_release("1")
             efficiency_evaluation.number_of_runs += 1
             time.sleep(0.5)
@@ -175,7 +180,7 @@ def my_function():
             while True:
                 if is_chest_3_spawned():
                     break
-                if time.time() - elapsed_time >= 1:
+                if time.time() - elapsed_time >= 30:
                     break
             pyautogui.mouseUp(button="right")
 
@@ -201,13 +206,14 @@ def my_function():
             elif chest_spawns["Chest_7"]:
                 run_from_3_to_7()
                 collect_loot.collect_loot("7")
+            elif chest_spawns["Chest_8"] and chest_spawns["chest_9"]:
+                run_from_3_to_8()
+                collect_loot.collect_loot("8")
+                run_from_8_to_9()
+                collect_loot.collect_loot("9")
             elif chest_spawns["Chest_8"]:
                 run_from_3_to_8()
-                is_chest_9 = is_chest_9_spawned()
                 collect_loot.collect_loot("8")
-                if is_chest_9:
-                    run_from_8_to_9()
-                    collect_loot.collect_loot("9")
 
             clear_chest_spawn_tracker()
 
