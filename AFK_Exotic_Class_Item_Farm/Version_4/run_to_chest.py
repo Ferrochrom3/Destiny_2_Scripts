@@ -10,7 +10,7 @@ def run_to_chest_3():
     run_forward(3)
     win32api_move_mouse(-1200, 0)
     run_forward(4.9)
-    win32api_move_mouse(-1770, 220)
+    win32api_move_mouse(-1770, 220, 0.2)
 
 
 def run_from_3_to_4(character_class: str):
@@ -159,7 +159,7 @@ def run_from_3_to_8():
 
 def run_from_8_to_9():
     win32api_move_mouse(-1000, 0)
-    run_forward(4.7)
+    run_forward(4.5)
     win32api_move_mouse(2000, 0)
     run_forward(1.8)
 

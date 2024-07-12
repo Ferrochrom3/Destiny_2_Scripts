@@ -99,9 +99,7 @@ def prompt_instruction():
     global character_position
 
     character_class = input(f"Which character are you running? (Warlock, Hunter, Titan){Fore.GREEN}").strip().capitalize()
-    character_position = (
-        input(f"{Style.RESET_ALL}From top to bottom, which position is your {character_class} in the character selection screen? (First, Second, Third){Fore.GREEN}").strip().capitalize()
-    )
+    character_position = input(f"{Style.RESET_ALL}From top to bottom, which position is your {character_class} in the character selection screen? (First, Second, Third){Fore.GREEN}").strip().capitalize()
 
     print(f"{Style.RESET_ALL}Running Class: {character_class}")
     print(f"Character Position: {character_position}")
@@ -150,30 +148,24 @@ def my_function():
             relaunch_into_the_pale_heart(True)
 
         # Relaunch into the Pale Heart before Overthrow level reaches 2
-        elif (
-            pyautogui.locateOnScreen(os.path.join(image_path, "Overthrow The Landing Icon.png"), confidence=0.8)
-            and efficiency_evaluation.number_of_chests_obtained > 0
-            and efficiency_evaluation.number_of_chests_obtained % 35 == 0
-        ):
+        elif pyautogui.locateOnScreen(os.path.join(image_path, "Overthrow The Landing Icon.png"), confidence=0.8) and efficiency_evaluation.number_of_chests_obtained > 0 and efficiency_evaluation.number_of_chests_obtained % 35 == 0:
             time.sleep(0.5)
             relaunch_into_the_pale_heart()
 
         # Try to collect chest and relaunch The Landing after collecting loot
         elif pyautogui.locateOnScreen(os.path.join(image_path, "Overthrow The Landing Icon.png"), confidence=0.8):
-            keyboard.press_and_release("1")
             efficiency_evaluation.number_of_runs += 1
             time.sleep(0.5)
 
-            # Run to corner
-            keyboard.press_and_release("1")
+            # Swap to Still Hunt and run to corner
+            keyboard.press_and_release("2")
             win32api_move_mouse(-800, 0)
             run_forward(3.5)
             win32api_move_mouse(200, 0)
             run_forward(3.5)
             win32api_move_mouse(2600, 0)
 
-            # Swap to Still Hunt and check for Chest_3 spawn
-            keyboard.press_and_release("2")
+            # Check for Chest_3 spawn
             time.sleep(1)
             pyautogui.mouseDown(button="right")
             elapsed_time = time.time()
