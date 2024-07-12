@@ -24,3 +24,22 @@ All scripts support 2560x1440 resolution. Scripts that only use keyboard inputs 
   6. After EXE is finished packaging, copy and past "Destiny_2_Scripts" to a new location
   7. Remove any folders that are not used in the script and all image folders, leaving only the EXE and Python Source Files that are used in imports.
   8. The remaining are all that's necessary to use the EXE.
+
+## In-Game Settings (anything not mentioned will be defaults)
+ - Keybinds
+   - Mouse
+      - Look Sensitivity: 7
+      - ADS Sensitivtiy Modifier 1.0
+   - Keyboard
+      - Interact: Alt
+      - Uncharged Melee: C
+      - Charged Melee: Mouse 5
+ - Video
+   - Video
+      - Field of View: 105
+      - Screen Bounds: Full Bound
+   - Additional Video
+      - Render Resolution: 100
+ - Gameplay
+   - HUD Opacity: Full (Default)
+   - Colorblind Mode: Off

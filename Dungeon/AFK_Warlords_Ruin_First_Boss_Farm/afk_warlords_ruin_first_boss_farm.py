@@ -44,8 +44,7 @@ Stats        : T9 Mobility
 Reward       : XP, Master Dungeon Loot (first boss loot table)
 
 Additional Notes:
- - Rejoin afer internet error is not currently supported with 2560x1440  
- - Have as much FPS as possible
+ - Cap FPS to 120
  - Use "Censered" Finisher and "Anniversary Pose" Emote (emote must be binded to "left").
  - DIM must be one Alt+Tab away from the game for loot collectiong to work.
  - Strength stats has no requirements but higher strength allows quicker restart when melee did not regen back after initial use.
