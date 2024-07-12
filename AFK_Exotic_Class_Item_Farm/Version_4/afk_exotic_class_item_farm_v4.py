@@ -87,8 +87,8 @@ image_path = os.path.join(base_path, f"Image_{current_monitor_resolution}")
 
 
 start_time: str = time.time()
-character_class: str = ""
-character_position: str = ""
+character_class: str = "Titan"
+character_position: str = "Second"
 
 
 def prompt_instruction():
@@ -132,10 +132,10 @@ def verify_user_input(character_class: str, character_position: str):
     return class_valid and position_valid
 
 
-prompt_instruction()
+# prompt_instruction()
 
-while not verify_user_input(character_class, character_position):
-    prompt_instruction()
+# while not verify_user_input(character_class, character_position):
+#     prompt_instruction()
 
 
 def my_function():
@@ -198,7 +198,7 @@ def my_function():
             elif chest_spawns["Chest_7"]:
                 run_from_3_to_7()
                 collect_loot.collect_loot("7")
-            elif chest_spawns["Chest_8"] and chest_spawns["chest_9"]:
+            elif chest_spawns["Chest_8"] and chest_spawns["Chest_9"]:
                 run_from_3_to_8()
                 collect_loot.collect_loot("8")
                 run_from_8_to_9()

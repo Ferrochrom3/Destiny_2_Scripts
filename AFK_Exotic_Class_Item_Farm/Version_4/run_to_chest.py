@@ -47,7 +47,7 @@ def run_from_3_to_4(character_class: str):
             keyboard.press("shift+w")
             time.sleep(0.2)
             titan_jump(0.05, 1.4)
-            time.sleep(1)
+            time.sleep(1.1)
             keyboard.release("shift+w")
 
         case _:

@@ -7,6 +7,11 @@ import win32api
 import win32con
 import resolution_config
 
+destiny_2_scripts_path = os.path.abspath("Destiny_2_Scripts")
+folder_path = os.path.dirname(destiny_2_scripts_path)
+sys.path.insert(0, folder_path)
+from Destiny_2_Scripts.Other_Utilities.Internet_Error_Fix.internet_error_fix import is_internet_error
+
 screen_width, screen_height = pyautogui.size()
 current_monitor_resolution = f"{screen_width}x{screen_height}"
 config = resolution_config.values_by_resolution[current_monitor_resolution]
@@ -33,6 +38,10 @@ def relaunch_the_landing():
         if pyautogui.locateOnScreen(os.path.join(image_path, "Campaign Mission Icon.png"), confidence=0.8):
             time.sleep(0.2)
             break
+
+        if is_internet_error():
+            print("Internet error during relaunch The Landing...")
+            return
 
     win32api_move_mouse(config["relaunch_the_landing_move_left"][0], config["relaunch_the_landing_move_left"][1], 2.2)
     win32api_move_mouse(config["relaunch_the_landing_move_right"][0], config["relaunch_the_landing_move_right"][1], 0.2)
