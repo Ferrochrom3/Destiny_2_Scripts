@@ -26,6 +26,7 @@ number_of_missed_the_pale_heart_relaunch = 0
 def relaunch_the_landing():
     global number_of_missed_the_landing_relaunch
 
+    keyboard.press_and_release("1")
     print("Relaunching")
     keyboard.press_and_release("m")
 

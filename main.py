@@ -1,18 +1,3 @@
-import os
-import sys
-import threading
-import time
-import keyboard
-import pyautogui
-import win32api
-import win32con
-from colorama import Fore, Style
-from pynput.mouse import Button, Controller
-
-destiny_2_scripts_path = os.path.abspath("Destiny_2_Scripts")
-folder_path = os.path.dirname(destiny_2_scripts_path)
-sys.path.insert(0, folder_path)
-
 """
 Require:
  - opencv-python
@@ -65,6 +50,45 @@ image_path = os.path.join(base_path, f"Image_{current_monitor_resolution}")     
 
 """
 
+import os
+import sys
+import threading
+import time
+import keyboard
+import pyautogui
+import win32api
+import win32con
+from colorama import Fore, Style
+from pynput.mouse import Button, Controller
+
+destiny_2_scripts_path = os.path.abspath("Destiny_2_Scripts")
+folder_path = os.path.dirname(destiny_2_scripts_path)
+sys.path.insert(0, folder_path)
+
+"""
+Location     : Any
+Subclass     : Any
+Abilities    : Any
+Fragments    : Any
+Aspects      : Any
+Weapons      : Kinetic - Any
+               Energy  - Any
+               Power   - Any
+Exotic Armor : Any
+Mods         : Helmet     - Any
+               Arms       - Any
+               Chest      - Any
+               Leg        - Any
+               Class Item - Any
+Stats        : Any
+Reward       : Any
+
+Process:
+ - Any
+
+Additional Notes:
+ - Any
+"""
 
 screen_width, screen_height = pyautogui.size()
 current_monitor_resolution = f"{screen_width}x{screen_height}"
@@ -81,6 +105,9 @@ start_time = time.time()
 
 
 def my_function():
+    global start_time
+    start_time = time.time()
+
     while True:
         print(pyautogui.mouseInfo())
         break

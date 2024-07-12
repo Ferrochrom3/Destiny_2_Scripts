@@ -20,6 +20,7 @@ def run_from_3_to_4(character_class: str):
     Args:
         character_class (str): The class of the character that is currently running ("Hunter", "Warlock", or "Titan").
     """
+    keyboard.press_and_release("3")
     run_forward(1.7)
     win32api_move_mouse(-1200, 0)
     run_forward(2.35)
@@ -32,21 +33,21 @@ def run_from_3_to_4(character_class: str):
             hunter_jump(0.2, 0.1)
             hunter_jump(0.3, 0.1)
             hunter_jump(0.2, 0.1)
-            time.sleep(1.3)
+            time.sleep(1.5)
             keyboard.release("shift+w")
 
         case "Warlock":
             keyboard.press("shift+w")
             time.sleep(0.2)
             warlock_jump(0.05, 1.2)
-            time.sleep(1)
+            time.sleep(1.3)
             keyboard.release("shift+w")
 
         case "Titan":
             keyboard.press("shift+w")
             time.sleep(0.2)
             titan_jump(0.05, 1.4)
-            time.sleep(0.9)
+            time.sleep(1)
             keyboard.release("shift+w")
 
         case _:
@@ -60,6 +61,7 @@ def run_from_3_to_5(character_class: str):
     Args:
         character_class (str): The class of the character that is currently running ("Hunter", "Warlock", or "Titan").
     """
+    keyboard.press_and_release("3")
     run_forward(1.8)
     win32api_move_mouse(-1400, 0)
     run_forward(2.5)
@@ -72,21 +74,21 @@ def run_from_3_to_5(character_class: str):
             hunter_jump(0.3, 0.3)
             hunter_jump(0.3, 0.3)
             hunter_jump(0.3, 0.3)
-            time.sleep(2.05)
+            time.sleep(2.4)
             keyboard.release("shift+w")
 
         case "Warlock":
             keyboard.press("shift+w")
             time.sleep(0.2)
             warlock_jump(0.05, 2)
-            time.sleep(2)
+            time.sleep(2.2)
             keyboard.release("shift+w")
 
         case "Titan":
             keyboard.press("shift+w")
             time.sleep(0.5)
             titan_jump(0.4, 1.4)
-            time.sleep(1.6)
+            time.sleep(1.9)
             keyboard.release("shift+w")
 
         case _:
@@ -100,6 +102,7 @@ def run_from_3_to_6(character_class: str):
     Args:
         character_class (str): The class of the character that is currently running ("Hunter", "Warlock", or "Titan").
     """
+    keyboard.press_and_release("3")
     run_forward(1.7)
     win32api_move_mouse(-1200, 0)
     run_forward(2.5)
@@ -112,14 +115,14 @@ def run_from_3_to_6(character_class: str):
             hunter_jump(0.4, 0.3)
             hunter_jump(0.4, 0.3)
             hunter_jump(0.4, 0.3)
-            time.sleep(1.7)
+            time.sleep(1.9)
             keyboard.release("shift+w")
 
         case "Warlock":
             keyboard.press("shift+w")
             time.sleep(0.6)
             warlock_jump(0.05, 2.3)
-            time.sleep(1.6)
+            time.sleep(1.8)
             keyboard.release("shift+w")
 
         case "Titan":
@@ -127,7 +130,7 @@ def run_from_3_to_6(character_class: str):
             keyboard.press("shift+w")
             time.sleep(0.8)
             warlock_jump(0.3, 1.3)
-            time.sleep(1.9)
+            time.sleep(2.3)
             keyboard.release("shift+w")
 
         case _:
@@ -135,28 +138,30 @@ def run_from_3_to_6(character_class: str):
 
 
 def run_from_3_to_7():
+    keyboard.press_and_release("3")
     run_forward(1.7)
     win32api_move_mouse(-1200, 0)
     run_forward(3.5)
     win32api_move_mouse(650, 0)
-    run_forward(5.7)
+    run_forward(6.1)
 
 
 def run_from_3_to_8():
+    keyboard.press_and_release("3")
     run_forward(1.7)
     win32api_move_mouse(-1200, 0)
     run_forward(3.5)
     win32api_move_mouse(650, 0)
     run_forward(3)
     win32api_move_mouse(-1090, 0)
-    run_forward(5.5)
+    run_forward(6)
 
 
 def run_from_8_to_9():
     win32api_move_mouse(-1000, 0)
     run_forward(4.7)
     win32api_move_mouse(2000, 0)
-    run_forward(1.75)
+    run_forward(1.8)
 
 
 def run_forward(running_duration: float, wait_time: float = 0.1):

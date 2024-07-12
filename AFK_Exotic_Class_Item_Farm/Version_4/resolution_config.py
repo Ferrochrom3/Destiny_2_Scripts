@@ -6,7 +6,7 @@ values_by_resolution = {
         "chest_6_region": (1734, 158, 140, 100),
         "chest_7_region": (2328, 540, 140, 120),
         "chest_8_region": (2139, 314, 110, 100),
-        "chest_9_region": (700, 388, 110, 100),
+        "chest_9_region": (825, 466, 110, 100),
         "chest_collection_region": (1112, 896, 400, 160),
         "relaunch_the_landing_move_left": (-1200, 0),
         "relaunch_the_landing_move_right": (690, -30),

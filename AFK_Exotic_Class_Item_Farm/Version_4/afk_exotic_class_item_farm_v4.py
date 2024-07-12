@@ -74,6 +74,7 @@ Additional Notes:
  - Must equip Wombo Detector Ghost mod.
 """
 
+# Resolution config and image path setup
 screen_width, screen_height = pyautogui.size()
 current_monitor_resolution = f"{screen_width}x{screen_height}"
 config = resolution_config.values_by_resolution[current_monitor_resolution]
@@ -86,23 +87,36 @@ else:
 image_path = os.path.join(base_path, f"Image_{current_monitor_resolution}")
 
 
-start_time = time.time()
+start_time: str = time.time()
 character_class: str = ""
 character_position: str = ""
 
 
 def prompt_instruction():
+    """
+    Prompt the user to input the character class that is used and the position, from top to bottom, the class is located in the character selection screen.
+    """
     global character_class
     global character_position
 
     character_class = input(f"Which character are you running? (Warlock, Hunter, Titan){Fore.GREEN}").strip().capitalize()
-    character_position = input(f"{Style.RESET_ALL}From top to bottom, which position is your {character_class} in the character selection menu? (First, Second, Third){Fore.GREEN}").strip().capitalize()
+    character_position = input(f"{Style.RESET_ALL}From top to bottom, which position is your {character_class} in the character selection screen? (First, Second, Third){Fore.GREEN}").strip().capitalize()
 
     print(f"{Style.RESET_ALL}Running Class: {character_class}")
     print(f"Character Position: {character_position}")
 
 
-def verify_user_input(character_class, character_position):
+def verify_user_input(character_class: str, character_position: str):
+    """
+    Verify the user character class and position input.
+
+    Args:
+        character_class (str): The class of the character that is used (Warlock, Hunter, Titan).
+        character_position (str): The position, from top to bottom, the class is located in the character selection screen (First, Second, Third).
+
+    Returns:
+        bool: Whether or not both inputs are valid.
+    """
     valid_classes = {"Warlock", "Hunter", "Titan"}
     valid_positions = {"First", "Second", "Third"}
 
@@ -126,6 +140,9 @@ while not verify_user_input(character_class, character_position):
 
 
 def my_function():
+    global start_time
+    start_time = time.time()
+
     while True:
         if is_internet_error():
             fix_internet_error(character_position)
@@ -138,6 +155,7 @@ def my_function():
 
         # Try to collect chest and relaunch The Landing after collecting loot
         elif pyautogui.locateOnScreen(os.path.join(image_path, "Overthrow The Landing Icon.png"), confidence=0.9):
+            keyboard.press_and_release("1")
             efficiency_evaluation.number_of_runs += 1
             time.sleep(0.5)
 
@@ -157,7 +175,7 @@ def my_function():
             while True:
                 if is_chest_3_spawned():
                     break
-                if time.time() - elapsed_time >= 30:
+                if time.time() - elapsed_time >= 1:
                     break
             pyautogui.mouseUp(button="right")
 
