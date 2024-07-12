@@ -16,13 +16,14 @@ All scripts support 2560x1440 resolution. Scripts that only use keyboard inputs 
 
 
  ## Steps to Package Executables
+  0. Open Auto Py To Exe
   1. Locate .py script file in Script Location
   2. Under Onefile, set "One File"
   3. Under Console Window, set "Console Based"
   4. Under Additional Files, add in Destiny_2_Scripts folder.
   5. Under Settings, change "Output Directory"
-  6. After EXE is finished packaging, copy and past "Destiny_2_Scripts" to a new location
-  7. Remove any folders that are not used in the script and all image folders, leaving only the EXE and Python Source Files that are used in imports.
+  6. After EXE is finished packaging, make a copy of "Destiny_2_Scripts" folder with the packaged EXE to a new location
+  7. In the newly copied "Destiny_2_Scripts", remove any folders that are not used in the script and all image folders, leaving only the EXE and Python Source Files that are used in imports.
   8. The remaining are all that's necessary to use the EXE.
 
 ## In-Game Settings (anything not mentioned will be defaults)
