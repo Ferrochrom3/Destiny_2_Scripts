@@ -122,7 +122,7 @@ def check_cases():
         if not pyautogui.locateOnScreen(os.path.join(image_path, "Boss Health Bar.png"), confidence=0.8, region=config["boss_health_bar_region"]) and pyautogui.locateOnScreen(
             os.path.join(image_path, "Player Health Bar.png"), confidence=0.8, region=config["player_health_bar_region"]
         ):
-            time.sleep(1.5)  # Add some delay so relaunch is not too early
+            time.sleep(1.1)  # Add some delay so relaunch is not too early
             print("Case: Boss is killed")
             efficiency_evaluation.consecutive_failed_attempts = 0
             efficiency_evaluation.total_success_attempts += 1
