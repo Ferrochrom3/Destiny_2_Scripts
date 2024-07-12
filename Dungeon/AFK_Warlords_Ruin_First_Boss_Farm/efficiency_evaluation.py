@@ -2,6 +2,7 @@ import time
 
 total_failed_attempts = 0
 total_success_attempts = 0
+consecutive_failed_attempts = 0
 
 
 def display_status(start_time: float):

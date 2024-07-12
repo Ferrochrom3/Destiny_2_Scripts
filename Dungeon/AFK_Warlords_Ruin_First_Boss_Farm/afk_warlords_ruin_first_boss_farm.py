@@ -77,7 +77,7 @@ def my_function():
             reset_checkpoint()
 
         if pyautogui.locateOnScreen(os.path.join(image_path, "Smoke Bomb.png"), confidence=0.9):
-            if efficiency_evaluation.total_failed_attempts > 0 and efficiency_evaluation.total_failed_attempts % 10 == 0:
+            if efficiency_evaluation.consecutive_failed_attempts >= 10:
                 print("Too many failed attempts, relaunching the dungeon...")
                 relaunch_into_master()
                 reset_checkpoint()

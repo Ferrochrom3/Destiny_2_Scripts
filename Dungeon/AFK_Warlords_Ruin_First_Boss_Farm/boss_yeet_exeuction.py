@@ -116,6 +116,7 @@ def check_cases():
             time.sleep(1)
             pyautogui.leftClick()
             efficiency_evaluation.total_failed_attempts += 1
+            efficiency_evaluation.consecutive_failed_attempts += 1
             break
 
         if not pyautogui.locateOnScreen(os.path.join(image_path, "Boss Health Bar.png"), confidence=0.8, region=config["boss_health_bar_region"]) and pyautogui.locateOnScreen(
@@ -123,6 +124,7 @@ def check_cases():
         ):
             time.sleep(1.5)  # Add some delay so relaunch is not too early
             print("Case: Boss is killed")
+            efficiency_evaluation.consecutive_failed_attempts = 0
             efficiency_evaluation.total_success_attempts += 1
             relaunch_into_master()
             reset_checkpoint()
