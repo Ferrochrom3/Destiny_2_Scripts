@@ -67,6 +67,9 @@ start_time = time.time()
 
 
 def my_function():
+    global start_time
+    start_time = time.time()
+
     while True:
         if is_internet_error():
             fix_internet_error("first")
