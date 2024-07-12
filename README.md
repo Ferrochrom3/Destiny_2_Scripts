@@ -16,17 +16,19 @@ All scripts support 2560x1440 resolution. Scripts that only use keyboard inputs 
 
 
  ## Steps to Package Executables
-  0. Open Auto Py To Exe
-  1. Locate .py script file in Script Location
-  2. Under Onefile, set "One File"
-  3. Under Console Window, set "Console Based"
-  4. Under Additional Files, add in Destiny_2_Scripts folder.
-  5. Under Settings, change "Output Directory"
-  6. After EXE is finished packaging, make a copy of "Destiny_2_Scripts" folder with the packaged EXE to a new location
-  7. In the newly copied "Destiny_2_Scripts", remove any folders that are not used in the script and all image folders, leaving only the EXE and Python Source Files that are used in imports.
-  8. The remaining are all that's necessary to use the EXE.
+  0. Ensure the script's code supports exe packaging
+   - Image path needs to be dynamically determined if the script is running as a bundled executable or in development
+  1. Open Auto Py To Exe
+  2. Locate the .py script file in **Script Location**
+  3. Under **Onefile**, set "One File"
+  4. Under **Console Window**, set "Console Based"
+  5. Under **Additional Files**, add in "Destiny_2_Scripts" folder
+  6. Under **Settings**, change "Output Directory"
+  7. After EXE has finished packaging, make a copy of "Destiny_2_Scripts" folder with the packaged EXE to a new location
+  8. In the newly copied "Destiny_2_Scripts" folder, remove any folders that are not used for the script's exeuction and all image folders, leaving only the EXE and Python Source Files that are used in imports
+  9. The remaining are all that's necessary to use the EXE.
 
-## In-Game Settings (anything not mentioned will be defaults)
+## In-Game Settings (anything not mentioned will be default)
  - Keybinds
    - Mouse
       - Look Sensitivity: 7
@@ -38,7 +40,7 @@ All scripts support 2560x1440 resolution. Scripts that only use keyboard inputs 
  - Video
    - Video
       - Field of View: 105
-      - Screen Bounds: Full Bound
+      - Screen Bounds: Set the bounds to max, covering the entire screen
    - Additional Video
       - Render Resolution: 100
  - Gameplay
