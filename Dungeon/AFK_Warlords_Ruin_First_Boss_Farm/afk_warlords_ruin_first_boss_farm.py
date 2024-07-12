@@ -51,16 +51,19 @@ Additional Notes:
  - Strength stats has no requirements but higher strength allows quicker restart when melee did not regen back after initial use.
 """
 
-print("Press F7 to Start")
-print("Press F8 to Exit\n")
-
-pyautogui.FAILSAFE = False
 
 screen_width, screen_height = pyautogui.size()
 current_monitor_resolution = f"{screen_width}x{screen_height}"
 
+if getattr(sys, "frozen", False):
+    base_path = sys._MEIPASS + "/Destiny_2_Scripts/Dungeon/AFK_Warlords_Ruin_First_Boss_Farm/"
+else:
+    base_path = os.path.dirname(__file__)
+
+image_path = os.path.join(base_path, f"Image_{current_monitor_resolution}")
+
+
 start_time = time.time()
-image_path = f"Destiny_2_Scripts/Dungeon/AFK_Warlords_Ruin_First_Boss_Farm/Image_{current_monitor_resolution}"
 
 
 def my_function():
@@ -70,7 +73,7 @@ def my_function():
             reenter_dungeon_after_internet_error()
             reset_checkpoint()
 
-        if pyautogui.locateOnScreen(f"{image_path}/Smoke Bomb.png", confidence=0.9):
+        if pyautogui.locateOnScreen(os.path.join(image_path, "Smoke Bomb.png"), confidence=0.9):
             if efficiency_evaluation.total_failed_attempts > 0 and efficiency_evaluation.total_failed_attempts % 10 == 0:
                 print("Too many failed attempts, relaunching the dungeon...")
                 relaunch_into_master()
@@ -87,6 +90,9 @@ def start_afk():
     print("\nExecution Started")
     t.start()
 
+
+print("Press F7 to Start")
+print("Press F8 to Exit\n")
 
 while True:
     keyboard.add_hotkey("f7", start_afk)

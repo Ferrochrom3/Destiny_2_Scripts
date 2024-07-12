@@ -18,7 +18,12 @@ screen_width, screen_height = pyautogui.size()
 current_monitor_resolution = f"{screen_width}x{screen_height}"
 config = resolution_config.values_by_resolution[current_monitor_resolution]
 
-image_path = f"Destiny_2_Scripts/Dungeon/AFK_Warlords_Ruin_First_Boss_Farm/Image_{current_monitor_resolution}"
+if getattr(sys, "frozen", False):
+    base_path = sys._MEIPASS + "/Destiny_2_Scripts/Dungeon/AFK_Warlords_Ruin_First_Boss_Farm/"
+else:
+    base_path = os.path.dirname(__file__)
+
+image_path = os.path.join(base_path, f"Image_{current_monitor_resolution}")
 
 
 def indebted_kindness():
@@ -98,7 +103,7 @@ def check_cases():
     emote_elapsed_time = time.time()
     print("Checking cases")
     while True:
-        if pyautogui.locateOnScreen(f"{image_path}/Guardian Down.png", confidence=0.8) or pyautogui.locateOnScreen(f"{image_path}/Your Light Fades Away.png", confidence=0.8):
+        if pyautogui.locateOnScreen(os.path.join(image_path, "Guardian Down.png"), confidence=0.8) or pyautogui.locateOnScreen(f"{image_path}/Your Light Fades Away.png", confidence=0.8):
             print("Case: Guardian Down")
             efficiency_evaluation.total_failed_attempts += 1
             break
@@ -113,10 +118,9 @@ def check_cases():
             efficiency_evaluation.total_failed_attempts += 1
             break
 
-        # fmt: off
-        if not pyautogui.locateOnScreen(f"{image_path}/Boss Health Bar.png", confidence=0.8, region=config["boss_health_bar_region"]) \
-            and pyautogui.locateOnScreen(f"{image_path}/Player Health Bar.png", confidence=0.8, region=config["player_health_bar_region"]):
-        # fmt: on
+        if not pyautogui.locateOnScreen(os.path.join(image_path, "Boss Health Bar.png"), confidence=0.8, region=config["boss_health_bar_region"]) and pyautogui.locateOnScreen(
+            os.path.join(image_path, "Player Health Bar.png"), confidence=0.8, region=config["player_health_bar_region"]
+        ):
             time.sleep(1.5)  # Add some delay so relaunch is not too early
             print("Case: Boss is killed")
             efficiency_evaluation.total_success_attempts += 1

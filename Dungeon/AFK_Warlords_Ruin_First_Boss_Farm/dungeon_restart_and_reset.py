@@ -16,7 +16,12 @@ screen_width, screen_height = pyautogui.size()
 current_monitor_resolution = f"{screen_width}x{screen_height}"
 config = resolution_config.values_by_resolution[current_monitor_resolution]
 
-image_path = f"Destiny_2_Scripts/Dungeon/AFK_Warlords_Ruin_First_Boss_Farm/Image_{current_monitor_resolution}"
+if getattr(sys, "frozen", False):
+    base_path = sys._MEIPASS + "/Destiny_2_Scripts/Dungeon/AFK_Warlords_Ruin_First_Boss_Farm/"
+else:
+    base_path = os.path.dirname(__file__)
+
+image_path = os.path.join(base_path, f"Image_{current_monitor_resolution}")
 
 
 def relaunch_into_master():
@@ -30,7 +35,7 @@ def relaunch_into_master():
     win32api_move_mouse(config["relaunch_into_master_move_left"][0], config["relaunch_into_master_move_left"][1])
 
     try:
-        x, y = pyautogui.locateCenterOnScreen(f"{image_path}/Dungeon Icon.png", confidence=0.8)
+        x, y = pyautogui.locateCenterOnScreen(os.path.join(image_path, "Dungeon Icon.png"), confidence=0.8)
         pyautogui.moveTo(x, y)
         time.sleep(0.1)
         pyautogui.leftClick()
@@ -59,7 +64,7 @@ def relaunch_into_master():
 
     print("Waiting to Load In")
     while True:
-        if pyautogui.locateOnScreen(f"{image_path}/In Dungeon Icon.png", confidence=0.8):
+        if pyautogui.locateOnScreen(os.path.join(image_path, "In Dungeon Icon.png"), confidence=0.8):
             print("Loaded into Dungeon")
             break
 
@@ -75,7 +80,7 @@ def reset_checkpoint():
     win32api_move_mouse(config["relaunch_into_master_move_left"][0], config["relaunch_into_master_move_left"][1])
 
     try:
-        x, y = pyautogui.locateCenterOnScreen(f"{image_path}/Dungeon Icon.png", confidence=0.8)
+        x, y = pyautogui.locateCenterOnScreen(os.path.join(image_path, "Dungeon Icon.png"), confidence=0.8)
         pyautogui.moveTo(x, y)
         time.sleep(0.1)
         pyautogui.leftClick()
@@ -130,7 +135,7 @@ def reset_checkpoint():
 
     print("Waiting for respawn after suicide")
     while True:
-        if pyautogui.locateOnScreen(f"{image_path}\Smoke Bomb.png", confidence=0.8):
+        if pyautogui.locateOnScreen(os.path.join(image_path, "Smoke Bomb.png"), confidence=0.8):
             time.sleep(1)
             print("Respawned")
             break
@@ -141,7 +146,7 @@ def reenter_dungeon_after_internet_error():
     time.sleep(1)
 
     try:
-        x, y = pyautogui.locateCenterOnScreen(f"{image_path}/EDZ.png", confidence=0.8)
+        x, y = pyautogui.locateCenterOnScreen(os.path.join(image_path, "EDZ.png"), confidence=0.8)
         pyautogui.moveTo(x, y)
         time.sleep(0.1)
         pyautogui.leftClick()
@@ -155,7 +160,7 @@ def reenter_dungeon_after_internet_error():
     win32api_move_mouse(config["relaunch_after_error_code_move_left"][0], config["relaunch_after_error_code_move_left"][1])
 
     try:
-        x, y = pyautogui.locateCenterOnScreen(f"{image_path}/Dungeon Icon.png", confidence=0.8)
+        x, y = pyautogui.locateCenterOnScreen(os.path.join(image_path, "Dungeon Icon.png"), confidence=0.8)
         pyautogui.moveTo(x, y)
         time.sleep(0.1)
         pyautogui.leftClick()
