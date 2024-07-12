@@ -58,7 +58,7 @@ def indebted_kindness():
     pyautogui.mouseDown(button="right")
     time.sleep(0.3)
     win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, -580, 390, 0, 0)
-    time.sleep(6.1)
+    time.sleep(6.05)
     pyautogui.leftClick()
 
     # Finisher
@@ -76,7 +76,7 @@ def emote_at_corner():
     After performing a finisher, turn left and emote at the corner.
     """
     # Turn left and move to corner
-    win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, -670, 0, 0, 0)
+    win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, -700, 0, 0, 0)
     time.sleep(0.5)
     keyboard.press("shift")
     keyboard.press("w")

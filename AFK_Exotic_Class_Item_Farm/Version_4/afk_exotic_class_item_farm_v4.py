@@ -46,9 +46,9 @@ Subclass     : Any
 Abilities    : Triple Jump (Hunter), Burst Glide (Warlock), Catapult Lift (Titan)
 Fragments    : Any
 Aspects      : Any
-Weapons      : Kinetic - Any Non-Lightweight weapon
+Weapons      : Kinetic - Any
                Energy  - Still Hunt
-               Power   - Any
+               Power   - Any sword
 Exotic Armor : Any
 Mods         : Helmet     - Any
                Arms       - Any

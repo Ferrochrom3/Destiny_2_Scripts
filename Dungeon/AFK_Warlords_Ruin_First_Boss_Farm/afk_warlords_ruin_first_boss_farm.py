@@ -51,6 +51,7 @@ Additional Notes:
  - Strength stats has no requirements but higher strength allows quicker restart when melee did not regen back after initial use.
 """
 
+pyautogui.FAILSAFE = False
 
 screen_width, screen_height = pyautogui.size()
 current_monitor_resolution = f"{screen_width}x{screen_height}"
