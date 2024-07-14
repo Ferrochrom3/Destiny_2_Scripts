@@ -41,3 +41,6 @@ def collect_loot(chest_number: str, is_chest_3: bool = False):
     elif not is_chest_3:
         efficiency_evaluation.missed_chests.append(f"Chest_{chest_number}")
         efficiency_evaluation.number_of_chests_missed += 1
+
+        screenshot = pyautogui.screenshot()
+        screenshot.save(f"Destiny_2_Scripts/AFK_Exotic_Class_Item_Farm/Version_4/Missed Chests/{efficiency_evaluation.number_of_chests_missed}_Chest_{chest_number}")
