@@ -23,11 +23,12 @@ else:
 image_path = os.path.join(base_path, f"Image_{current_monitor_resolution}")
 
 
-def collect_loot(chest_number: str, is_chest_3: bool = False):
+def collect_loot(character_class: str, chest_number: str, is_chest_3: bool = False):
     """
     Collect chest loot by checking if "Alt" button is on the screen, then hold it down for 1.5 seconds to open the chest.
 
     Args:
+        character_class (str): Which class (Hunter, Titan, Warlock) is currently running.
         chest_number (str): Which chest is being opened.
         is_chest_3 (bool, optional): If it's used for Chest_3, the chest may not always spawn in so no need to increment "number_of_missed_chest". Defaults to False.
     """
@@ -41,7 +42,7 @@ def collect_loot(chest_number: str, is_chest_3: bool = False):
         time.sleep(1.5)
         keyboard.release("alt")
 
-        t = threading.Thread(target=check_for_exotic_class_item_drop)
+        t = threading.Thread(target=check_for_exotic_class_item_drop, args=(character_class))
         t.start()
 
     elif not is_chest_3:
@@ -52,10 +53,19 @@ def collect_loot(chest_number: str, is_chest_3: bool = False):
         screenshot.save(f"Destiny_2_Scripts/AFK_Exotic_Class_Item_Farm/Version_4/Missed Chests/{efficiency_evaluation.number_of_chests_missed}_Chest_{chest_number}.png")
 
 
-def check_for_exotic_class_item_drop():
+def check_for_exotic_class_item_drop(character_class: str):
     elapsed_time = time.time()
+    exotic_class_item = ""
+    match (character_class):
+        case "Titan":
+            exotic_class_item = "Stoicism"
+        case "Hunter":
+            exotic_class_item = "Relativism"
+        case "Warlock":
+            exotic_class_item = "Solipsism"
+
     while True:
-        if pyautogui.locateCenterOnScreen(os.path.join(image_path, "Stoicism.png"), confidence=0.8):
+        if pyautogui.locateCenterOnScreen(os.path.join(image_path, f"{exotic_class_item}.png"), confidence=0.8):
             efficiency_evaluation.number_of_drops += 1
             break
 

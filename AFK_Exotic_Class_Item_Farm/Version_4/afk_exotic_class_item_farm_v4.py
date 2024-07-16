@@ -99,9 +99,7 @@ def prompt_instruction():
     global character_position
 
     character_class = input(f"Which character are you running? (Warlock, Hunter, Titan){Fore.GREEN}").strip().capitalize()
-    character_position = (
-        input(f"{Style.RESET_ALL}From top to bottom, which position is your {character_class} in the character selection screen? (First, Second, Third){Fore.GREEN}").strip().capitalize()
-    )
+    character_position = input(f"{Style.RESET_ALL}From top to bottom, which position is your {character_class} in the character selection screen? (First, Second, Third){Fore.GREEN}").strip().capitalize()
 
     print(f"{Style.RESET_ALL}Running Class: {character_class}")
     print(f"Character Position: {character_position}")
@@ -192,24 +190,24 @@ def my_function():
 
                 if chest_spawns["Chest_4"]:
                     run_from_3_to_4(character_class)
-                    collect_loot.collect_loot("4")
+                    collect_loot.collect_loot(character_class, "4")
                 elif chest_spawns["Chest_5"]:
                     run_from_3_to_5(character_class)
-                    collect_loot.collect_loot("5")
+                    collect_loot.collect_loot(character_class, "5")
                 elif chest_spawns["Chest_6"]:
                     run_from_3_to_6(character_class)
-                    collect_loot.collect_loot("6")
+                    collect_loot.collect_loot(character_class, "6")
                 elif chest_spawns["Chest_7"]:
                     run_from_3_to_7()
-                    collect_loot.collect_loot("7")
+                    collect_loot.collect_loot(character_class, "7")
                 elif chest_spawns["Chest_8"] and chest_spawns["Chest_9"]:
                     run_from_3_to_8()
-                    collect_loot.collect_loot("8")
+                    collect_loot.collect_loot(character_class, "8")
                     run_from_8_to_9()
-                    collect_loot.collect_loot("9")
+                    collect_loot.collect_loot(character_class, "9")
                 elif chest_spawns["Chest_8"]:
                     run_from_3_to_8()
-                    collect_loot.collect_loot("8")
+                    collect_loot.collect_loot(character_class, "8")
 
                 clear_chest_spawn_tracker()
 
