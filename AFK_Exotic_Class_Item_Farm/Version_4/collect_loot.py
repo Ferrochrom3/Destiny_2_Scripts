@@ -3,6 +3,7 @@ import sys
 import time
 import keyboard
 import pyautogui
+import threading
 
 destiny_2_scripts_path = os.path.abspath("Destiny_2_Scripts")
 folder_path = os.path.dirname(destiny_2_scripts_path)
@@ -35,12 +36,28 @@ def collect_loot(chest_number: str, is_chest_3: bool = False):
 
     if pyautogui.locateOnScreen(os.path.join(image_path, "Alt Button.png"), confidence=0.8, region=config["chest_collection_region"]):
         efficiency_evaluation.number_of_chests_obtained += 1
+        efficiency_evaluation.number_of_chests_before_reset -= 1
         keyboard.press("alt")
         time.sleep(1.5)
         keyboard.release("alt")
+
+        t = threading.Thread(target=check_for_exotic_class_item_drop)
+        t.start()
+
     elif not is_chest_3:
         efficiency_evaluation.missed_chests.append(f"Chest_{chest_number}")
         efficiency_evaluation.number_of_chests_missed += 1
 
         screenshot = pyautogui.screenshot()
-        screenshot.save(f"Destiny_2_Scripts/AFK_Exotic_Class_Item_Farm/Version_4/Missed Chests/{efficiency_evaluation.number_of_chests_missed}_Chest_{chest_number}")
+        screenshot.save(f"Destiny_2_Scripts/AFK_Exotic_Class_Item_Farm/Version_4/Missed Chests/{efficiency_evaluation.number_of_chests_missed}_Chest_{chest_number}.png")
+
+
+def check_for_exotic_class_item_drop():
+    elapsed_time = time.time()
+    while True:
+        if pyautogui.locateCenterOnScreen(os.path.join(image_path, "Stoicism.png"), confidence=0.8):
+            efficiency_evaluation.number_of_drops += 1
+            break
+
+        if time.time() - elapsed_time >= 5:
+            break

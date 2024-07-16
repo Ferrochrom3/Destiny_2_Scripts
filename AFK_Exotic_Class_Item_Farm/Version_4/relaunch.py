@@ -92,6 +92,10 @@ def relaunch_into_the_pale_heart(is_after_error_code: bool = False):
             time.sleep(1)
             break
 
+        if is_internet_error():
+            print("Internet error during relaunch The Pale Heart...")
+            return
+
     print("Waiting to Open The Pale Heart Destination")
     while True:
         if pyautogui.locateOnScreen(os.path.join(image_path, "The Pale Heart.png"), confidence=0.8):
@@ -100,6 +104,10 @@ def relaunch_into_the_pale_heart(is_after_error_code: bool = False):
             time.sleep(0.1)
             pyautogui.leftClick()
             break
+
+        if is_internet_error():
+            print("Internet error during relaunch The Pale Heart...")
+            return
 
     print("Waiting For The Pale Heart Map to Open")
     while True:
@@ -127,6 +135,10 @@ def relaunch_into_the_pale_heart(is_after_error_code: bool = False):
                 time.sleep(1)
 
             break
+
+        if is_internet_error():
+            print("Internet error during relaunch The Pale Heart...")
+            return
 
 
 def win32api_move_mouse(x: int, y: int, wait_time: float = 0.1):

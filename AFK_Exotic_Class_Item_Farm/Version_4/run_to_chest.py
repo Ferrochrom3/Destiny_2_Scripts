@@ -33,21 +33,21 @@ def run_from_3_to_4(character_class: str):
             hunter_jump(0.2, 0.1)
             hunter_jump(0.3, 0.1)
             hunter_jump(0.2, 0.1)
-            time.sleep(1.5)
+            time.sleep(1.6)
             keyboard.release("shift+w")
 
         case "Warlock":
             keyboard.press("shift+w")
             time.sleep(0.2)
             warlock_jump(0.05, 1.2)
-            time.sleep(1.3)
+            time.sleep(1.4)
             keyboard.release("shift+w")
 
         case "Titan":
             keyboard.press("shift+w")
             time.sleep(0.2)
             titan_jump(0.05, 1.4)
-            time.sleep(1.1)
+            time.sleep(1.2)
             keyboard.release("shift+w")
 
         case _:
@@ -126,7 +126,6 @@ def run_from_3_to_6(character_class: str):
             keyboard.release("shift+w")
 
         case "Titan":
-            print("Work in Progress")
             keyboard.press("shift+w")
             time.sleep(0.8)
             warlock_jump(0.3, 1.3)

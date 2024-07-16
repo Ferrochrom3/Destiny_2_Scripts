@@ -64,7 +64,7 @@ Process:
  - When Chest_3 spawns, run towards it and collec the chest.
  - Scope in with Still Hunt again to see if Chest_5-8 have spawned. If so, move to the closest chest (4 being closest, 8 being farthest)
     - If Chest_8 and Chest_9 both spawned, Chest_9 will be collected after running to Chest_8
- - At most 2 chests will be collected. Once done, relaunch The Landing.
+ - At most 3 chests will be collected. Once done, relaunch The Landing.
  - Relaunch The Pale Heart after collecting 35 chests to reset the progress of Overthrow so it doesn't reach level 2.
 
 Additional Notes:
@@ -99,7 +99,9 @@ def prompt_instruction():
     global character_position
 
     character_class = input(f"Which character are you running? (Warlock, Hunter, Titan){Fore.GREEN}").strip().capitalize()
-    character_position = input(f"{Style.RESET_ALL}From top to bottom, which position is your {character_class} in the character selection screen? (First, Second, Third){Fore.GREEN}").strip().capitalize()
+    character_position = (
+        input(f"{Style.RESET_ALL}From top to bottom, which position is your {character_class} in the character selection screen? (First, Second, Third){Fore.GREEN}").strip().capitalize()
+    )
 
     print(f"{Style.RESET_ALL}Running Class: {character_class}")
     print(f"Character Position: {character_position}")
@@ -147,69 +149,71 @@ def my_function():
             fix_internet_error(character_position)
             relaunch_into_the_pale_heart(True)
 
-        # Relaunch into the Pale Heart before Overthrow level reaches 2
-        elif pyautogui.locateOnScreen(os.path.join(image_path, "Overthrow The Landing Icon.png"), confidence=0.8) and efficiency_evaluation.number_of_chests_obtained > 0 and efficiency_evaluation.number_of_chests_obtained % 35 == 0:
-            time.sleep(0.5)
-            relaunch_into_the_pale_heart()
-
-        # Try to collect chest and relaunch The Landing after collecting loot
         elif pyautogui.locateOnScreen(os.path.join(image_path, "Overthrow The Landing Icon.png"), confidence=0.8):
-            efficiency_evaluation.number_of_runs += 1
-            time.sleep(0.5)
+            # Reset Overthrow progress by go to orbit and relaunch The Pale Heart
+            if efficiency_evaluation.number_of_chests_before_reset <= 0:
+                efficiency_evaluation.number_of_chests_before_reset = 35
+                time.sleep(0.5)
+                relaunch_into_the_pale_heart()
 
-            # Swap to Still Hunt and run to corner
-            keyboard.press_and_release("2")
-            win32api_move_mouse(-800, 0)
-            run_forward(3.5)
-            win32api_move_mouse(200, 0)
-            run_forward(3.5)
-            win32api_move_mouse(2600, 0)
+            # Proceed normall to collect chests
+            else:
+                efficiency_evaluation.number_of_runs += 1
+                time.sleep(0.5)
 
-            # Check for Chest_3 spawn
-            time.sleep(1)
-            pyautogui.mouseDown(button="right")
-            elapsed_time = time.time()
-            while True:
-                if is_chest_3_spawned():
-                    break
-                if time.time() - elapsed_time >= 30:
-                    break
-            pyautogui.mouseUp(button="right")
+                # Swap to Still Hunt and run to corner
+                keyboard.press_and_release("2")
+                win32api_move_mouse(-800, 0)
+                run_forward(3.5)
+                win32api_move_mouse(200, 0)
+                run_forward(3.5)
+                win32api_move_mouse(2600, 0)
 
-            # Run to Chest_3, collect if chest spawned
-            run_to_chest_3()
-            check_chest_4_spawn()
-            collect_loot.collect_loot("3", True)
+                # Check for Chest_3 spawn
+                time.sleep(1)
+                pyautogui.mouseDown(button="right")
+                elapsed_time = time.time()
+                while True:
+                    if is_chest_3_spawned():
+                        break
+                    if time.time() - elapsed_time >= 30:
+                        break
+                pyautogui.mouseUp(button="right")
 
-            # Check additional chest spawns to collect a second chest before relaunching
-            check_additional_chest_spawns()
-            chest_spawns = get_sorted_chest_spawn_tracker()
-            print(chest_spawns)
+                # Run to Chest_3, collect if chest spawned
+                run_to_chest_3()
+                check_chest_4_spawn()
+                collect_loot.collect_loot("3", True)
 
-            if chest_spawns["Chest_4"]:
-                run_from_3_to_4(character_class)
-                collect_loot.collect_loot("4")
-            elif chest_spawns["Chest_5"]:
-                run_from_3_to_5(character_class)
-                collect_loot.collect_loot("5")
-            elif chest_spawns["Chest_6"]:
-                run_from_3_to_6(character_class)
-                collect_loot.collect_loot("6")
-            elif chest_spawns["Chest_7"]:
-                run_from_3_to_7()
-                collect_loot.collect_loot("7")
-            elif chest_spawns["Chest_8"] and chest_spawns["Chest_9"]:
-                run_from_3_to_8()
-                collect_loot.collect_loot("8")
-                run_from_8_to_9()
-                collect_loot.collect_loot("9")
-            elif chest_spawns["Chest_8"]:
-                run_from_3_to_8()
-                collect_loot.collect_loot("8")
+                # Check additional chest spawns to collect a second chest before relaunching
+                check_additional_chest_spawns()
+                chest_spawns = get_sorted_chest_spawn_tracker()
+                print(chest_spawns)
 
-            clear_chest_spawn_tracker()
+                if chest_spawns["Chest_4"]:
+                    run_from_3_to_4(character_class)
+                    collect_loot.collect_loot("4")
+                elif chest_spawns["Chest_5"]:
+                    run_from_3_to_5(character_class)
+                    collect_loot.collect_loot("5")
+                elif chest_spawns["Chest_6"]:
+                    run_from_3_to_6(character_class)
+                    collect_loot.collect_loot("6")
+                elif chest_spawns["Chest_7"]:
+                    run_from_3_to_7()
+                    collect_loot.collect_loot("7")
+                elif chest_spawns["Chest_8"] and chest_spawns["Chest_9"]:
+                    run_from_3_to_8()
+                    collect_loot.collect_loot("8")
+                    run_from_8_to_9()
+                    collect_loot.collect_loot("9")
+                elif chest_spawns["Chest_8"]:
+                    run_from_3_to_8()
+                    collect_loot.collect_loot("8")
 
-            relaunch_the_landing()
+                clear_chest_spawn_tracker()
+
+                relaunch_the_landing()
 
 
 def win32api_move_mouse(x: int, y: int, wait_time: float = 0.1):
