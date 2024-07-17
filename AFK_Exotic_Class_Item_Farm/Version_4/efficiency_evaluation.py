@@ -36,25 +36,29 @@ def display_status(start_time: float):
         start_time (float): The time when the script started.
     """
 
-    total_time = time.time() - start_time
-    average_chests_per_run = number_of_chests_obtained / number_of_runs
-    average_time_taken_for_one_chest = total_time / number_of_chests_obtained
-    drop_rate = round((number_of_drops / number_of_chests_obtained) * 100, 2)
-    missed_chest_rate = round((number_of_chests_missed / (number_of_chests_obtained + number_of_chests_missed) * 100), 2)
-    average_time_per_drop = round(total_time / number_of_drops, 2)
+    try:
+        total_time = time.time() - start_time
+        average_chests_per_run = number_of_chests_obtained / number_of_runs
+        average_time_taken_for_one_chest = total_time / number_of_chests_obtained
+        drop_rate = round((number_of_drops / number_of_chests_obtained) * 100, 2)
+        missed_chest_rate = round((number_of_chests_missed / (number_of_chests_obtained + number_of_chests_missed) * 100), 2)
+        average_time_per_drop = round(total_time / number_of_drops, 2)
 
-    # fmt: off
-    print(f"\nNumber of Runs: {number_of_runs}"
-          f"\nNumber of Chests Obtained: {number_of_chests_obtained}"
-          f"\nNumber of Drops: {number_of_drops}"
-          f"\nNumber of Missed Chests: {number_of_chests_missed}"
-          f"\nDrop Rate: {drop_rate}%"
-          f"\nMissed Chest Rate: {missed_chest_rate}%"
-          f"\nAverage Chests Per Run: {average_chests_per_run}"
-          f"\nAverage Time Taken For One Chest: {average_time_taken_for_one_chest}"
-          f"\nAverage Time Per Drop: {average_time_per_drop}"
-          f"\nNumber of Missed The Landing Relaunch: {relaunch.number_of_missed_the_landing_relaunch}"
-          f"\nNumber of Missed The Pale Heart Relaunch: {relaunch.number_of_missed_the_pale_heart_relaunch}")
-    # fmt: on
+        # fmt: off
+        print(f"\nNumber of Runs: {number_of_runs}"
+            f"\nNumber of Chests Obtained: {number_of_chests_obtained}"
+            f"\nNumber of Drops: {number_of_drops}"
+            f"\nNumber of Missed Chests: {number_of_chests_missed}"
+            f"\nDrop Rate: {drop_rate}%"
+            f"\nMissed Chest Rate: {missed_chest_rate}%"
+            f"\nAverage Chests Per Run: {average_chests_per_run}"
+            f"\nAverage Time Taken For One Chest: {average_time_taken_for_one_chest}"
+            f"\nAverage Time Per Drop: {average_time_per_drop}"
+            f"\nNumber of Missed The Landing Relaunch: {relaunch.number_of_missed_the_landing_relaunch}"
+            f"\nNumber of Missed The Pale Heart Relaunch: {relaunch.number_of_missed_the_pale_heart_relaunch}")
+        # fmt: on
 
-    print("Missed Chests: ", missed_chests)
+        print("Missed Chests: ", missed_chests)
+
+    except ZeroDivisionError:
+        pass

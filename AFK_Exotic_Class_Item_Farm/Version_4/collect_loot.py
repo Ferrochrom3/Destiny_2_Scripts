@@ -42,19 +42,20 @@ def collect_loot(character_class: str, chest_number: str, is_chest_3: bool = Fal
         time.sleep(1.5)
         keyboard.release("alt")
 
-        t = threading.Thread(target=check_for_exotic_class_item_drop, args=character_class)
+        t = threading.Thread(target=check_for_exotic_class_item_drop, args=(character_class,))
         t.start()
 
     elif not is_chest_3:
         efficiency_evaluation.missed_chests.append(f"Chest_{chest_number}")
         efficiency_evaluation.number_of_chests_missed += 1
 
-        screenshot = pyautogui.screenshot()
-        screenshot.save(f"Destiny_2_Scripts/AFK_Exotic_Class_Item_Farm/Version_4/Missed Chests/{efficiency_evaluation.number_of_chests_missed}_Chest_{chest_number}.png")
+        # screenshot = pyautogui.screenshot()
+        # screenshot.save(f"Destiny_2_Scripts/AFK_Exotic_Class_Item_Farm/Version_4/Missed Chests/{efficiency_evaluation.number_of_chests_missed}_Chest_{chest_number}.png")
 
 
 def check_for_exotic_class_item_drop(character_class: str):
     elapsed_time = time.time()
+
     exotic_class_item = ""
     match (character_class):
         case "Titan":

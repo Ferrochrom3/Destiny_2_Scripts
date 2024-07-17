@@ -7,7 +7,7 @@ import keyboard
 destiny_2_scripts_path = os.path.abspath("Destiny_2_Scripts")
 folder_path = os.path.dirname(destiny_2_scripts_path)
 sys.path.insert(0, folder_path)
-from Destiny_2_Scripts.Other_Utilities.Internet_Error_Fix import resolution_config
+from Destiny_2_Scripts.Other_Utilities.Internet_Error_Fix import error_resolution_config
 
 """
 Additional Note
@@ -16,7 +16,7 @@ Additional Note
 
 screen_width, screen_height = pyautogui.size()
 current_monitor_resolution = f"{screen_width}x{screen_height}"
-config = resolution_config.values_by_resolution[current_monitor_resolution]
+config = error_resolution_config.values_by_resolution[current_monitor_resolution]
 
 if getattr(sys, "frozen", False):
     base_path = sys._MEIPASS + "/Destiny_2_Scripts/Other_Utilities/Internet_Error_Fix/"
