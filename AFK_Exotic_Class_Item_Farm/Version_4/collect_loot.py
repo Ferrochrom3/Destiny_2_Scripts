@@ -36,14 +36,14 @@ def collect_loot(character_class: str, chest_number: str, is_chest_3: bool = Fal
     time.sleep(0.5)
 
     if pyautogui.locateOnScreen(os.path.join(image_path, "Alt Button.png"), confidence=0.8, region=config["chest_collection_region"]):
+        drop_checking_thread = threading.Thread(target=check_for_exotic_class_item_drop, args=(character_class,))
+        drop_checking_thread.start()
+
         efficiency_evaluation.number_of_chests_obtained += 1
         efficiency_evaluation.number_of_chests_before_reset -= 1
         keyboard.press("alt")
         time.sleep(1.5)
         keyboard.release("alt")
-
-        drop_checking_thread = threading.Thread(target=check_for_exotic_class_item_drop, args=(character_class,))
-        drop_checking_thread.start()
 
     elif not is_chest_3:
         efficiency_evaluation.missed_chests.append(f"Chest_{chest_number}")

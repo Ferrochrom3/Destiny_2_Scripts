@@ -50,7 +50,9 @@ def create_status(start_time: float):
     average_time_taken_for_one_chest = round(safe_divide(total_time_seconds, number_of_chests_obtained), 2)
     drop_rate = round(safe_divide(number_of_drops, number_of_chests_obtained) * 100, 2)
     missed_chest_rate = round(safe_divide(number_of_chests_missed, number_of_chests_obtained + number_of_chests_missed) * 100, 2)
-    average_time_per_drop = round(safe_divide(total_time_seconds, number_of_drops), 2)
+    average_time_per_drop_seconds = round(safe_divide(total_time_seconds, number_of_drops), 2)
+    average_time_per_drop_minutes = round(safe_divide(total_time_minutes, number_of_drops), 2)
+    average_time_per_drop_hours = round(safe_divide(total_time_hours, number_of_drops), 2)
 
     status = (
         f"Total Time: {total_time}"
@@ -62,7 +64,7 @@ def create_status(start_time: float):
         f"\nMissed Chest Rate: {missed_chest_rate}%"
         f"\nAverage Chests Per Run: {average_chests_per_run}"
         f"\nAverage Time Taken For One Chest: {average_time_taken_for_one_chest}s"
-        f"\nAverage Time Per Drop: {average_time_per_drop}s"
+        f"\nAverage Time Per Drop: {average_time_per_drop_seconds} seconds | {average_time_per_drop_minutes} minutes | {average_time_per_drop_hours} hours"
         f"\nNumber of Missed The Landing Relaunch: {relaunch.number_of_missed_the_landing_relaunch}"
         f"\nNumber of Missed The Pale Heart Relaunch: {relaunch.number_of_missed_the_pale_heart_relaunch}"
     )

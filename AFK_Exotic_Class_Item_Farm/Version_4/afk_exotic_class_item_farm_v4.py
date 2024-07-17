@@ -1,15 +1,17 @@
 """
-Performance (out of 9.75 hours):
-Number of Runs: 473
-Number of Chests Obtained: 760
-Number of Missed Chests: 22
-Average Chests Per Run: 1.61
-Average Time Taken For One Chest: 46.18 seconds
+Performance (without frame drops):
+Total Time: 32124 seconds | 535.39 minutes | 8.92 hours
+Number of Runs: 416
+Number of Chests Obtained: 826
+Number of Drops: 16
+Number of Missed Chests: 1
+Drop Rate: 1.93%
+Missed Chest Rate: 0.12%
+Average Chests Per Run: 1.98
+Average Time Taken For One Chest: 38.89s
+Average Time Per Drop: 2007.8 seconds | 33.46 minutes | 0.56 hours
 Number of Missed The Landing Relaunch: 0
-Number of Missed The Pale Heart Relaunch: 1
-
-Total Exotic Class Item Obtained: 16
-Average Time Per Exotic Class Item: 36.56 minutes
+Number of Missed The Pale Heart Relaunch: 0
 """
 
 import sys
@@ -99,7 +101,9 @@ def prompt_instruction():
     global character_position
 
     character_class = input(f"Which character are you running? (Warlock, Hunter, Titan){Fore.GREEN}").strip().capitalize()
-    character_position = input(f"{Style.RESET_ALL}From top to bottom, which position is your {character_class} in the character selection screen? (First, Second, Third){Fore.GREEN}").strip().capitalize()
+    character_position = (
+        input(f"{Style.RESET_ALL}From top to bottom, which position is your {character_class} in the character selection screen? (First, Second, Third){Fore.GREEN}").strip().capitalize()
+    )
 
     print(f"{Style.RESET_ALL}Running Class: {character_class}")
     print(f"Character Position: {character_position}")
