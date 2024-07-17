@@ -50,7 +50,7 @@ Fragments    : Any
 Aspects      : Any
 Weapons      : Kinetic - Any
                Energy  - Still Hunt
-               Power   - Any sword
+               Power   - Any Sword
 Exotic Armor : Any
 Mods         : Helmet     - Any
                Arms       - Any
@@ -101,9 +101,7 @@ def prompt_instruction():
     global character_position
 
     character_class = input(f"Which character are you running? (Warlock, Hunter, Titan){Fore.GREEN}").strip().capitalize()
-    character_position = (
-        input(f"{Style.RESET_ALL}From top to bottom, which position is your {character_class} in the character selection screen? (First, Second, Third){Fore.GREEN}").strip().capitalize()
-    )
+    character_position = input(f"{Style.RESET_ALL}From top to bottom, which position is your {character_class} in the character selection screen? (First, Second, Third){Fore.GREEN}").strip().capitalize()
 
     print(f"{Style.RESET_ALL}Running Class: {character_class}")
     print(f"Character Position: {character_position}")
