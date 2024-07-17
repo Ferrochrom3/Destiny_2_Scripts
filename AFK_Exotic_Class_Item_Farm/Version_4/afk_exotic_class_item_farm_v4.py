@@ -228,9 +228,9 @@ def run_forward(running_duration: float, wait_time: float = 0.1):
 
 
 def start_afk():
-    t = threading.Thread(target=my_function)
+    afk_thread = threading.Thread(target=my_function)
+    afk_thread.start()
     print("Execution Started")
-    t.start()
 
 
 print("Press F7 to Start")
