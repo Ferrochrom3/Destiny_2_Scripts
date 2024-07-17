@@ -62,7 +62,7 @@ def create_status(start_time: float):
         f"\nMissed Chest Rate: {missed_chest_rate}%"
         f"\nAverage Chests Per Run: {average_chests_per_run}"
         f"\nAverage Time Taken For One Chest: {average_time_taken_for_one_chest}s"
-        f"\nAverage Time Per Drop: {average_time_per_drop}"
+        f"\nAverage Time Per Drop: {average_time_per_drop}s"
         f"\nNumber of Missed The Landing Relaunch: {relaunch.number_of_missed_the_landing_relaunch}"
         f"\nNumber of Missed The Pale Heart Relaunch: {relaunch.number_of_missed_the_pale_heart_relaunch}"
     )
