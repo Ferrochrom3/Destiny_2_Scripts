@@ -1,7 +1,7 @@
 values_by_resolution = {
     "2560x1440": {
         "boss_health_bar_region": (825, 1271, 500, 150),
-        "grenade_ability_region": (0, 0, 0, 0),
+        "grenade_ability_region": (152, 1232, 100, 90),
         "relaunch_into_master_move_right": (1200, 0),
         "relaunch_into_master_move_left": (-400, 0),
         "relaunch_after_error_code_move_right": (1600, 0),
