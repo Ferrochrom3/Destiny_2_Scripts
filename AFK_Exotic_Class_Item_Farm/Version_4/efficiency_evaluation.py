@@ -46,11 +46,11 @@ def create_status(start_time: float):
     total_time_hours = round((time.time() - start_time) / 3600, 2)
     total_time = f"{total_time_seconds} seconds | {total_time_minutes} minutes | {total_time_hours} hours"
 
-    average_chests_per_run = safe_divide(number_of_chests_obtained, number_of_runs)
-    average_time_taken_for_one_chest = safe_divide(total_time_seconds, number_of_chests_obtained)
+    average_chests_per_run = round(safe_divide(number_of_chests_obtained, number_of_runs), 2)
+    average_time_taken_for_one_chest = round(safe_divide(total_time_seconds, number_of_chests_obtained), 2)
     drop_rate = round(safe_divide(number_of_drops, number_of_chests_obtained) * 100, 2)
     missed_chest_rate = round(safe_divide(number_of_chests_missed, number_of_chests_obtained + number_of_chests_missed) * 100, 2)
-    average_time_per_drop = safe_divide(total_time_seconds, number_of_drops)
+    average_time_per_drop = round(safe_divide(total_time_seconds, number_of_drops), 2)
 
     status = (
         f"Total Time: {total_time}"
@@ -61,7 +61,7 @@ def create_status(start_time: float):
         f"\nDrop Rate: {drop_rate}%"
         f"\nMissed Chest Rate: {missed_chest_rate}%"
         f"\nAverage Chests Per Run: {average_chests_per_run}"
-        f"\nAverage Time Taken For One Chest: {average_time_taken_for_one_chest}"
+        f"\nAverage Time Taken For One Chest: {average_time_taken_for_one_chest}s"
         f"\nAverage Time Per Drop: {average_time_per_drop}"
         f"\nNumber of Missed The Landing Relaunch: {relaunch.number_of_missed_the_landing_relaunch}"
         f"\nNumber of Missed The Pale Heart Relaunch: {relaunch.number_of_missed_the_pale_heart_relaunch}"
