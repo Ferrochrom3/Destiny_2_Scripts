@@ -92,12 +92,12 @@ def display_status(start_time: float, update_frequency: float):
     window = tkinter.Tk()
     window.overrideredirect(True)  # Remove window title bar and borders
     window.lift()  # Show Tkinter window
-    window.wm_attributes("-topmost", True)  # Keep the window on top
-    window.wm_attributes("-disabled", True)  # Disable interaction with the window
-    window.wm_attributes("-transparentcolor", "white")  # Set window to transparent so text overlays on screen
+    window.attributes("-topmost", True)  # Keep the window on top
+    window.attributes("-disabled", True)  # Disable interaction with the window
+    window.attributes("-alpha", 0.5)
 
     # Create a Label with left-aligned text
-    label = tkinter.Label(window, text="Loading...", font=(7), fg="black", bg="white", justify="left")
+    label = tkinter.Label(window, text="Loading...", font=(10), fg="black", bg="white", justify="left")
     label.pack()
 
     # Start the update loop
