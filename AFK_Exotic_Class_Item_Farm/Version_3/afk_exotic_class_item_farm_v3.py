@@ -16,12 +16,12 @@ import pyautogui
 import win32api
 import win32con
 from colorama import Fore, Style
-from efficiency_evaluation import display_status
 
 destiny_2_scripts_path = os.path.abspath("Destiny_2_Scripts")
 folder_path = os.path.dirname(destiny_2_scripts_path)
 sys.path.insert(0, folder_path)
 from Destiny_2_Scripts.Other_Utilities.Internet_Error_Fix.internet_error_fix import is_internet_error, fix_internet_error
+from Destiny_2_Scripts.AFK_Exotic_Class_Item_Farm.Version_3.efficiency_evaluation import display_status
 from Destiny_2_Scripts.AFK_Exotic_Class_Item_Farm.Version_3 import relaunch
 from Destiny_2_Scripts.AFK_Exotic_Class_Item_Farm.Version_3 import collect_loot
 from Destiny_2_Scripts.AFK_Exotic_Class_Item_Farm.Version_3 import resolution_config
@@ -146,10 +146,9 @@ while True:
     pyautogui.mouseUp(button="right")
     display_status(start_time)
 
-    # fmt: off
     sys.exit(
-    Fore.RED +
-    f"Elapsed Time: {round(time.time() - start_time)} seconds | "
-    f"{round((time.time() - start_time) / 60, 2)} minutes | "
-    f"{round((time.time() - start_time) / 3600, 2)} hours" + Style.RESET_ALL)
-    # fmt: on
+        f"{Fore.RED}\
+            {round(time.time() - start_time)} seconds \
+            | {round((time.time() - start_time) / 60, 2)} minutes \
+            | {round((time.time() - start_time) / 3600, 2)} hours {Style.RESET_ALL}"
+    )

@@ -5,6 +5,7 @@ import keyboard
 import pyautogui
 import win32api
 import win32con
+from colorama import Fore, Style
 
 """
 Location     : "The Investigation" - Witch Queen Campaign - 2nd Mission
@@ -123,9 +124,9 @@ while True:
     keyboard.release("shift+w")
     keyboard.release("alt")
 
-    # fmt: off
     sys.exit(
-    f"Elapsed Time: {round(time.time() - start_time)} seconds"
-    f"\n{round((time.time() - start_time) / 60, 2)} minutes"
-    f"\n{round((time.time() - start_time) / 3600, 2)} hours")
-    # fmt: on
+        f"{Fore.RED}\
+            {round(time.time() - start_time)} seconds \
+            | {round((time.time() - start_time) / 60, 2)} minutes \
+            | {round((time.time() - start_time) / 3600, 2)} hours {Style.RESET_ALL}"
+    )

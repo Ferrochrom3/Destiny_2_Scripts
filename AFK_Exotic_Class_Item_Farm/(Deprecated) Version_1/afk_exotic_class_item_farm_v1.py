@@ -175,10 +175,9 @@ while True:
     pyautogui.mouseUp(button="right")
     display_status()
 
-    # fmt: off
     sys.exit(
-    Fore.RED +
-    f"Elapsed Time: {round(time.time() - start_time)} seconds | "
-    f"{round((time.time() - start_time) / 60, 2)} minutes | "
-    f"{round((time.time() - start_time) / 3600, 2)} hours" + Style.RESET_ALL)
-    # fmt: on
+        f"{Fore.RED}\
+            {round(time.time() - start_time)} seconds \
+            | {round((time.time() - start_time) / 60, 2)} minutes \
+            | {round((time.time() - start_time) / 3600, 2)} hours {Style.RESET_ALL}"
+    )
