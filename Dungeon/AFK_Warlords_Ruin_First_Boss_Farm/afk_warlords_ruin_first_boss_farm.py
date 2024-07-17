@@ -90,9 +90,14 @@ def my_function():
 
 
 def start_afk():
-    t = threading.Thread(target=my_function)
-    print("\nExecution Started")
-    t.start()
+    afk_thread = threading.Thread(target=my_function)
+    afk_thread.start()
+    print("Execution Started")
+
+    # fmt: off
+    status_thread = threading.Thread(target=efficiency_evaluation.display_status,args=(start_time,1000,))
+    status_thread.start()
+    # fmt: on
 
 
 print("Press F7 to Start")
@@ -111,7 +116,6 @@ while True:
     keyboard.release("tab")
     keyboard.release("left")
     pyautogui.mouseUp(button="right")
-    efficiency_evaluation.display_status(start_time)
 
     # fmt: off
     sys.exit(

@@ -1,6 +1,7 @@
 import sys
 import os
 import time
+import tkinter
 
 destiny_2_scripts_path = os.path.abspath("Destiny_2_Scripts")
 folder_path = os.path.dirname(destiny_2_scripts_path)
@@ -21,9 +22,9 @@ def safe_divide(numerator: float, denominator: float):
     return numerator / denominator if denominator != 0 else 0
 
 
-def display_status(start_time: float):
+def create_status(start_time: float):
     """
-    Shows the following metrics related to chest collection:
+    Creates the following metrics related to chest collection:
     1. Number of Runs: The total number of runs.
     2. Number of Chests Obtained: The total number of chests opened.
     3. Number of Drops: The total number of exotic class item obtained.
@@ -40,7 +41,7 @@ def display_status(start_time: float):
         start_time (float): The time when the script started.
     """
 
-    total_time = time.time() - start_time
+    total_time = f"{round(time.time() - start_time)} seconds | {round((time.time() - start_time) / 60, 2)} minutes | {round((time.time() - start_time) / 3600, 2)} hours"
 
     average_chests_per_run = safe_divide(number_of_chests_obtained, number_of_runs)
     average_time_taken_for_one_chest = safe_divide(total_time, number_of_chests_obtained)
@@ -48,18 +49,58 @@ def display_status(start_time: float):
     missed_chest_rate = round(safe_divide(number_of_chests_missed, number_of_chests_obtained + number_of_chests_missed) * 100, 2)
     average_time_per_drop = safe_divide(total_time, number_of_drops)
 
-    # fmt: off
-    print(f"\nNumber of Runs: {number_of_runs}"
-          f"\nNumber of Chests Obtained: {number_of_chests_obtained}"
-          f"\nNumber of Drops: {number_of_drops}"
-          f"\nNumber of Missed Chests: {number_of_chests_missed}"
-          f"\nDrop Rate: {drop_rate}%"
-          f"\nMissed Chest Rate: {missed_chest_rate}%"
-          f"\nAverage Chests Per Run: {average_chests_per_run}"
-          f"\nAverage Time Taken For One Chest: {average_time_taken_for_one_chest}"
-          f"\nAverage Time Per Drop: {average_time_per_drop}"
-          f"\nNumber of Missed The Landing Relaunch: {relaunch.number_of_missed_the_landing_relaunch}"
-          f"\nNumber of Missed The Pale Heart Relaunch: {relaunch.number_of_missed_the_pale_heart_relaunch}")
-    # fmt: on
+    status = (
+        f"Total Time: {total_time}"
+        f"\nNumber of Runs: {number_of_runs}"
+        f"\nNumber of Chests Obtained: {number_of_chests_obtained}"
+        f"\nNumber of Drops: {number_of_drops}"
+        f"\nNumber of Missed Chests: {number_of_chests_missed}"
+        f"\nDrop Rate: {drop_rate}%"
+        f"\nMissed Chest Rate: {missed_chest_rate}%"
+        f"\nAverage Chests Per Run: {average_chests_per_run}"
+        f"\nAverage Time Taken For One Chest: {average_time_taken_for_one_chest}"
+        f"\nAverage Time Per Drop: {average_time_per_drop}"
+        f"\nNumber of Missed The Landing Relaunch: {relaunch.number_of_missed_the_landing_relaunch}"
+        f"\nNumber of Missed The Pale Heart Relaunch: {relaunch.number_of_missed_the_pale_heart_relaunch}"
+    )
 
-    print("Missed Chests: ", missed_chests)
+    return status
+
+
+def update_status(label: tkinter.Label, start_time: float, update_frequency: float):
+    """
+    Updates the status label every second.
+
+    Args:
+        label (tkinter.Label): The Tkinter Label widget to update.
+        start_time (float): The time when the script started.
+        update_frequency (float): How often to update the status, in milliseconds.
+    """
+    status = create_status(start_time)
+    label.config(text=status)
+    label.after(update_frequency, update_status, label, start_time, update_frequency)  # Schedule the next update
+
+
+def display_status(start_time: float, update_frequency: float):
+    """
+    Displays and updates the afk status in a Tkinter overlay window every "update_frequency" milliseconds.
+
+    Args:
+        start_time (float): The time when the script started.
+        update_frequency (float): How often to update the status, in milliseconds.
+    """
+    window = tkinter.Tk()
+    window.overrideredirect(True)  # Remove window title bar and borders
+    window.lift()  # Show Tkinter window
+    window.wm_attributes("-topmost", True)  # Keep the window on top
+    window.wm_attributes("-disabled", True)  # Disable interaction with the window
+    window.wm_attributes("-transparentcolor", "white")  # Set window to transparent so text overlays on screen
+
+    # Create a Label with left-aligned text
+    label = tkinter.Label(window, text="Loading...", font=(7), fg="black", bg="white", justify="left")
+    label.pack()
+
+    # Start the update loop
+    update_status(label, start_time, update_frequency)
+
+    window.mainloop()

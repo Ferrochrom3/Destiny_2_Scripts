@@ -26,8 +26,6 @@ All scripts support 2560x1440 resolution. Scripts that only use keyboard inputs 
    - Video
       - Field of View: 105
       - Screen Bounds: Set the bounds to max, covering the entire screen
-   - Additional Video
-      - Render Resolution: 100
  - Gameplay
    - HUD Opacity: Full (Default)
    - Colorblind Mode: Off

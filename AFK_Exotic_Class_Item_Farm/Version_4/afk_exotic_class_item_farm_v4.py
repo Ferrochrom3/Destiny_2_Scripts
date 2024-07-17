@@ -232,6 +232,11 @@ def start_afk():
     afk_thread.start()
     print("Execution Started")
 
+    # fmt: off
+    status_thread = threading.Thread(target=efficiency_evaluation.display_status,args=(start_time,1000,))
+    status_thread.start()
+    # fmt: on
+
 
 print("Press F7 to Start")
 print("Press F8 to Exit\n")
@@ -243,7 +248,6 @@ while True:
     keyboard.release("alt")
     pyautogui.mouseUp(button="left")
     pyautogui.mouseUp(button="right")
-    efficiency_evaluation.display_status(start_time)
 
     # fmt: off
     sys.exit(
