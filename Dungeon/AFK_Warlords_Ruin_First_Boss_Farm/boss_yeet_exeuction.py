@@ -58,7 +58,7 @@ def indebted_kindness():
     pyautogui.mouseDown(button="right")
     time.sleep(0.3)
     win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, -580, 390, 0, 0)
-    time.sleep(6.05)
+    time.sleep(6)
     pyautogui.leftClick()
 
     # Finisher
@@ -106,6 +106,7 @@ def check_cases():
         if pyautogui.locateOnScreen(os.path.join(image_path, "Guardian Down.png"), confidence=0.8) or pyautogui.locateOnScreen(f"{image_path}/Your Light Fades Away.png", confidence=0.8):
             print("Case: Guardian Down")
             efficiency_evaluation.total_failed_attempts += 1
+            efficiency_evaluation.consecutive_failed_attempts += 1
             break
 
         if time.time() - emote_elapsed_time > 17:
@@ -119,10 +120,10 @@ def check_cases():
             efficiency_evaluation.consecutive_failed_attempts += 1
             break
 
-        if not pyautogui.locateOnScreen(os.path.join(image_path, "Boss Health Bar.png"), confidence=0.8, region=config["boss_health_bar_region"]) and pyautogui.locateOnScreen(
-            os.path.join(image_path, "Player Health Bar.png"), confidence=0.8, region=config["player_health_bar_region"]
+        if not pyautogui.locateOnScreen(os.path.join(image_path, "Boss Health Bar.png"), confidence=0.7, region=config["boss_health_bar_region"]) and pyautogui.locateOnScreen(
+            os.path.join(image_path, "Player Health Bar.png"), confidence=0.7, region=config["player_health_bar_region"]
         ):
-            time.sleep(1.1)  # Add some delay so relaunch is not too early
+            time.sleep(1.2)  # Add some delay so relaunch is not too early
             print("Case: Boss is killed")
             efficiency_evaluation.consecutive_failed_attempts = 0
             efficiency_evaluation.total_success_attempts += 1

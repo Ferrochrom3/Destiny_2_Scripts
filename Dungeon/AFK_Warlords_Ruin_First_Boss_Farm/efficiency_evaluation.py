@@ -28,12 +28,23 @@ def create_status(start_time: float):
     Returns:
         str: Current status of the execuction that has the above metrics.
     """
-    total_time = time.time() - start_time
-    total_attempts = total_success_attempts + total_failed_attempts
+    total_time_seconds = round(time.time() - start_time)
+    total_time_minutes = round((time.time() - start_time) / 60, 2)
+    total_time_hours = round((time.time() - start_time) / 3600, 2)
+    total_time = f"{total_time_seconds} seconds | {total_time_minutes} minutes | {total_time_hours} hours"
 
+    total_attempts = total_success_attempts + total_failed_attempts
     success_rate = round(safe_divide(total_success_attempts, total_attempts) * 100, 2)
-    average_time_per_attempt = round(safe_divide(total_time, total_attempts), 2)
-    average_time_per_success = round(safe_divide(total_time, total_success_attempts), 2)
+
+    average_time_per_attempt_seconds = round(safe_divide(total_time_seconds, total_attempts), 2)
+    average_time_per_attempt_minutes = round(safe_divide(total_time_minutes, total_attempts), 2)
+    average_time_per_attempt_hours = round(safe_divide(total_time_hours, total_attempts), 2)
+    average_time_per_attempt = f"{average_time_per_attempt_seconds} seconds | {average_time_per_attempt_minutes} minutes | {average_time_per_attempt_hours} hours"
+
+    average_time_per_success_seconds = round(safe_divide(total_time_seconds, total_success_attempts), 2)
+    average_time_per_success_minutes = round(safe_divide(total_time_minutes, total_success_attempts), 2)
+    average_time_per_success_hours = round(safe_divide(total_time_hours, total_success_attempts), 2)
+    average_time_per_success = f"{average_time_per_success_seconds} seconds | {average_time_per_success_minutes} minutes | {average_time_per_success_hours} hours"
 
     status = (
         f"Total Time: {total_time}"
@@ -42,8 +53,8 @@ def create_status(start_time: float):
         f"\nConsecutive Failed Attempts: {consecutive_failed_attempts}"
         f"\nSuccess Attempts - {total_success_attempts}"
         f"\nSuccess Rate - {success_rate}%"
-        f"\nAverage Time Per Attempt - {average_time_per_attempt}s"
-        f"\nAverage Time Per Success - {average_time_per_success}s"
+        f"\nAverage Time Per Attempt - {average_time_per_attempt}"
+        f"\nAverage Time Per Success - {average_time_per_success}"
     )
 
     return status
@@ -81,6 +92,8 @@ def display_status(start_time: float, update_frequency: float):
     # Create a Label with left-aligned text
     label = tkinter.Label(window, text="Loading...", font=(10), fg="black", bg="white", justify="left")
     label.pack()
+
+    window.geometry("+0+600")  # Move window down by 600 pixels
 
     # Start the update loop
     update_status(label, start_time, update_frequency)
