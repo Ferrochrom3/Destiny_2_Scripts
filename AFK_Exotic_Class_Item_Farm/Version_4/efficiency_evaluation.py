@@ -50,7 +50,7 @@ def create_status(start_time: float):
     average_time_taken_for_one_chest = safe_divide(total_time_seconds, number_of_chests_obtained)
     drop_rate = round(safe_divide(number_of_drops, number_of_chests_obtained) * 100, 2)
     missed_chest_rate = round(safe_divide(number_of_chests_missed, number_of_chests_obtained + number_of_chests_missed) * 100, 2)
-    average_time_per_drop = safe_divide(total_time, number_of_drops)
+    average_time_per_drop = safe_divide(total_time_seconds, number_of_drops)
 
     status = (
         f"Total Time: {total_time}"
