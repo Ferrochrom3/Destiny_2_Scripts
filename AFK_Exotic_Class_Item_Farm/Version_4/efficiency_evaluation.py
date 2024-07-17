@@ -41,10 +41,13 @@ def create_status(start_time: float):
         start_time (float): The time when the script started.
     """
 
-    total_time = f"{round(time.time() - start_time)} seconds | {round((time.time() - start_time) / 60, 2)} minutes | {round((time.time() - start_time) / 3600, 2)} hours"
+    total_time_seconds = round(time.time() - start_time)
+    total_time_minutes = round((time.time() - start_time) / 60, 2)
+    total_time_hours = round((time.time() - start_time) / 3600, 2)
+    total_time = f"{total_time_seconds} seconds | {total_time_minutes} minutes | {total_time_hours} hours"
 
     average_chests_per_run = safe_divide(number_of_chests_obtained, number_of_runs)
-    average_time_taken_for_one_chest = safe_divide(total_time, number_of_chests_obtained)
+    average_time_taken_for_one_chest = safe_divide(total_time_seconds, number_of_chests_obtained)
     drop_rate = round(safe_divide(number_of_drops, number_of_chests_obtained) * 100, 2)
     missed_chest_rate = round(safe_divide(number_of_chests_missed, number_of_chests_obtained + number_of_chests_missed) * 100, 2)
     average_time_per_drop = safe_divide(total_time, number_of_drops)
