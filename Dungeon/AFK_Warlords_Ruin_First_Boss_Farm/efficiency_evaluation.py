@@ -16,10 +16,11 @@ def create_status(start_time: float):
     1. Total Time: Total amount of time spent afking
     2. Total Attempts: Total number of attempts to yeet the boss
     3. Failed Attempts: Number of attempts that failed to kill the boss
-    4. Success Attempts: Number of attempts that successfully killed the boss
-    5. Success Rate: How likely it is to kill the boss
-    6. Average Time Per Attempt: On average, how long it takes to execute one cycle
-    7. Average Time Per Success: On average, how long it takes to successfully kill the boss once
+    4 Consecutive Failed Attempts: Number of consecutive failed attempts, run will be reset after reaching 10
+    5. Success Attempts: Number of attempts that successfully killed the boss
+    6. Success Rate: How likely it is to kill the boss
+    7. Average Time Per Attempt: On average, how long it takes to execute one cycle
+    8. Average Time Per Success: On average, how long it takes to successfully kill the boss once
 
     Args:
         start_time (float): The time when the script started running.
@@ -35,8 +36,10 @@ def create_status(start_time: float):
     average_time_per_success = round(safe_divide(total_time, total_success_attempts), 2)
 
     status = (
-        f"Total Attempts: {total_attempts}"
+        f"Total Time: {total_time}"
+        f"\nTotal Attempts: {total_attempts}"
         f"\nFailed Attempts - {total_failed_attempts}"
+        f"\nConsecutive Failed Attempts: {consecutive_failed_attempts}"
         f"\nSuccess Attempts - {total_success_attempts}"
         f"\nSuccess Rate - {success_rate}%"
         f"\nAverage Time Per Attempt - {average_time_per_attempt}s"

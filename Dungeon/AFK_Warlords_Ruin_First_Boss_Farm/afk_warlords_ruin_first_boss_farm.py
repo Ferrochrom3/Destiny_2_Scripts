@@ -82,8 +82,8 @@ def my_function():
                 print("Too many failed attempts, relaunching the dungeon...")
                 relaunch_into_master()
                 reset_checkpoint()
+
             else:
-                print("======================New attempt======================")
                 indebted_kindness()
                 emote_at_corner()
                 check_cases()
