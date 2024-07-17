@@ -116,6 +116,7 @@ while True:
     keyboard.release("tab")
     keyboard.release("left")
     pyautogui.mouseUp(button="right")
+    print(efficiency_evaluation.create_status(start_time))
 
     # fmt: off
     sys.exit(

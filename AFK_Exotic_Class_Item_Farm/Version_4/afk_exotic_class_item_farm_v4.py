@@ -248,6 +248,7 @@ while True:
     keyboard.release("alt")
     pyautogui.mouseUp(button="left")
     pyautogui.mouseUp(button="right")
+    print(efficiency_evaluation.create_status(start_time))
 
     # fmt: off
     sys.exit(
