@@ -1,11 +1,13 @@
 """
-Performance (out of 79.46 minutes):
- - Total Attempts: 83
- - Fail Attempts: 70
- - Success Attempts: 13
- - Success Rate: 15.66%
- - Average Time Per Attempt: 57s
- - Average Time Per Success: 6.1 minutes
+Peformance:
+Total Time: 2687 seconds | 44.78 minutes | 0.75 hours
+Total Attempts: 42
+Failed Attempts - 29
+Consecutive Failed Attempts: 0
+Success Attempts - 13
+Success Rate - 30.95%
+Average Time Per Attempt - 63.98 seconds | 1.07 minutes | 0.02 hours
+Average Time Per Success - 206.69 seconds | 3.44 minutes | 0.06 hours
 """
 
 import os
@@ -44,7 +46,7 @@ Stats        : T9 Mobility
 Reward       : XP, Master Dungeon Loot (first boss loot table)
 
 Additional Notes:
- - Cap FPS to 120
+ - Cap FPS to 110-120
  - Use "Censered" Finisher and "Anniversary Pose" Emote (emote must be binded to "left").
  - DIM must be one Alt+Tab away from the game for loot collectiong to work.
  - Strength stats has no requirements but higher strength allows quicker restart when melee did not regen back after initial use.

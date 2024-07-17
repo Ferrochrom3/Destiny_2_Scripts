@@ -1,7 +1,7 @@
 values_by_resolution = {
     "2560x1440": {
         "boss_health_bar_region": (825, 1271, 500, 150),
-        "player_health_bar_region": (958, 93, 300, 80),
+        "grenade_ability_region": (0, 0, 0, 0),
         "relaunch_into_master_move_right": (1200, 0),
         "relaunch_into_master_move_left": (-400, 0),
         "relaunch_after_error_code_move_right": (1600, 0),
@@ -13,7 +13,7 @@ values_by_resolution = {
     },
     "1920x1080": {
         "boss_health_bar_region": (626, 951, 500, 160),
-        "player_health_bar_region": (722, 77, 300, 80),
+        "grenade_ability_region": (108, 923, 90, 70),
         "relaunch_into_master_move_right": (900, 0),
         "relaunch_into_master_move_left": (-400, 0),
         "relaunch_after_error_code_move_right": (1100, 0),

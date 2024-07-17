@@ -121,7 +121,7 @@ def check_cases():
             break
 
         if not pyautogui.locateOnScreen(os.path.join(image_path, "Boss Health Bar.png"), confidence=0.7, region=config["boss_health_bar_region"]) and pyautogui.locateOnScreen(
-            os.path.join(image_path, "Player Health Bar.png"), confidence=0.7, region=config["player_health_bar_region"]
+            os.path.join(image_path, "Vortex Grenade.png"), confidence=0.7, region=config["grenade_ability_region"]
         ):
             time.sleep(1.2)  # Add some delay so relaunch is not too early
             print("Case: Boss is killed")

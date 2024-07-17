@@ -1,5 +1,7 @@
 import time
 import tkinter
+import win32con
+import win32gui
 
 total_failed_attempts = 0
 total_success_attempts = 0
@@ -74,6 +76,12 @@ def update_status(label: tkinter.Label, start_time: float, update_frequency: flo
     label.after(update_frequency, update_status, label, start_time, update_frequency)  # Schedule the next update
 
 
+def make_window_click_through(hwnd):
+    ex_style = win32gui.GetWindowLong(hwnd, win32con.GWL_EXSTYLE)  # Get the current window style
+    ex_style |= win32con.WS_EX_LAYERED | win32con.WS_EX_TRANSPARENT  # Add the WS_EX_LAYERED and WS_EX_TRANSPARENT styles to make it click-through
+    win32gui.SetWindowLong(hwnd, win32con.GWL_EXSTYLE, ex_style)  # Set the new window style
+
+
 def display_status(start_time: float, update_frequency: float):
     """
     Displays and updates the afk status in a Tkinter overlay window every "update_frequency" milliseconds.
@@ -94,6 +102,9 @@ def display_status(start_time: float, update_frequency: float):
     label.pack()
 
     window.geometry("+0+600")  # Move window down by 600 pixels
+
+    hwnd = win32gui.FindWindow(None, window.winfo_toplevel().title())  # Get the top level window title, which will be Tkinter overlay window
+    make_window_click_through(hwnd)  # Make the overlay window click-throughable
 
     # Start the update loop
     update_status(label, start_time, update_frequency)
