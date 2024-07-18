@@ -34,7 +34,7 @@ Abilities    : Snare Bomb
 Fragments    : Echo of Persistance, Echo of Obscurity
 Aspects      : Trapper's Ambush
 Weapons      : Kinetic - Any
-               Energy  - Indebted Kindness (with any Champion mod)
+               Energy  - Indebted Kindness (60 Recoil Direction, with any Champion mod)
                Power   - Any Grenade Launcher
 Exotic Armor : Graviton Forefeit
 Mods         : Helmet     - Any
@@ -113,6 +113,7 @@ while True:
     keyboard.release("a")
     keyboard.release("s")
     keyboard.release("d")
+    keyboard.release("f")
     keyboard.release("ctrl")
     keyboard.release("alt")
     keyboard.release("tab")
