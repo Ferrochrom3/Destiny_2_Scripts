@@ -70,7 +70,7 @@ def relaunch_into_master():
             break
 
         if is_internet_error():
-            print("Internet error during relaunch The Pale Heart...")
+            print("Internet error during Relaunching Master...")
             return
 
 
@@ -146,7 +146,7 @@ def reset_checkpoint():
             break
 
         if is_internet_error():
-            print("Internet error during relaunch The Pale Heart...")
+            print("Internet error during waiting for respawn...")
             return
 
 
