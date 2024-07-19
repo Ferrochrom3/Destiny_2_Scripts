@@ -10,6 +10,7 @@ from collect_loot_from_DIM import collect_loot_from_DIM
 destiny_2_scripts_path = os.path.abspath("Destiny_2_Scripts")
 folder_path = os.path.dirname(destiny_2_scripts_path)
 sys.path.insert(0, folder_path)
+from Destiny_2_Scripts.Other_Utilities.Internet_Error_Fix.internet_error_fix import is_internet_error
 from Destiny_2_Scripts.Dungeon.AFK_Warlords_Ruin_First_Boss_Farm import resolution_config
 
 screen_width, screen_height = pyautogui.size()
@@ -67,6 +68,10 @@ def relaunch_into_master():
         if pyautogui.locateOnScreen(os.path.join(image_path, "In Dungeon Icon.png"), confidence=0.8):
             print("Loaded into Dungeon")
             break
+
+        if is_internet_error():
+            print("Internet error during relaunch The Pale Heart...")
+            return
 
 
 def reset_checkpoint():
@@ -139,6 +144,10 @@ def reset_checkpoint():
             time.sleep(1)
             print("Respawned")
             break
+
+        if is_internet_error():
+            print("Internet error during relaunch The Pale Heart...")
+            return
 
 
 def reenter_dungeon_after_internet_error():

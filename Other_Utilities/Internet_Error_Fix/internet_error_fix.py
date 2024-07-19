@@ -34,7 +34,11 @@ def is_internet_error():
     """
 
     # Error may occur during execution, which takes you to the intro screen when checking for error code screen hit, add intro screen check to get out of the loop if that happens.
-    if pyautogui.locateOnScreen(os.path.join(image_path, "Error Code Icon.png"), confidence=0.8) or pyautogui.locateOnScreen(f"{image_path}/Attention Icon.png", confidence=0.8) or pyautogui.locateOnScreen(f"{image_path}/The Final Shape.png", confidence=0.8):
+    if (
+        pyautogui.locateOnScreen(os.path.join(image_path, "Error Code Icon.png"), confidence=0.9)
+        or pyautogui.locateOnScreen(f"{image_path}/Attention Icon.png", confidence=0.9)
+        or pyautogui.locateOnScreen(f"{image_path}/The Final Shape.png", confidence=0.9)
+    ):
         return True
 
     return False

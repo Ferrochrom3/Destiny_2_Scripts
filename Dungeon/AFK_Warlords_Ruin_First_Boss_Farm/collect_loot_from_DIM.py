@@ -26,13 +26,22 @@ def collect_loot_from_DIM():
     keyboard.press_and_release("alt+tab")
     time.sleep(1)
 
-    try:
-        x, y = pyautogui.locateCenterOnScreen(os.path.join(image_path, "DIM Collect Postmaster.png"), confidence=0.7)
-        pyautogui.moveTo(x, y)
-        time.sleep(0.1)
-        pyautogui.leftClick()
-        time.sleep(1)
-        keyboard.press_and_release("alt+tab")
-    except TypeError:
-        keyboard.press_and_release("alt+tab")
-        print("DIM Collect Postmaster is not found")
+    # Refresh DIM
+    pyautogui.moveTo(871, 362)
+    time.sleep(0.1)
+    pyautogui.leftClick()
+    time.sleep(0.1)
+    keyboard.press_and_release("r")
+    time.sleep(5)
+
+    # Collect loot
+    pyautogui.moveTo(1427, 851)
+    time.sleep(0.1)
+    pyautogui.leftClick()
+    time.sleep(0.1)
+    keyboard.write('document.querySelector(".dim-button").click()')
+    time.sleep(0.1)
+    keyboard.press_and_release("enter")
+    time.sleep(0.3)
+
+    keyboard.press_and_release("alt+tab")

@@ -1,13 +1,13 @@
 """
 Peformance:
-Total Time: 2687 seconds | 44.78 minutes | 0.75 hours
-Total Attempts: 42
-Failed Attempts - 29
+Total Time: 35866 seconds | 597.76 minutes | 9.96 hours
+Total Attempts: 650
+Failed Attempts - 566
 Consecutive Failed Attempts: 0
-Success Attempts - 13
-Success Rate - 30.95%
-Average Time Per Attempt - 63.98 seconds | 1.07 minutes | 0.02 hours
-Average Time Per Success - 206.69 seconds | 3.44 minutes | 0.06 hours
+Success Attempts - 84
+Success Rate - 12.92%
+Average Time Per Attempt - 55.18 seconds | 0.92 minutes | 0.02 hours
+Average Time Per Success - 426.98 seconds | 7.12 minutes | 0.12 hours
 """
 
 import os
@@ -48,7 +48,9 @@ Reward       : XP, Master Dungeon Loot (first boss loot table)
 Additional Notes:
  - Cap FPS to 110-120
  - Use "Censered" Finisher and "Anniversary Pose" Emote (emote must be binded to "left").
- - DIM must be one Alt+Tab away from the game for loot collectiong to work.
+ - DIM must be opened with developer mode with F12 and be one Alt+Tab away from the game window in the same monitor for loot collectiong to work.
+    - Don't scroll to other areas or resize the window
+    - Farming character must be on Farming Mode in DIM
  - Strength stats has no requirements but higher strength allows quicker restart when melee did not regen back after initial use.
 """
 
@@ -74,6 +76,8 @@ def my_function():
 
     while True:
         if is_internet_error():
+            screenshot = pyautogui.screenshot()
+            screenshot.save("Internet Error.png")
             fix_internet_error("first")
             reenter_dungeon_after_internet_error()
             reset_checkpoint()
