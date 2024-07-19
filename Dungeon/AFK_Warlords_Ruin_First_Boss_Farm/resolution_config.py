@@ -10,6 +10,8 @@ values_by_resolution = {
         "select_mode_master_coord": (261, 450),
         "launch_button_coord": (2160, 1196),
         "checkpoint_coord": (1804, 1101),
+        "DIM_refresh_area": (0, 0),
+        "DIM_console_area": (0, 0),
     },
     "1920x1080": {
         "boss_health_bar_region": (626, 951, 500, 160),
@@ -22,5 +24,7 @@ values_by_resolution = {
         "select_mode_master_coord": (278, 348),
         "launch_button_coord": (1613, 900),
         "checkpoint_coord": (1348, 830),
+        "DIM_refresh_area": (871, 362),
+        "DIM_console_area": (1427, 851),
     },
 }

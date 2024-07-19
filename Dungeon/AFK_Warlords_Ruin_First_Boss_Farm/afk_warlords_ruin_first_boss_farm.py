@@ -46,7 +46,7 @@ Stats        : T9 Mobility
 Reward       : XP, Master Dungeon Loot (first boss loot table)
 
 Additional Notes:
- - Cap FPS to 110-120
+ - FPS needs to be 100+
  - Use "Censered" Finisher and "Anniversary Pose" Emote (emote must be binded to "left").
  - DIM must be opened with developer mode with F12 and be one Alt+Tab away from the game window in the same monitor for loot collectiong to work.
     - Don't scroll to other areas or resize the window

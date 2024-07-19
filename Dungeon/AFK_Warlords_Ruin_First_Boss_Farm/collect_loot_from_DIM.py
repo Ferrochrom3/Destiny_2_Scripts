@@ -27,7 +27,7 @@ def collect_loot_from_DIM():
     time.sleep(1)
 
     # Refresh DIM
-    pyautogui.moveTo(871, 362)
+    pyautogui.moveTo(config["DIM_refresh_area"][0], config["DIM_refresh_area"][1])
     time.sleep(0.1)
     pyautogui.leftClick()
     time.sleep(0.1)
@@ -35,7 +35,7 @@ def collect_loot_from_DIM():
     time.sleep(5)
 
     # Collect loot
-    pyautogui.moveTo(1427, 851)
+    pyautogui.moveTo(config["DIM_console_area"][0], config["DIM_console_area"][1])
     time.sleep(0.1)
     pyautogui.leftClick()
     time.sleep(0.1)
