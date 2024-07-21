@@ -52,6 +52,9 @@ Additional Notes:
     - Don't scroll to other areas or resize the window
     - Farming character must be on Farming Mode in DIM
  - Strength stats has no requirements but higher strength allows quicker restart when melee did not regen back after initial use.
+
+TODO:
+ - Missing 2560x1440 DIM resolution config values
 """
 
 pyautogui.FAILSAFE = False
