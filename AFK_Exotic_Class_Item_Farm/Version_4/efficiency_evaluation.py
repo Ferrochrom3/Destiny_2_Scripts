@@ -102,7 +102,7 @@ def display_status(start_time: float, update_frequency: float):
     window.attributes("-alpha", 0.5)
 
     # Create a Label with left-aligned text
-    label = tkinter.Label(window, text="Loading...", font=(10), fg="black", bg="white", justify="left")
+    label = tkinter.Label(window, text="Loading...", font=("Arial", 10), fg="black", bg="white", justify="left")
     label.pack()
 
     # Start the update loop

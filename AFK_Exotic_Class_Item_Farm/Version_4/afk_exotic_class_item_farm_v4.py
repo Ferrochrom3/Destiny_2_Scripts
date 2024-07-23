@@ -1,5 +1,5 @@
 """
-Performance (without frame drops):
+Performance:
 Total Time: 32124 seconds | 535.39 minutes | 8.92 hours
 Number of Runs: 416
 Number of Chests Obtained: 826
@@ -70,6 +70,7 @@ Process:
  - Relaunch The Pale Heart after collecting 35 chests to reset the progress of Overthrow so it doesn't reach level 2.
 
 Additional Notes:
+ - 60+ FPS
  - Must plant the Luminescent Seed by the chest.
  - Chest spawn is manipulated by standing at a specific spot before other chests have spawned. Must execute the script shortly after landing.
  - Must equip Wombo Detector Ghost mod.
@@ -101,7 +102,9 @@ def prompt_instruction():
     global character_position
 
     character_class = input(f"Which character are you running? (Warlock, Hunter, Titan){Fore.GREEN}").strip().capitalize()
-    character_position = input(f"{Style.RESET_ALL}From top to bottom, which position is your {character_class} in the character selection screen? (First, Second, Third){Fore.GREEN}").strip().capitalize()
+    character_position = (
+        input(f"{Style.RESET_ALL}From top to bottom, which position is your {character_class} in the character selection screen? (First, Second, Third){Fore.GREEN}").strip().capitalize()
+    )
 
     print(f"{Style.RESET_ALL}Running Class: {character_class}")
     print(f"Character Position: {character_position}")
