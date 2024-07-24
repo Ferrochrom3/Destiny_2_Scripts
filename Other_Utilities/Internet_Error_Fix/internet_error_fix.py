@@ -12,6 +12,7 @@ from Destiny_2_Scripts.Other_Utilities.Internet_Error_Fix import error_resolutio
 """
 Additional Note
  - Currently works with The Final Shape intro screen.
+ - Any other pop up screen will stop this from reloading into the game properly.
 """
 
 screen_width, screen_height = pyautogui.size()
