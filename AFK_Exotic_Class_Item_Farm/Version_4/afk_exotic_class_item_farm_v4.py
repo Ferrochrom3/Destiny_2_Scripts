@@ -74,6 +74,9 @@ Additional Notes:
  - Must plant the Luminescent Seed by the chest.
  - Chest spawn is manipulated by standing at a specific spot before other chests have spawned. Must execute the script shortly after landing.
  - Must equip Wombo Detector Ghost mod.
+
+TODO:
+ - Solipism for 2560x1440 and 1920x1080
 """
 
 # Resolution config and image path setup
@@ -90,8 +93,8 @@ image_path = os.path.join(base_path, f"Image_{current_monitor_resolution}")
 
 
 start_time: str = time.time()
-character_class: str = "Titan"
-character_position: str = "Second"
+character_class: str = ""
+character_position: str = ""
 
 
 def prompt_instruction():
@@ -137,10 +140,10 @@ def verify_user_input(character_class: str, character_position: str):
     return class_valid and position_valid
 
 
-# prompt_instruction()
+prompt_instruction()
 
-# while not verify_user_input(character_class, character_position):
-#     prompt_instruction()
+while not verify_user_input(character_class, character_position):
+    prompt_instruction()
 
 
 def my_function():
