@@ -76,7 +76,7 @@ Additional Notes:
  - Must equip Wombo Detector Ghost mod.
 
 TODO:
- - Solipism for 2560x1440 and 1920x1080
+ - Solipism for 2560x1440
 """
 
 # Resolution config and image path setup
