@@ -74,9 +74,6 @@ Additional Notes:
  - Must plant the Luminescent Seed by the chest.
  - Chest spawn is manipulated by standing at a specific spot before other chests have spawned. Must execute the script shortly after landing.
  - Must equip Wombo Detector Ghost mod.
-
-TODO:
- - Solipsism for 2560x1440
 """
 
 # Resolution config and image path setup
@@ -105,9 +102,7 @@ def prompt_instruction():
     global character_position
 
     character_class = input(f"Which character are you running? (Warlock, Hunter, Titan){Fore.GREEN}").strip().capitalize()
-    character_position = (
-        input(f"{Style.RESET_ALL}From top to bottom, which position is your {character_class} in the character selection screen? (First, Second, Third){Fore.GREEN}").strip().capitalize()
-    )
+    character_position = input(f"{Style.RESET_ALL}From top to bottom, which position is your {character_class} in the character selection screen? (First, Second, Third){Fore.GREEN}").strip().capitalize()
 
     print(f"{Style.RESET_ALL}Running Class: {character_class}")
     print(f"Character Position: {character_position}")
