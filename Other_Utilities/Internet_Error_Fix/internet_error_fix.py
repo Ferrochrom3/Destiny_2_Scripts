@@ -37,8 +37,8 @@ def is_internet_error():
     # Error may occur during execution, which takes you to the intro screen when checking for error code screen hit, add intro screen check to get out of the loop if that happens.
     if (
         pyautogui.locateOnScreen(os.path.join(image_path, "Error Code Icon.png"), confidence=0.9)
-        or pyautogui.locateOnScreen(f"{image_path}/Attention Icon.png", confidence=0.9)
-        or pyautogui.locateOnScreen(f"{image_path}/The Final Shape.png", confidence=0.9)
+        or pyautogui.locateOnScreen(os.path.join(image_path, "Attention Icon.png"), confidence=0.9)
+        or pyautogui.locateOnScreen(os.path.join(image_path, "The Final Shape.png"), confidence=0.9)
     ):
         return True
 
@@ -70,6 +70,11 @@ def fix_internet_error(character_to_select: str):
             keyboard.press_and_release("space")
             break
 
+        # If internet error occurs during this waiting period, redo the internet error fix
+        if is_internet_error():
+            fix_internet_error(character_to_select)
+            return
+
     print("Waiting to click on a character...")
     while True:
         if pyautogui.locateOnScreen(os.path.join(image_path, "Patch Notes Icon.png"), confidence=0.8, region=config["patch_notes_icon_region"]):
@@ -79,3 +84,8 @@ def fix_internet_error(character_to_select: str):
             pyautogui.leftClick()
             time.sleep(6)  # Wait 6 seconds until in game
             break
+
+        # If internet error occurs during this waiting period, redo the internet error fix
+        if is_internet_error():
+            fix_internet_error(character_to_select)
+            return
