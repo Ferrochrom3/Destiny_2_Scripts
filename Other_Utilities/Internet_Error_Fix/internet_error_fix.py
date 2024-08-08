@@ -72,6 +72,7 @@ def fix_internet_error(character_to_select: str):
 
         # If internet error occurs during this waiting period, redo the internet error fix
         if is_internet_error():
+            print('Internet error occured again in "Waiting for The Final Shape Screen"...Redoing the fix...')
             fix_internet_error(character_to_select)
             return
 
@@ -87,5 +88,6 @@ def fix_internet_error(character_to_select: str):
 
         # If internet error occurs during this waiting period, redo the internet error fix
         if is_internet_error():
+            print('Internet error occured again in "Waiting to click on a character"...Redoing the fix...')
             fix_internet_error(character_to_select)
             return
