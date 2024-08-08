@@ -33,7 +33,9 @@ pyautogui.FAILSAFE = False                                        Remove mouse m
 region = (x, y, w, h)                                             (x-coord of the top-left corner, y-coord of the top-left corner, Width of the region, Height of the region)
 
 Scripts that uses multiple versions that has the same .py file in each version, such as resolution_config.py must import their own scripts with a path
-Ex. from Destiny_2_Scripts.AFK_Exotic_Class_Item_Farm.Version_4 import resolution_config
+Ex.
+from Destiny_2_Scripts.AFK_Exotic_Class_Item_Farm.Version_3 import resolution_config
+from Destiny_2_Scripts.AFK_Exotic_Class_Item_Farm.Version_4 import resolution_config
 
 destiny_2_scripts_path = os.path.abspath("Destiny_2_Scripts")                                                               Get the absolute path of "Destiny_2_Scripts"
 folder_path = os.path.dirname(destiny_2_scripts_path)                                                                       Get the path of the folder that contains "Destiny_2_Scripts"
