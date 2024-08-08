@@ -35,6 +35,7 @@ Reward       : Silver Leaves, Cruicible rep
 Setup:
  - Set Private Match to "Collision" mode.
  - Change map to "The Burnout".
+ - Change match score limit to 25
  - Start the script after clicking on the "Launch" button.
 
 Process:
