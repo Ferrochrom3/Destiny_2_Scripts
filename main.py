@@ -83,6 +83,9 @@ Mods         : Helmet     - Any
 Stats        : Any
 Reward       : Any
 
+Setup:
+ - Any
+ 
 Process:
  - Any
 
