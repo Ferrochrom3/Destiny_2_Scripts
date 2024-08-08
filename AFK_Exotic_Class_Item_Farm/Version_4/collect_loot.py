@@ -49,9 +49,6 @@ def collect_loot(character_class: str, chest_number: str, is_chest_3: bool = Fal
         efficiency_evaluation.missed_chests.append(f"Chest_{chest_number}")
         efficiency_evaluation.number_of_chests_missed += 1
 
-        # screenshot = pyautogui.screenshot()
-        # screenshot.save(f"Destiny_2_Scripts/AFK_Exotic_Class_Item_Farm/Version_4/Missed Chests/{efficiency_evaluation.number_of_chests_missed}_Chest_{chest_number}.png")
-
 
 def check_for_exotic_class_item_drop(character_class: str):
     elapsed_time = time.time()

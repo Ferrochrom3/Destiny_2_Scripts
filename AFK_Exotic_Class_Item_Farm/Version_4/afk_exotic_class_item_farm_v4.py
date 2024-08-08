@@ -1,5 +1,5 @@
 """
-Performance:
+Performance (pre drop rate nerf):
 Total Time: 32124 seconds | 535.39 minutes | 8.92 hours
 Number of Runs: 416
 Number of Chests Obtained: 826
@@ -60,6 +60,9 @@ Mods         : Helmet     - Any
 Stats        : Tier 10 Mobility (Hunter), Tier 1 Mobility (Warlock/Titan)
 Reward       : Exotic Class Items, Pale Heart Engrams, Ghost Reputations, Gunsmith Engrams
 
+Setup:
+ - After landing in "The Landing", start the script
+
 Process:
  - Start at The Landing landing zone.
  - Runs down to the left and check when Chest_3 spawns using Still Hunt.
@@ -70,6 +73,7 @@ Process:
  - Relaunch The Pale Heart after collecting 35 chests to reset the progress of Overthrow so it doesn't reach level 2.
 
 Additional Notes:
+ - Drop rates have been significantly reduced. This is no longer a efficient farm for exotic class items, but can still be used for other things.
  - 60+ FPS
  - Must plant the Luminescent Seed by the chest.
  - Chest spawn is manipulated by standing at a specific spot before other chests have spawned. Must execute the script shortly after landing.

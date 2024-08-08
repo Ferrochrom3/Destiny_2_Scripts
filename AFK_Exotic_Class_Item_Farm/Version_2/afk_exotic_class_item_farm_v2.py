@@ -1,5 +1,5 @@
 """
-Performance (out of 505.99 minutes):
+Performance (pre drop rate nerf) (out of 505.99 minutes):
 Number of Attempts: 2025
 Number of Chests Obtained: 355
 Rate of Success: 17.53%
@@ -39,11 +39,17 @@ Mods         : Helmet     - Any
 Stats        : Tier 1 Mobility
 Reward       : Exotic Class Items, Pale Heart Engrams, Ghost Reputations, Gunsmith Engrams
 
+Setup:
+ - After landing in "The Landing", start the script
+ 
 Process:
  - Start at The Landing landing zone.
  - Runs through the map from Chest_1 to Chest_9 and tries to collect each chest.
  - After Chest_9, relaunch The Landing.
  - After relaunching The Landing "max_number_of_relaunching" times, relaunch The Pale Heart to reset the progress of Overthrow so it doesn't reach level 2.
+
+Additional Notes:
+ - Drop rates have been significantly reduced. This is no longer a efficient farm for exotic class items, but can still be used for other things.
 """
 
 print("Press F7 to Start")

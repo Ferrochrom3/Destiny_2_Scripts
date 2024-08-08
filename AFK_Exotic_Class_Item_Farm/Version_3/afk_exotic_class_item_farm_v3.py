@@ -1,5 +1,5 @@
 """
-Performance (out of 11.18 hours):
+Performance (pre drop rate nerf) (out of 11.18 hours):
 Number of Attempts: 665
 Number of Chests Obtained: 632
 Rate of Success: 95.04%
@@ -44,6 +44,9 @@ Mods         : Helmet     - Any
 Stats        : Any
 Reward       : Exotic Class Items, Pale Heart Engrams, Ghost Reputations, Gunsmith Engrams
 
+Setup:
+ - After landing in "The Landing", start the script
+
 Process:
  - Start at The Landing landing zone.
  - Runs down to the left and check when Chest_3 spawns using Still Hunt.
@@ -52,6 +55,7 @@ Process:
  - Relaunch The Pale Heart after "max_number_of_relaunching" times to reset the progress of Overthrow so it doesn't reach level 2.
 
 Additional Notes:
+ - Drop rates have been significantly reduced. This is no longer a efficient farm for exotic class items, but can still be used for other things.
  - Must plant the Luminescent Seed by the chest.
  - Chest spawn is manipulated by standing at a specific spot before other chests have spawned. Must execute the script shortly after landing.
  - Must equip Wombo Detector Ghost mod.
