@@ -40,6 +40,9 @@ Setup:
 Process:
  - After game starts, the character will run towards Zone B and captures the zone.
  - Points will slowly build up and after completion, 4-5 Silver Leaves will be rewarded.
+
+ Additional Notes:
+ - None
 """
 
 screen_width, screen_height = pyautogui.size()
