@@ -30,7 +30,7 @@ Mods         : Helmet     - Any
                Leg        - Any
                Class Item - Any
 Stats        : Any
-Reward       : Some Silver Leaves, Small Cruicible rep 
+Reward       : Silver Leaves, Cruicible rep 
 
 Setup:
  - Set Private Match to "Collision" mode.
