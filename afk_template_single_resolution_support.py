@@ -40,15 +40,10 @@ Additional Notes:
  - Any
 """
 
-screen_width, screen_height = pyautogui.size()
-current_monitor_resolution = f"{screen_width}x{screen_height}"
-
 if getattr(sys, "frozen", False):
-    base_path = sys._MEIPASS + "/Destiny_2_Scripts/AFK_Exotic_Class_Item_Farm/Version_4/"
+    image_path = sys._MEIPASS + "/Destiny_2_Scripts/AFK_Exotic_Class_Item_Farm/Version_4/"
 else:
-    base_path = os.path.dirname(__file__)
-
-image_path = os.path.join(base_path, f"Image_{current_monitor_resolution}")
+    image_path = os.path.dirname(__file__)
 
 
 start_time = time.time()
