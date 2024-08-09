@@ -83,7 +83,7 @@ Mods         : Helmet     - Any
                Leg        - Any
                Class Item - Any
 Stats        : Any
-Reward       : Any
+Reward       : None
 
 Setup:
  - None
