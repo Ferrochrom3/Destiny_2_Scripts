@@ -8,6 +8,7 @@ All scripts support 2560x1440 resolution. Scripts that only use keyboard inputs 
  - pillow: 10.3.0 
 
 ## Scripts that support both 1920x1080 and 2560x1440:
+ - All scripts that only use keyboard inputs
  - AFK Exotic Class Item Farm (V2, V3, V4)
  - AFK Warlords Ruin First Boss Farm
  - Internet Error Fix
