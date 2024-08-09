@@ -103,4 +103,5 @@ def show_final_results():
     print(f"{Fore.GREEN}You have selected: ")
     print(f" - Character: {character_to_select}")
     print(f" - Activity Type: {activity_type}")
-    print(f" - Activity: {activity_name}{Style.RESET_ALL}")
+    print(f" - Activity: {activity_name}")
+    print(f"{Style.RESET_ALL}")
