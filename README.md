@@ -12,6 +12,7 @@ All scripts support 2560x1440 resolution. Scripts that only use keyboard inputs 
  - AFK Warlords Ruin First Boss Farm
  - Internet Error Fix
  - Spam Join
+ - AFK Silver Leaves Farm
 
 ## In-Game Settings (anything not mentioned will be default)
  - Keybinds
