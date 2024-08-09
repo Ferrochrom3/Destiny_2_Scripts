@@ -36,8 +36,8 @@ Stats        : Any
 Reward       : None
 
 Setup:
- - Follow the instruction prompts.
- - Load in the the activity that is chosen in the instruction prompt.
+ - Follow the instruction prompts to choose character, type of the activity, and the actual activity.
+ - Load into the activity that is chosen in the instruction prompt.
  - After landing, start the script.
  
 Process:
