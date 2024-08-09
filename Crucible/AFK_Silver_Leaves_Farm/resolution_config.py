@@ -4,7 +4,7 @@ values_by_resolution = {
         "gamemode_region": (47, 1114, 700, 150),
     },
     "1920x1080": {
-        "launch_button_coord": (0, 0),
-        "gamemode_region": (0, 0, 700, 150),
+        "launch_button_coord": (1634, 902),
+        "gamemode_region": (37, 853, 530, 100),
     },
 }
