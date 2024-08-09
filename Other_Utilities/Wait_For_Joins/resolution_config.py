@@ -1,7 +1,5 @@
 values_by_resolution = {
-    "2560x1440": {
-        "chest_3_region": (0, 0),
-    },
+    "2560x1440": {},
     "1920x1080": {
         "first_character": (1324, 445),
         "second_character": (1324, 565),
