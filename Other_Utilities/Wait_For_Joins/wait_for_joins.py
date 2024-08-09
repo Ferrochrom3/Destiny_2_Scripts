@@ -36,13 +36,17 @@ Stats        : Any
 Reward       : Any
 
 Setup:
- - Any
+ - Follow the instruction prompts.
+ - Load in the the activity that is chosen in the instruction prompt.
+ - After landing, start the script.
  
 Process:
- - Any
+ - User will wait inside of the chosen activity until another player joins.
+ - After a player join is detected, go back to Character Selection screen and select the chosen character.
+ - Then, load in to the chosen activity to repeat the cycle.
 
 Additional Notes:
- - Any
+ - None
 """
 
 screen_width, screen_height = pyautogui.size()
