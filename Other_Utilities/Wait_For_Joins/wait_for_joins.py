@@ -114,7 +114,7 @@ def swap_character():
     status_display.current_status = "Waiting to Select Character"
     while True:
         if pyautogui.locateOnScreen(os.path.join(image_path, "Patch Notes Icon.png"), confidence=0.8, region=config["patch_notes_icon_region"]):
-            pyautogui.moveTo(config[f"{prompt_instructions.character_to_select}_character"][0], config[f"{prompt_instructions.character_to_select}_character"][1])
+            pyautogui.moveTo(config[f"{prompt_instructions.character_to_select.lower()}_character"][0], config[f"{prompt_instructions.character_to_select.lower()}_character"][1])
             time.sleep(0.1)
             pyautogui.leftClick()
             time.sleep(2)
