@@ -30,7 +30,7 @@ Mods         : Helmet     - Any
                Leg        - Any
                Class Item - Any
 Stats        : Any
-Reward       : Silver Leaves, Cruicible rep 
+Reward       : Silver Leaves, Cruicible Reputation, Seasonal Weapons, Seasonal Engrams
 
 Setup:
  - Set Private Match to "Collision" mode.
@@ -90,6 +90,7 @@ def my_function():
                     pyautogui.moveTo(config["launch_button_coord"][0], config["launch_button_coord"][1])
                     time.sleep(0.1)
                     pyautogui.leftClick()
+                    break
 
 
 def win32api_move_mouse(x: int, y: int, wait_time: float = 0.1):
