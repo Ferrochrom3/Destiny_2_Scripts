@@ -86,13 +86,13 @@ Stats        : Any
 Reward       : Any
 
 Setup:
- - Any
+ - None
  
 Process:
- - Any
+ - None
 
 Additional Notes:
- - Any
+ - None
 """
 
 # Get current monitor resolution, used to make script compatible with multiple resolutions
