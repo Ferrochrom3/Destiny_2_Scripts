@@ -63,7 +63,7 @@ def check_for_exotic_class_item_drop(character_class: str):
             exotic_class_item = "Solipsism"
 
     while True:
-        if pyautogui.locateCenterOnScreen(os.path.join(image_path, f"{exotic_class_item}.png"), confidence=0.8):
+        if pyautogui.locateCenterOnScreen(os.path.join(image_path, f"{exotic_class_item}.png"), confidence=0.7):
             efficiency_evaluation.number_of_drops += 1
             break
 
