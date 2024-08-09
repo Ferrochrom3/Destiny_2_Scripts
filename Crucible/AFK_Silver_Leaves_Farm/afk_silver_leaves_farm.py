@@ -30,7 +30,7 @@ Mods         : Helmet     - Any
                Leg        - Any
                Class Item - Any
 Stats        : Any
-Reward       : Silver Leaves, Cruicible Reputation, Seasonal Weapons, Seasonal Engrams
+Reward       : Silver Leaves, Seasonal Weapons, Seasonal Engrams
 
 Setup:
  - Set Private Match to "Collision" mode.
