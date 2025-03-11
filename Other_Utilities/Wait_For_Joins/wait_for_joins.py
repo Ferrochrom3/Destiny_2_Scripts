@@ -16,6 +16,7 @@ from Destiny_2_Scripts.Other_Utilities.Wait_For_Joins import status_display
 from Destiny_2_Scripts.Other_Utilities.Wait_For_Joins import prompt_instructions
 from Destiny_2_Scripts.Other_Utilities.Wait_For_Joins import resolution_config
 from Destiny_2_Scripts.Other_Utilities.Wait_For_Joins import dreaming_city
+from Destiny_2_Scripts.Other_Utilities.Wait_For_Joins import europa
 
 """
 Location     : Any
@@ -69,16 +70,21 @@ def my_function():
     start_time = time.time()
 
     while True:
-        if pyautogui.locateOnScreen(os.path.join(image_path, "Player Joined.png"), confidence=0.8, region=config["player_joined_region"]):
+        if pyautogui.locateOnScreen(os.path.join(image_path, "Player Joined.png"), confidence=0.7):
+            status_display.current_status = "Join Detected. Waiting some time for the player to join..."
             swap_character()
 
             # Opens map
+            status_display.current_status = "Looking for destination"
             keyboard.press_and_release("m")
             time.sleep(2)
 
             match (prompt_instructions.activity_name):
                 case "The Shattered Throne":
                     dreaming_city.launch_shattered_throne()
+
+                case "Vespers Host":
+                    europa.launch_vespers_host()
 
                 case _:
                     print("Something went wrong...")
@@ -98,9 +104,9 @@ def swap_character():
         character_to_select (str): First, second, or third. The string will automatically be converted to lower case.
     """
 
+    time.sleep(8)
     status_display.current_status = "Swapping Character"
 
-    time.sleep(8)
     keyboard.press_and_release("esc")
     time.sleep(1)
     pyautogui.moveTo(config["change_character"][0], config["change_character"][1])

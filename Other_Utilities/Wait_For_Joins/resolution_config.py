@@ -11,5 +11,8 @@ values_by_resolution = {
         "dreaming_city_move_up": (0, -1000),
         "dreaming_city_move_down": (0, 500),
         "launch_button": (1605, 906),
+        "europa_move_up": (0, -1000),
+        "europa_move_down": (0, 500),
+        "europa_move_right": (900, 0),
     },
 }

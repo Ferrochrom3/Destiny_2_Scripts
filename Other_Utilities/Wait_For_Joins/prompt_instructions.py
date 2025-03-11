@@ -75,13 +75,12 @@ def prompt_activity_name_instruction():
         sys.exit()
 
     elif activity_type == "Dungeon":
-        acceptable_activity_names = {"1"}
-        activity_name_dictionary = {
-            "1": "The Shattered Throne",
-        }
+        acceptable_activity_names = {"1", "2"}
+        activity_name_dictionary = {"1": "The Shattered Throne", "2": "Vespers Host"}
 
         print("Which of the following activities would you like to access?")
         print(" - The Shattered Throne (1)")
+        print(" - Vespers Host (2)")
 
     activity_name = input(f"{Fore.GREEN}")
 

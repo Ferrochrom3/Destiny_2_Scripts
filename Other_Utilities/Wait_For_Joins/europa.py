@@ -30,31 +30,32 @@ def win32api_move_mouse(x: int, y: int, wait_time: float = 0.1):
     time.sleep(wait_time)
 
 
-def launch_shattered_throne():
+def launch_vespers_host():
     """
-    Launch The Shattered Throne dungeon from orbit from the planets page.
+    Launch Vespers Host dungeon from orbit from the planets page.
      - Click on Dreaming City
      - Move up to click the dungeon icon, then launch
     """
 
-    status_display.current_status = "Launching The Shattered Throne"
+    status_display.current_status = "Launching Vespers Host"
 
-    # Try to click on Dreaming City
+    # Try to click on Europa
     while True:
         try:
-            x, y = pyautogui.locateCenterOnScreen(os.path.join(image_path, "Dreaming City.png"), confidence=0.8)
+            x, y = pyautogui.locateCenterOnScreen(os.path.join(image_path, "Europa.png"), confidence=0.8)
             pyautogui.moveTo(x, y)
             time.sleep(0.1)
             pyautogui.leftClick()
-            win32api_move_mouse(-600, 0)  # Move mouse towards center after clicking to avoid moving to map
             time.sleep(2)
             break
         except TypeError:
             pass
 
-    win32api_move_mouse(config["dreaming_city_move_up"][0], config["dreaming_city_move_up"][1])
-    time.sleep(0.5)
-    win32api_move_mouse(config["dreaming_city_move_down"][0], config["dreaming_city_move_down"][1])
+    win32api_move_mouse(config["europa_move_up"][0], config["europa_move_up"][1])
+    time.sleep(1.5)
+    win32api_move_mouse(config["europa_move_down"][0], config["europa_move_down"][1])
+    time.sleep(1)
+    win32api_move_mouse(config["europa_move_right"][0], config["europa_move_right"][1])
 
     # Try click on dungeon
     while True:
