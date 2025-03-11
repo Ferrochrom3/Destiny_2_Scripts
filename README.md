@@ -1,6 +1,6 @@
 # Disclaimer
  - Post 08/19/2024, AFK scripts/macros will be a bannable offense in Destiny 2
- - Any scripts that are used for `AFK` should not be used
+ - Any scripts that are used for `AFK` should not be used, others should be allowed
 ![image](https://github.com/user-attachments/assets/b9e47471-c482-43b1-8ec8-c1388637531c)
 
 # Library Versions
